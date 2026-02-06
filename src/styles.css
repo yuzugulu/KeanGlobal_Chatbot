@@ -1,0 +1,128 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f2f5f9;
+  color: #222;
+}
+
+/* Dark Mode */
+body.dark {
+  background: #1e1e1e;
+  color: white;
+}
+
+.app {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* HEADER */
+
+.header {
+  background: #003a8f;
+  color: white;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo-box {
+  width: 32px;
+  height: 32px;
+  background: #f5b400;
+  color: black;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4px;
+}
+
+.theme-btn {
+  padding: 6px 12px;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+/* LAYOUT */
+
+.main-layout {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.panel {
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* CHAT */
+
+.chat-box {
+  flex: 1;
+  border: 1px solid #ccc;
+  padding: 10px;
+  overflow-y: auto;
+  margin-bottom: 10px;
+}
+
+.msg {
+  padding: 8px;
+  margin-bottom: 6px;
+  border-radius: 6px;
+  max-width: 80%;
+}
+
+.user {
+  background: #dbe7ff;
+  align-self: flex-end;
+}
+
+.bot {
+  background: #eee;
+}
+
+.input-row {
+  display: flex;
+}
+
+input {
+  flex: 1;
+  padding: 10px;
+}
+
+button {
+  padding: 10px 16px;
+  background: #f5b400;
+  border: none;
+  cursor: pointer;
+}
+
+/* MAP */
+
+.map-placeholder {
+  flex: 1;
+  border: 2px dashed #999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 800px) {
+  .main-layout {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,266 @@
+/* ================================
+   KEAN UNIVERSITY BRAND UI KIT
+================================ */
+
+/* ---------- COLOR SYSTEM ---------- */
+
+:root {
+  --kean-blue: #003667;
+  --kean-light-blue: #5b8fc9;
+  --kean-gold: #fdb813;
+
+  --bg-page: #f5f7fa;
+  --bg-panel: #ffffff;
+
+  --text-primary: #1f2933;
+  --text-secondary: #64748b;
+
+  --border-light: #d1d5db;
+}
+
+/* Dark Mode Overrides */
+body.dark {
+  --bg-page: #0f172a;
+  --bg-panel: #020617;
+  --text-primary: #f1f5f9;
+  --text-secondary: #94a3b8;
+  --border-light: #334155;
+}
+
+/* ---------- TYPOGRAPHY ---------- */
+
+body {
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: var(--bg-page);
+  color: var(--text-primary);
+}
+
+h1, h2, h3 {
+  margin: 0;
+  font-weight: 600;
+}
+
+/* ---------- LAYOUT ---------- */
+
+.app {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ---------- HEADER ---------- */
+
+.header {
+  background: var(--kean-blue);
+  color: white;
+  padding: 14px 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo-box {
+  width: 36px;
+  height: 36px;
+  background: var(--kean-gold);
+  color: var(--kean-blue);
+  font-weight: 700;
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 6px;
+}
+
+/* ---------- BUTTONS ---------- */
+
+.btn-primary {
+  background: var(--kean-blue);
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.btn-primary:hover {
+  background: #00264f;
+}
+
+.btn-secondary {
+  background: var(--kean-gold);
+  color: var(--kean-blue);
+  border: none;
+  padding: 10px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+/* ---------- PANELS ---------- */
+
+.panel {
+  background: var(--bg-panel);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.panel-title {
+  color: var(--kean-blue);
+  margin-bottom: 12px;
+}
+
+/* Improve contrast in dark mode */
+body.dark .panel-title {
+  color: var(--kean-gold);
+}
+
+
+/* ---------- CHAT ---------- */
+
+.chat-box {
+  flex: 1;
+  border: 1px solid var(--border-light);
+  border-radius: 6px;
+  padding: 12px;
+  overflow-y: auto;
+  margin-bottom: 10px;
+  background: #fafafa;
+}
+
+.msg-user {
+  background: #dbeafe;
+  padding: 10px;
+  border-radius: 8px;
+  align-self: flex-end;
+  margin-bottom: 8px;
+  max-width: 75%;
+}
+
+.msg-bot {
+  background: #e5e7eb;
+  padding: 10px;
+  border-radius: 8px;
+  align-self: flex-start;
+  margin-bottom: 8px;
+  max-width: 75%;
+}
+/* Better dark mode contrast */
+
+body.dark .msg-user {
+  background: #1e40af; /* deep blue */
+  color: white;
+}
+
+body.dark .msg-bot {
+  background: #334155; /* slate */
+  color: white;
+}
+
+/* ---------- INPUTS ---------- */
+
+.input-row {
+  display: flex;
+  gap: 8px;
+}
+
+input {
+  flex: 1;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid var(--border-light);
+}
+
+input:focus {
+  outline: none;
+  border-color: var(--kean-blue);
+}
+
+/* ---------- MAP ---------- */
+
+.map-placeholder {
+  flex: 1;
+  border: 2px dashed var(--border-light);
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--text-secondary);
+}
+
+/* ---------- GRID ---------- */
+
+.main-layout {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+@media (max-width: 900px) {
+  .main-layout {
+    grid-template-columns: 1fr;
+  }
+}
+.kean-logo {
+  height: 42px;
+  width: auto;
+}
+/* ---------- CONDITIONAL LAYOUT ---------- */
+
+.main-layout.one-col {
+  grid-template-columns: 1fr;
+}
+
+.main-layout.two-col {
+  grid-template-columns: 1fr 1fr;
+}
+
+/* ---------- MAP SLIDE ANIMATION ---------- */
+
+.map-panel {
+  animation: slideIn 0.3s ease-in-out;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+/* ---------- LOADING SPINNER ---------- */
+
+.spinner {
+  width: 24px;
+  height: 24px;
+  border: 4px solid #cbd5e1;
+  border-top: 4px solid var(--kean-blue);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 10px auto;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.map-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
