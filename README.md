@@ -16,7 +16,7 @@ KeanGlobal is a chat-first, AI-powered campus concierge system with an optional 
 
 ## ✅ Prerequisites
 
-Make sure you have:
+Install the following:
 
 - Node.js (v18 or newer)  
   https://nodejs.org  
@@ -44,9 +44,9 @@ cd KeanGlobal_Chatbot
 
 ## 📦 Install Frontend Dependencies
 
-Vite and React are already defined in `package.json`.
+React and Vite are already defined in `package.json`.
 
-Just run:
+Run:
 
 ```bash
 npm install
@@ -66,7 +66,7 @@ Open:
 http://localhost:5173
 ```
 
-If you see the chat interface → success.
+If the chat interface loads → success.
 
 ---
 
@@ -80,7 +80,7 @@ brew install ollama
 
 ### Windows
 
-Download installer from:
+Download installer:
 
 ```
 https://ollama.com
@@ -116,25 +116,83 @@ No API keys are required.
 
 ---
 
-## 🔁 Daily Git Workflow
+## ⬇️ Pull Latest Changes
 
-Before starting work:
+Always pull the newest code before starting work:
 
 ```bash
 git checkout main
 git pull origin main
-git checkout -b your-feature-name
 ```
 
-After finishing work:
+---
+
+## 🌿 Creating and Switching Branches
+
+Create a new branch:
+
+```bash
+git checkout -b feature-name
+```
+
+Example:
+
+```bash
+git checkout -b backend-ai
+```
+
+Switch to an existing branch:
+
+```bash
+git checkout backend-ai
+```
+
+List branches:
+
+```bash
+git branch
+```
+
+---
+
+## 💾 Save Your Work (Commit)
 
 ```bash
 git add .
 git commit -m "Describe your changes"
-git push origin your-feature-name
 ```
 
-Create a Pull Request on GitHub.
+Example:
+
+```bash
+git commit -m "Add backend skeleton"
+```
+
+---
+
+## ⬆️ Push Your Branch
+
+```bash
+git push origin feature-name
+```
+
+Example:
+
+```bash
+git push origin backend-ai
+```
+
+---
+
+## 🔀 Create Pull Request (PR)
+
+1. Go to GitHub repository  
+2. Click **Compare & Pull Request**  
+3. Add short description  
+4. Submit PR  
+5. Team reviews → Merge to main  
+
+Do NOT push directly to main.
 
 ---
 
@@ -167,3 +225,19 @@ Each team member documents:
 - What they are working on next  
 
 in the shared weekly tracking document.
+
+---
+
+## 🚀 Future Work
+
+- Document ingestion & embeddings  
+- Vector database integration  
+- Real campus map with routing  
+- Admin dashboard  
+- Multilingual support  
+
+---
+
+## 🏆 Academic Statement
+
+This project demonstrates full-stack development, intelligent systems design, retrieval-augmented generation, and human-centered UI design.
