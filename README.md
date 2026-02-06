@@ -1,111 +1,169 @@
-KeanGlobal – Multilingual Campus Concierge
+# 📘 KeanGlobal – Multilingual Campus Concierge & Navigation System
 
-KeanGlobal is a chat-first, AI-powered campus concierge system with an optional context-aware map. The system assists students with Kean University policies, services, and navigation.
+KeanGlobal is a chat-first, AI-powered campus concierge system with an optional context-aware campus map. The system assists students with Kean University policies, services, and navigation using a locally hosted open-source language model.
 
-🧰 Tech Stack
+---
 
-Frontend: React + Vite
+## 🧰 Tech Stack
 
-Backend: FastAPI (planned)
+- Frontend: React + Vite  
+- Backend: FastAPI (planned)  
+- AI Model: Mistral (local via Ollama)  
+- Vector Database: Chroma (planned)  
+- Mapping: Leaflet / OpenStreetMap (planned)
 
-AI Model: Mistral (local via Ollama)
+---
 
-Vector Database: Chroma (planned)
+## ✅ Prerequisites
 
-Map: Leaflet / OpenStreetMap (planned)
+Make sure you have:
 
-🚀 Quick Start (All Team Members)
-1️⃣ Clone Repository
+- Node.js (v18 or newer)  
+  https://nodejs.org  
+- Git  
+  https://git-scm.com  
+
+Verify installation:
+
+```bash
+node -v
+npm -v
+git --version
+```
+
+---
+
+## 📥 Clone Repository
+
+```bash
 git clone https://github.com/Dav1dKean/KeanGlobal_Chatbot.git
 cd KeanGlobal_Chatbot
+```
 
-2️⃣ Install Frontend Dependencies
+---
+
+## 📦 Install Frontend Dependencies
+
+Vite and React are already defined in `package.json`.
+
+Just run:
+
+```bash
 npm install
+```
 
-3️⃣ Run Frontend
+---
+
+## ▶️ Run Frontend
+
+```bash
 npm run dev
-
+```
 
 Open:
 
+```
 http://localhost:5173
+```
 
+If you see the chat interface → success.
 
-If chat UI loads → success.
+---
 
-🤖 Install Local AI Model (Ollama)
-Mac
+## 🤖 Install Local AI Model (Ollama)
+
+### macOS
+
+```bash
 brew install ollama
+```
 
-Windows
+### Windows
 
-Download from:
+Download installer from:
 
+```
 https://ollama.com
+```
 
-Pull Model
+---
+
+### Pull Mistral Model
+
+```bash
 ollama run mistral
+```
 
+---
+
+### Test Model
 
 Type:
 
+```bash
 Hello
+```
 
+If model responds → working.
 
-If model replies → working.
+---
 
-🔁 Daily Git Workflow
+## 🧠 How AI Will Be Used
+
+The backend will call the locally running Mistral model through Ollama and combine it with university documents using Retrieval-Augmented Generation (RAG).
+
+No API keys are required.
+
+---
+
+## 🔁 Daily Git Workflow
 
 Before starting work:
 
+```bash
 git checkout main
 git pull origin main
-git checkout -b your-branch-name
-
+git checkout -b your-feature-name
+```
 
 After finishing work:
 
+```bash
 git add .
 git commit -m "Describe your changes"
-git push origin your-branch-name
+git push origin your-feature-name
+```
 
+Create a Pull Request on GitHub.
 
-Create Pull Request on GitHub.
+---
 
-📁 Project Structure
+## 📁 Project Structure
+
+```
 KeanGlobal_Chatbot/
  ├─ src/              # React frontend
  ├─ backend/          # FastAPI backend (planned)
  ├─ public/
  ├─ README.md
+```
 
-📌 Team Roles
+---
 
-Member 1: AI & Backend
+## 👥 Team Roles
 
-Member 2: Mapping & Visualization
+- Member 1 – AI & Backend  
+- Member 2 – Mapping & Visualization  
+- Member 3 – Frontend  
+- Member 4 – Database & Admin  
 
-Member 3: Frontend
+---
 
-Member 4: Database & Admin
+## 📅 Weekly Reporting
 
-🧪 Troubleshooting
+Each team member documents:
 
-If blank screen:
-
-npm run dev
-
-
-If npm errors:
-
-npm install
-
-📅 Weekly Reporting
-
-Each member records:
-
-What they completed
-
-What they are working on next
+- What they completed  
+- What they are working on next  
 
 in the shared weekly tracking document.
