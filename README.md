@@ -70,6 +70,38 @@ If the chat interface loads → success.
 
 ---
 
+## ⚙️ Run Backend (FastAPI)
+
+From project root:
+
+```bash
+cd backend
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+uvicorn app.main:app --reload --port 8000
+```
+
+Health check:
+
+```bash
+http://localhost:8000/health
+```
+
+Frontend sends chat requests to:
+
+```bash
+http://localhost:8000/chat
+```
+
+Optional frontend env override:
+
+```bash
+VITE_API_URL=http://localhost:8000
+```
+
+---
+
 ## 🤖 Install Local AI Model (Ollama)
 
 ### macOS

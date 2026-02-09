@@ -1,64 +1,65 @@
 import { useState } from "react";
 
-function ChatPanel({ setShowMap }) {
+const API_BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:8000";
+
+function ChatPanel({ setShowMap, setRouteRequest }) {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
 
-  // Temporary mock AI logic
-  function mockAIResponse(userText) {
-    const text = userText.toLowerCase();
+  async function sendMessage() {
+    const userMessage = input.trim();
+    if (!userMessage || loading) return;
 
-    if (
-      text.includes("where") ||
-      text.includes("location") ||
-      text.includes("building")
-    ) {
-      return {
-        answer: "Kean Hall is highlighted on the map.",
-        intent: "location",
-        building: "Kean Hall"
-      };
-    }
-
-    return {
-      answer: "KeanGlobal prototype running.",
-      intent: "policy"
-    };
-  }
-
-  function sendMessage() {
-    if (!input) return;
-
-    const userMessage = input;
-
-    // Show user's message
-    setMessages(prev => [
-      ...prev,
-      { text: userMessage, sender: "user" }
-    ]);
-
+    setMessages(prev => [...prev, { text: userMessage, sender: "user" }]);
     setInput("");
-    setLoading(true); // Spinner ON
+    setLoading(true);
 
-    setTimeout(() => {
-      const ai = mockAIResponse(userMessage);
+    try {
+      const response = await fetch(`${API_BASE_URL}/chat`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message: userMessage })
+      });
 
-      // Show bot response
-      setMessages(prev => [
-        ...prev,
-        { text: ai.answer, sender: "bot" }
-      ]);
+      const data = await response.json();
 
-      // Show map only if location intent
-      if (ai.intent === "location") {
-        setShowMap(true);
-      } else {
-        setShowMap(false);
+      if (!response.ok) {
+        throw new Error(data?.detail || "Request failed.");
       }
 
-      setLoading(false); // Spinner OFF
-    }, 800);
+      setMessages(prev => [...prev, { text: data.answer, sender: "bot" }]);
+      setShowMap(data.intent === "location");
+      if (data.intent === "location") {
+        setRouteRequest({
+          destinationId: data.destination_id || null,
+          useCurrentLocation: Boolean(data.use_current_location)
+        });
+      }
+    } catch (error) {
+      const errorText =
+        error instanceof Error
+          ? error.message
+          : "Backend unavailable. Start FastAPI and Ollama.";
+
+      setMessages(prev => [
+        ...prev,
+        {
+          text: `Error: ${errorText}`,
+          sender: "bot"
+        }
+      ]);
+      setShowMap(false);
+      setRouteRequest(null);
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  function handleKeyDown(event) {
+    if (event.key === "Enter") {
+      sendMessage();
+    }
   }
 
   return (
@@ -69,10 +70,7 @@ function ChatPanel({ setShowMap }) {
         {loading && <div className="spinner"></div>}
 
         {messages.map((m, i) => (
-          <div
-            key={i}
-            className={m.sender === "user" ? "msg-user" : "msg-bot"}
-          >
+          <div key={i} className={m.sender === "user" ? "msg-user" : "msg-bot"}>
             {m.text}
           </div>
         ))}
@@ -82,10 +80,11 @@ function ChatPanel({ setShowMap }) {
         <input
           value={input}
           onChange={e => setInput(e.target.value)}
+          onKeyDown={handleKeyDown}
           placeholder="Ask about Kean University..."
         />
 
-        <button className="btn-primary" onClick={sendMessage}>
+        <button className="btn-primary" onClick={sendMessage} disabled={loading}>
           Send
         </button>
       </div>
