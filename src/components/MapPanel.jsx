@@ -15,12 +15,328 @@ const CAMPUS_BOUNDS = {
 
 const BUILDINGS = [
   { id: "kean_hall", name: "Kean Hall", position: [40.6798, -74.2341] },
-  { id: "glassman_hall", name: "Glassman Hall (GLAB)", position: [40.6802, -74.2353] },
+  { id: "glassman_hall", name: "Green Lane Academic Building (GLAB)", position: [40.6802, -74.2353] },
   { id: "library", name: "Nancy Thompson Library", position: [40.6791, -74.2328] },
   { id: "stem", name: "STEM Building", position: [40.6804, -74.2332] },
   { id: "downs_hall", name: "Downs Hall", position: [40.6811, -74.2347] },
   { id: "harwood", name: "Harwood Arena", position: [40.6788, -74.2356] },
   { id: "uc", name: "University Center", position: [40.6789, -74.2338] }
+];
+
+const CAMPUS_DIRECTORY = [
+  {
+    id: "administration_building",
+    name: "Administration Building",
+    campus: "Main Campus (Union, NJ)",
+    category: "Academic & Administrative",
+    description: "Student services offices (Financial Aid, Registrar, and related services)."
+  },
+  {
+    id: "bruce_hall",
+    name: "Bruce Hall",
+    campus: "Main Campus (Union, NJ)",
+    category: "Academic & Administrative",
+    description: "Science labs and classrooms."
+  },
+  {
+    id: "green_lane_academic_building",
+    name: "Green Lane Academic Building (GLAB)",
+    campus: "Main Campus (Union, NJ)",
+    category: "Academic & Administrative",
+    description: "Classrooms and campus bookstore.",
+    destinationId: "glassman_hall"
+  },
+  {
+    id: "nancy_thompson_library",
+    name: "Nancy Thompson Library (LIB)",
+    campus: "Main Campus (Union, NJ)",
+    category: "Academic & Administrative",
+    description: "Campus library for research and study.",
+    destinationId: "library"
+  },
+  {
+    id: "maxine_jack_lane_cas",
+    name: "Maxine & Jack Lane Center for Academic Success (CAS)",
+    campus: "Main Campus (Union, NJ)",
+    category: "Academic & Administrative",
+    description: "Academic support and tutoring spaces."
+  },
+  {
+    id: "north_avenue_academic_building",
+    name: "North Avenue Academic Building (NAAB)",
+    campus: "Main Campus (Union, NJ)",
+    category: "Academic & Administrative",
+    description: "Classrooms and labs."
+  },
+  {
+    id: "technology_building",
+    name: "Technology Building (TECH)",
+    campus: "Main Campus (Union, NJ)",
+    category: "Academic & Administrative",
+    description: "Instructional classrooms and offices."
+  },
+  {
+    id: "hynes_hall",
+    name: "Hynes Hall",
+    campus: "Main Campus (Union, NJ)",
+    category: "Academic & Administrative",
+    description: "Business, public administration, and criminal justice space."
+  },
+  {
+    id: "townsend_hall",
+    name: "Townsend Hall",
+    campus: "Main Campus (Union, NJ)",
+    category: "Academic & Administrative",
+    description: "Classrooms and faculty offices."
+  },
+  {
+    id: "cas_center",
+    name: "Center for Academic Success (CAS)",
+    campus: "Main Campus (Union, NJ)",
+    category: "Academic & Administrative",
+    description: "Conference, study, and support spaces."
+  },
+  {
+    id: "nathan_weiss_ecb",
+    name: "Nathan Weiss East Campus Building (ECB)",
+    campus: "East Campus (Hillside, NJ)",
+    category: "East Campus",
+    description: "Home to multiple colleges and a recital hall."
+  },
+  {
+    id: "east_campus_gym",
+    name: "East Campus Gym",
+    campus: "East Campus (Hillside, NJ)",
+    category: "East Campus",
+    description: "Athletic and recreation facility."
+  },
+  {
+    id: "jacqueline_towns_court",
+    name: "Jacqueline Towns Court (JTC)",
+    campus: "East Campus (Hillside, NJ)",
+    category: "East Campus",
+    description: "Basketball court and training facility."
+  },
+  {
+    id: "enlow_recital_hall",
+    name: "Enlow Recital Hall",
+    campus: "East Campus (Hillside, NJ)",
+    category: "East Campus",
+    description: "Performance space."
+  },
+  {
+    id: "presidents_house",
+    name: "President's House",
+    campus: "East Campus (Hillside, NJ)",
+    category: "East Campus",
+    description: "Administrative residence."
+  },
+  {
+    id: "ruth_horowitz_alumni_house",
+    name: "Ruth Horowitz Alumni House",
+    campus: "East Campus (Hillside, NJ)",
+    category: "East Campus",
+    description: "Alumni engagement building."
+  },
+  {
+    id: "liberty_hall_museum",
+    name: "Liberty Hall Museum / Mansion (LHM)",
+    campus: "Liberty Hall Campus (Union, NJ)",
+    category: "Liberty Hall",
+    description: "Historic mansion and museum."
+  },
+  {
+    id: "blue_house",
+    name: "Blue House",
+    campus: "Liberty Hall Campus (Union, NJ)",
+    category: "Liberty Hall",
+    description: "Historic site on Liberty Hall campus."
+  },
+  {
+    id: "fire_house",
+    name: "Fire House",
+    campus: "Liberty Hall Campus (Union, NJ)",
+    category: "Liberty Hall",
+    description: "Historic structure on Liberty Hall campus."
+  },
+  {
+    id: "carriage_house",
+    name: "Carriage House",
+    campus: "Liberty Hall Campus (Union, NJ)",
+    category: "Liberty Hall",
+    description: "Historic carriage house."
+  },
+  {
+    id: "ursino",
+    name: "Ursino",
+    campus: "Liberty Hall Campus (Union, NJ)",
+    category: "Liberty Hall",
+    description: "Historic Liberty Hall structure."
+  },
+  {
+    id: "cougar_hall",
+    name: "Cougar Hall",
+    campus: "Main Campus (Union, NJ)",
+    category: "Residence Halls",
+    description: "Freshman residence."
+  },
+  {
+    id: "dougall_hall",
+    name: "Dougall Hall",
+    campus: "Main Campus (Union, NJ)",
+    category: "Residence Halls",
+    description: "Residence hall."
+  },
+  {
+    id: "whiteman_hall",
+    name: "Whiteman Hall",
+    campus: "Main Campus (Union, NJ)",
+    category: "Residence Halls",
+    description: "Residence hall."
+  },
+  {
+    id: "bartlett_hall",
+    name: "Bartlett Hall",
+    campus: "Main Campus (Union, NJ)",
+    category: "Residence Halls",
+    description: "Apartment-style upperclass housing."
+  },
+  {
+    id: "burch_hall",
+    name: "Burch Hall",
+    campus: "Main Campus (Union, NJ)",
+    category: "Residence Halls",
+    description: "Apartment-style upperclass housing."
+  },
+  {
+    id: "rogers_hall",
+    name: "Rogers Hall",
+    campus: "Main Campus (Union, NJ)",
+    category: "Residence Halls",
+    description: "Apartment-style upperclass housing."
+  },
+  {
+    id: "sozio_hall",
+    name: "Sozio Hall",
+    campus: "Main Campus (Union, NJ)",
+    category: "Residence Halls",
+    description: "Apartment-style upperclass housing."
+  },
+  {
+    id: "upperclassman_residence_hall",
+    name: "Upperclassman Residence Hall (URH)",
+    campus: "Main Campus (Union, NJ)",
+    category: "Residence Halls",
+    description: "General apartment-like residence."
+  },
+  {
+    id: "miron_student_center",
+    name: "Miron Student Center (MSC)",
+    campus: "Main Campus (Union, NJ)",
+    category: "Student Life & Services",
+    description: "Main student union with game room, food court, and meeting rooms.",
+    destinationId: "uc"
+  },
+  {
+    id: "wilkins_theatre",
+    name: "Wilkins Theatre for the Performing Arts (WT)",
+    campus: "Main Campus (Union, NJ)",
+    category: "Student Life & Services",
+    description: "Large campus theater."
+  },
+  {
+    id: "center_for_academic_success",
+    name: "Center for Academic Success (CAS)",
+    campus: "Main Campus (Union, NJ)",
+    category: "Student Life & Services",
+    description: "Student tutoring and support."
+  },
+  {
+    id: "human_rights_institute",
+    name: "Human Rights Institute (HRI)",
+    campus: "Main Campus (Union, NJ)",
+    category: "Student Life & Services",
+    description: "Academic and advocacy facility near library.",
+    destinationId: "library"
+  },
+  {
+    id: "child_study_institute",
+    name: "Child Study Institute / Campus School (CSI / CS)",
+    campus: "Main Campus (Union, NJ)",
+    category: "Student Life & Services",
+    description: "Education lab school facilities."
+  },
+  {
+    id: "public_safety_hq",
+    name: "Department of Public Safety / Police HQ",
+    campus: "Main Campus (Union, NJ)",
+    category: "Student Life & Services",
+    description: "Campus police and safety operations."
+  },
+  {
+    id: "dangola_gymnasium",
+    name: "D'Angola Gymnasium",
+    campus: "Main Campus (Union, NJ)",
+    category: "Athletics & Recreation",
+    description: "Fitness and indoor sports."
+  },
+  {
+    id: "harwood_arena",
+    name: "Harwood Arena",
+    campus: "Main Campus (Union, NJ)",
+    category: "Athletics & Recreation",
+    description: "Multi-sport arena.",
+    destinationId: "harwood"
+  },
+  {
+    id: "alumni_stadium",
+    name: "Alumni Stadium / Football Field",
+    campus: "Main Campus (Union, NJ)",
+    category: "Athletics & Recreation",
+    description: "Outdoor field with track."
+  },
+  {
+    id: "outdoor_courts",
+    name: "Basketball & Volleyball Courts",
+    campus: "Main Campus (Union, NJ)",
+    category: "Athletics & Recreation",
+    description: "Outdoor recreation courts."
+  },
+  {
+    id: "turf_field",
+    name: "Turf Field / Multipurpose Field",
+    campus: "Main Campus (Union, NJ)",
+    category: "Athletics & Recreation",
+    description: "Multipurpose turf field."
+  },
+  {
+    id: "parking_lots",
+    name: "Parking Decks & Surface Lots",
+    campus: "Main Campus (Union, NJ)",
+    category: "Support & Infrastructure",
+    description: "Numbered lots and parking structures across campus."
+  },
+  {
+    id: "safety_comms",
+    name: "Campus Safety Communication Systems",
+    campus: "Main Campus (Union, NJ)",
+    category: "Support & Infrastructure",
+    description: "Campus warning and communication infrastructure."
+  },
+  {
+    id: "james_townley_house",
+    name: "James Townley House",
+    campus: "Main Campus (Union, NJ)",
+    category: "Historic & Other",
+    description: "Historic farmhouse on campus."
+  },
+  {
+    id: "union_townley_station",
+    name: "Union/Townley Train Station Access",
+    campus: "Main Campus (Union, NJ)",
+    category: "Historic & Other",
+    description: "Regional transit access point near campus."
+  }
 ];
 
 const CAMPUS_PATHS = [
@@ -173,6 +489,8 @@ function MapPanel({ setShowMap, routeRequest }) {
   const [endId, setEndId] = useState("library");
   const [userPosition, setUserPosition] = useState(null);
   const [locationStatus, setLocationStatus] = useState("");
+  const [campusFilter, setCampusFilter] = useState("All Campuses");
+  const [directoryQuery, setDirectoryQuery] = useState("");
 
   const graph = useMemo(() => buildGraph(), []);
 
@@ -195,6 +513,23 @@ function MapPanel({ setShowMap, routeRequest }) {
     }
     return total;
   }, [routeCoordinates]);
+  const campusOptions = useMemo(
+    () => ["All Campuses", ...new Set(CAMPUS_DIRECTORY.map(place => place.campus))],
+    []
+  );
+  const filteredDirectoryPlaces = useMemo(() => {
+    const query = directoryQuery.trim().toLowerCase();
+    return CAMPUS_DIRECTORY.filter(place => {
+      const matchesCampus = campusFilter === "All Campuses" || place.campus === campusFilter;
+      if (!matchesCampus) return false;
+      if (!query) return true;
+      return (
+        place.name.toLowerCase().includes(query) ||
+        place.category.toLowerCase().includes(query) ||
+        place.description.toLowerCase().includes(query)
+      );
+    });
+  }, [campusFilter, directoryQuery]);
 
   function setMyLocationAsStart() {
     if (!navigator.geolocation) {
@@ -226,6 +561,16 @@ function MapPanel({ setShowMap, routeRequest }) {
   function swapRoute() {
     setStartId(endId);
     setEndId(startId);
+  }
+  function routeToPlace(place) {
+    if (!place.destinationId) {
+      setLocationStatus("Route data not set for this location yet. Select a mapped destination above.");
+      return;
+    }
+
+    setEndId(place.destinationId);
+    setShowMap(true);
+    setMyLocationAsStart();
   }
 
   const startBuilding = getBuildingById(startId);
@@ -297,6 +642,46 @@ function MapPanel({ setShowMap, routeRequest }) {
         {routeCoordinates.length > 1
           ? `${Math.round(routeDistanceMeters)} m estimated path`
           : "No route found in campus graph"}
+      </div>
+
+      <div className="directory-panel">
+        <div className="directory-head">
+          <strong>Kean Campus Directory</strong>
+          <span>{filteredDirectoryPlaces.length} locations</span>
+        </div>
+        <div className="directory-controls">
+          <select value={campusFilter} onChange={event => setCampusFilter(event.target.value)}>
+            {campusOptions.map(option => (
+              <option key={option} value={option}>
+                {option}
+              </option>
+            ))}
+          </select>
+          <input
+            value={directoryQuery}
+            onChange={event => setDirectoryQuery(event.target.value)}
+            placeholder="Search building, service, or campus..."
+          />
+        </div>
+        <div className="directory-list">
+          {filteredDirectoryPlaces.map(place => (
+            <div key={place.id} className="directory-item">
+              <div className="directory-item-main">
+                <div className="directory-item-name">{place.name}</div>
+                <div className="directory-item-meta">{place.campus} • {place.category}</div>
+                <div className="directory-item-desc">{place.description}</div>
+              </div>
+              <button
+                type="button"
+                className="btn-secondary directory-route-btn"
+                onClick={() => routeToPlace(place)}
+                disabled={!place.destinationId}
+              >
+                {place.destinationId ? "Route" : "Info Only"}
+              </button>
+            </div>
+          ))}
+        </div>
       </div>
 
       <div className="leaflet-wrapper">
