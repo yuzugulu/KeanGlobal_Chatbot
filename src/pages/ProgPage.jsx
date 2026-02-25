@@ -1,23 +1,56 @@
 import { useNavigate } from "react-router-dom";
-import { useMemo, useState } from "react";
+import { useMemo, useState, useEffect } from "react";
 
-const PROGRAMS = [
-  { name: "Computer Science (MS)", level: "Graduate", area: "STEM", tags: ["AI", "Systems", "Data"] },
-  { name: "Computer Science (BS)", level: "Undergraduate", area: "STEM", tags: ["Programming", "Algorithms"] },
-  { name: "Data Analytics (MS)", level: "Graduate", area: "STEM", tags: ["BI", "Mining", "ML"] },
-  { name: "Cybersecurity (MS)", level: "Graduate", area: "STEM", tags: ["Network", "Security"] },
-  { name: "Business Administration (MBA)", level: "Graduate", area: "Business", tags: ["Management"] },
-  { name: "Psychology (BA)", level: "Undergraduate", area: "Arts & Sciences", tags: ["Behavior"] },
-];
-
-export default function ProgramsPage() {
+export default function ProgPage() {
   const navigate = useNavigate();
+  
+  // State for fetched data, search, and filters
+  const [programsList, setProgramsList] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
   const [q, setQ] = useState("");
   const [level, setLevel] = useState("All");
 
+  // Fetch all programs on mount
+  useEffect(() => {
+    const fetchPrograms = async () => {
+      try {
+        const response = await fetch('http://127.0.0.1:8000/api/programs');
+        if (!response.ok) throw new Error("Network response was not ok");
+        
+        const data = await response.json();
+        
+        // Transform JSON object into an array for rendering
+        const formattedPrograms = Object.entries(data.programs).map(([key, pData]) => {
+          const isGrad = pData.metadata.full_name.match(/(M\.S\.|M\.A\.|Ph\.D\.|Post)/i);
+          
+          return {
+            id: key,
+            name: pData.metadata.full_name,
+            level: isGrad ? "Graduate" : "Undergraduate",
+            area: "Kean Program",
+            tags: [
+              pData.metadata.coordinator ? "Coordinator Info" : "",
+              Object.keys(pData.curriculum?.core_courses || {}).length > 0 ? "Has Courses" : ""
+            ].filter(Boolean),
+            ...pData
+          };
+        });
+
+        setProgramsList(formattedPrograms);
+      } catch (error) {
+        console.error("Error fetching programs:", error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchPrograms();
+  }, []);
+
+  // Filter logic
   const filtered = useMemo(() => {
     const keyword = q.trim().toLowerCase();
-    return PROGRAMS.filter((p) => {
+    return programsList.filter((p) => {
       const matchQ =
         !keyword ||
         p.name.toLowerCase().includes(keyword) ||
@@ -27,43 +60,43 @@ export default function ProgramsPage() {
       const matchLevel = level === "All" || p.level === level;
       return matchQ && matchLevel;
     });
-  }, [q, level]);
+  }, [q, level, programsList]);
+
+  if (isLoading) {
+    return <div className="p-8 text-center text-gray-500">Loading programs...</div>;
+  }
 
   return (
-        <div className="porgrams">
-        <section className="hero">
-            <div className="hero-full">
-                <div className="hero-video-wrap">
-                <video
-                    className="hero-video"
-                    src="/media/hero.mp4"
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
-                    preload="auto"
-                />
-                <div className="hero-overlay">
-                    <h1 className="hero-title">Majors &amp; Degree Programs</h1>
-                    
-                    <div className="hero-actions">
-                    <button className="hero-btn" onClick={() => navigate("/programs")}>
-                        let me think what to put
-                    </button>
-
-                    <button className="hero-btn" onClick={() => navigate("/chat")}>
-                        I dont know yet
-                    </button>
-                    </div>
-                </div>
-                </div>
+    <div className="porgrams">
+      {/* Hero Section */}
+      <section className="hero">
+        <div className="hero-full">
+          <div className="hero-video-wrap">
+            <video
+              className="hero-video"
+              src="/media/hero.mp4"
+              autoPlay loop muted playsInline preload="auto"
+            />
+            <div className="hero-overlay">
+              <h1 className="hero-title">Majors &amp; Degree Programs</h1>
+              <div className="hero-actions">
+                <button className="hero-btn" onClick={() => navigate("/programs")}>
+                  Explore Programs
+                </button>
+                <button className="hero-btn" onClick={() => navigate("/chat")}>
+                  Help Me Choose
+                </button>
+              </div>
             </div>
-        </section>
+          </div>
+        </div>
+      </section>
 
+      {/* Header & Controls */}
       <div className="programs-header">
         <h1 className="programs-title">Majors & Degree Programs</h1>
         <p className="programs-subtitle">
-          Browse programs. Use search to quickly filter by major name or keywords.
+          Browse {programsList.length} programs. Use search to filter by name or keywords.
         </p>
 
         <div className="programs-controls">
@@ -71,9 +104,8 @@ export default function ProgramsPage() {
             className="programs-search"
             value={q}
             onChange={(e) => setQ(e.target.value)}
-            placeholder="Search (e.g., Computer Science, Data, Security)..."
+            placeholder="Search (e.g., Computer Science, Data)..."
           />
-
           <select
             className="programs-select"
             value={level}
@@ -86,43 +118,54 @@ export default function ProgramsPage() {
         </div>
       </div>
 
+      {/* Program Grid */}
       <div className="programs-grid">
         {filtered.map((p) => (
-          <div key={p.name} className="program-card">
+          <div key={p.id} className="program-card">
             <div className="program-card-top">
               <div className="program-name">{p.name}</div>
               <div className="program-meta">
                 <span className="pill">{p.level}</span>
-                <span className="pill">{p.area}</span>
               </div>
             </div>
 
+            {p.metadata.note && (
+              <div style={{ color: "red", fontSize: "0.8rem", marginBottom: "8px" }}>
+                * {p.metadata.note}
+              </div>
+            )}
+
             <div className="program-tags">
               {p.tags.map((t) => (
-                <span key={t} className="tag">
-                  {t}
-                </span>
+                <span key={t} className="tag">{t}</span>
               ))}
             </div>
 
             <div className="program-actions">
               <button
                 className="btn-secondary"
-                onClick={() => alert(`TODO: Open details for: ${p.name}`)}
+                onClick={() => navigate(`/program/${p.id}`)}
               >
                 View Details
               </button>
               <button
                 className="btn-secondary"
-                onClick={() => alert(`TODO: Request info for: ${p.name}`)}
+                onClick={() => {
+                  const email = p.metadata.contact.email;
+                  if (email) {
+                    window.location.href = `mailto:${email}?subject=Inquiry about ${p.name}`;
+                  } else {
+                    alert("No contact email available for this program.");
+                  }
+                }}
               >
-                Request Info
+                Contact
               </button>
             </div>
           </div>
         ))}
 
-        {filtered.length === 0 && (
+        {filtered.length === 0 && !isLoading && (
           <div className="program-empty">
             No programs found. Try another keyword.
           </div>
