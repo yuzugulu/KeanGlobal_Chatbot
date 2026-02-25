@@ -545,7 +545,7 @@ body.dark .directory-panel {
 
 .programs-subtitle {
   margin: 8px 0 0 0;
-  color: rgba(255,255,255,0.72);
+  color: rgba(20, 0, 61, 0.92);
 }
 
 .programs-controls {
@@ -560,17 +560,17 @@ body.dark .directory-panel {
   min-width: 260px;
   padding: 10px 12px;
   border-radius: 12px;
-  border: 1px solid rgba(255,255,255,0.14);
-  background: rgba(0,0,0,0.20);
-  color: rgba(255,255,255,0.92);
+  border: 1px solid rgba(17, 10, 73, 0.805);
+  background: rgb(255, 255, 255);
+  color: rgba(0, 0, 0, 0.92);
 }
 
 .programs-select {
   padding: 10px 12px;
   border-radius: 12px;
-  border: 1px solid rgba(255,255,255,0.14);
-  background: rgba(0,0,0,0.20);
-  color: rgba(255,255,255,0.92);
+  border: 1px solid rgba(17, 10, 73, 0.805);
+  background: rgb(255, 255, 255);
+  color: rgba(0, 0, 0, 0.92);
 }
 
 .programs-grid {
@@ -583,7 +583,7 @@ body.dark .directory-panel {
 .program-card {
   padding: 14px;
   border-radius: 16px;
-  background: rgba(0,0,0,0.18);
+  background: rgb(21, 21, 106);
   border: 1px solid rgba(255,255,255,0.10);
 }
 
@@ -596,6 +596,7 @@ body.dark .directory-panel {
 .program-name {
   font-weight: 800;
   font-size: 16px;
+  color: rgba(255, 255, 255, 0.877);
 }
 
 .program-meta {
