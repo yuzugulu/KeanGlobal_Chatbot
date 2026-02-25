@@ -100,6 +100,14 @@ Optional frontend env override:
 VITE_API_URL=http://localhost:8000
 ```
 
+Optional backend Ollama timeout tuning (useful for first model load):
+
+```bash
+export OLLAMA_CONNECT_TIMEOUT_SECONDS=5
+export OLLAMA_READ_TIMEOUT_SECONDS=120
+export OLLAMA_MAX_RETRIES=1
+```
+
 ---
 
 ## 🤖 Install Local AI Model (Ollama)

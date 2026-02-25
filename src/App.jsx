@@ -1,21 +1,21 @@
-import { useState } from "react";
 import Header from "./components/Header";
-import ChatPanel from "./components/ChatPanel";
-import MapPanel from "./components/MapPanel";
-
+import { Routes, Route, Navigate } from "react-router-dom";
+import HomePage from "./pages/HomePage";
+import MapPage from "./pages/MapPage";
+import ProgPage from "./pages/ProgPage";
+import ProgDetail from "./pages/ProgDetail";
 function App() {
-  const [showMap, setShowMap] = useState(false);
-  const [routeRequest, setRouteRequest] = useState(null);
-
   return (
     <div className="app">
       <Header />
 
-      <div className={showMap ? "main-layout two-col" : "main-layout one-col"}>
-        <ChatPanel setShowMap={setShowMap} setRouteRequest={setRouteRequest} />
-        {showMap && <MapPanel setShowMap={setShowMap} routeRequest={routeRequest} />}
-
-      </div>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/chat" element={<MapPage />} />
+        <Route path="/programs" element={<ProgPage />} />
+        <Route path="/program/:id" element={<ProgDetail />} />
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </Routes>
     </div>
   );
 }
