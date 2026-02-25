@@ -32,7 +32,10 @@ __pycache__/
 venv/
 backend/.venv/
 
-# CHROMA DATABASE
+
+# Chroma DB
+backend/chroma_db/
 backend/app/chroma_db/
+*.sqlite3
 
 # MISC
