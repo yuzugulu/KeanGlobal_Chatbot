@@ -1,6 +1,6 @@
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import L from "leaflet";
-import { CircleMarker, MapContainer, Marker, Polyline, Popup, TileLayer, useMap } from "react-leaflet";
+import { CircleMarker, MapContainer, Marker, Polygon, Polyline, Popup, TileLayer, useMap } from "react-leaflet";
 import markerIcon2x from "leaflet/dist/images/marker-icon-2x.png";
 import markerIcon from "leaflet/dist/images/marker-icon.png";
 import markerShadow from "leaflet/dist/images/marker-shadow.png";
@@ -13,345 +13,22 @@ const CAMPUS_BOUNDS = {
   west: -74.2378
 };
 
-const BUILDINGS = [
-  { id: "kean_hall", name: "Kean Hall", position: [40.6798, -74.2341] },
-  { id: "glassman_hall", name: "Green Lane Academic Building (GLAB)", position: [40.6802, -74.2353] },
-  { id: "library", name: "Nancy Thompson Library", position: [40.6791, -74.2328] },
-  { id: "stem", name: "STEM Building", position: [40.6804, -74.2332] },
-  { id: "downs_hall", name: "Downs Hall", position: [40.6811, -74.2347] },
-  { id: "harwood", name: "Harwood Arena", position: [40.6788, -74.2356] },
-  { id: "uc", name: "University Center", position: [40.6789, -74.2338] }
-];
+const LOCATION_CSV_URL = new URL("../data/campus_locations_main_east_full.csv", import.meta.url).href;
+const PARKING_CSV_URL = new URL("../data/kean_parking_lots.csv", import.meta.url).href;
+const PATHS_CSV_URL = new URL("../data/campus_edges_walkpaths_balanced_skeleton Final.csv", import.meta.url).href;
+const PARKING_TYPE_COLORS = {
+  student: "#2563eb",
+  faculty_staff: "#f97316",
+  overnight: "#16a34a"
+};
 
-const CAMPUS_DIRECTORY = [
-  {
-    id: "administration_building",
-    name: "Administration Building",
-    campus: "Main Campus (Union, NJ)",
-    category: "Academic & Administrative",
-    description: "Student services offices (Financial Aid, Registrar, and related services)."
-  },
-  {
-    id: "bruce_hall",
-    name: "Bruce Hall",
-    campus: "Main Campus (Union, NJ)",
-    category: "Academic & Administrative",
-    description: "Science labs and classrooms."
-  },
-  {
-    id: "green_lane_academic_building",
-    name: "Green Lane Academic Building (GLAB)",
-    campus: "Main Campus (Union, NJ)",
-    category: "Academic & Administrative",
-    description: "Classrooms and campus bookstore.",
-    destinationId: "glassman_hall"
-  },
-  {
-    id: "nancy_thompson_library",
-    name: "Nancy Thompson Library (LIB)",
-    campus: "Main Campus (Union, NJ)",
-    category: "Academic & Administrative",
-    description: "Campus library for research and study.",
-    destinationId: "library"
-  },
-  {
-    id: "maxine_jack_lane_cas",
-    name: "Maxine & Jack Lane Center for Academic Success (CAS)",
-    campus: "Main Campus (Union, NJ)",
-    category: "Academic & Administrative",
-    description: "Academic support and tutoring spaces."
-  },
-  {
-    id: "north_avenue_academic_building",
-    name: "North Avenue Academic Building (NAAB)",
-    campus: "Main Campus (Union, NJ)",
-    category: "Academic & Administrative",
-    description: "Classrooms and labs."
-  },
-  {
-    id: "technology_building",
-    name: "Technology Building (TECH)",
-    campus: "Main Campus (Union, NJ)",
-    category: "Academic & Administrative",
-    description: "Instructional classrooms and offices."
-  },
-  {
-    id: "hynes_hall",
-    name: "Hynes Hall",
-    campus: "Main Campus (Union, NJ)",
-    category: "Academic & Administrative",
-    description: "Business, public administration, and criminal justice space."
-  },
-  {
-    id: "townsend_hall",
-    name: "Townsend Hall",
-    campus: "Main Campus (Union, NJ)",
-    category: "Academic & Administrative",
-    description: "Classrooms and faculty offices."
-  },
-  {
-    id: "cas_center",
-    name: "Center for Academic Success (CAS)",
-    campus: "Main Campus (Union, NJ)",
-    category: "Academic & Administrative",
-    description: "Conference, study, and support spaces."
-  },
-  {
-    id: "nathan_weiss_ecb",
-    name: "Nathan Weiss East Campus Building (ECB)",
-    campus: "East Campus (Hillside, NJ)",
-    category: "East Campus",
-    description: "Home to multiple colleges and a recital hall."
-  },
-  {
-    id: "east_campus_gym",
-    name: "East Campus Gym",
-    campus: "East Campus (Hillside, NJ)",
-    category: "East Campus",
-    description: "Athletic and recreation facility."
-  },
-  {
-    id: "jacqueline_towns_court",
-    name: "Jacqueline Towns Court (JTC)",
-    campus: "East Campus (Hillside, NJ)",
-    category: "East Campus",
-    description: "Basketball court and training facility."
-  },
-  {
-    id: "enlow_recital_hall",
-    name: "Enlow Recital Hall",
-    campus: "East Campus (Hillside, NJ)",
-    category: "East Campus",
-    description: "Performance space."
-  },
-  {
-    id: "presidents_house",
-    name: "President's House",
-    campus: "East Campus (Hillside, NJ)",
-    category: "East Campus",
-    description: "Administrative residence."
-  },
-  {
-    id: "ruth_horowitz_alumni_house",
-    name: "Ruth Horowitz Alumni House",
-    campus: "East Campus (Hillside, NJ)",
-    category: "East Campus",
-    description: "Alumni engagement building."
-  },
-  {
-    id: "liberty_hall_museum",
-    name: "Liberty Hall Museum / Mansion (LHM)",
-    campus: "Liberty Hall Campus (Union, NJ)",
-    category: "Liberty Hall",
-    description: "Historic mansion and museum."
-  },
-  {
-    id: "blue_house",
-    name: "Blue House",
-    campus: "Liberty Hall Campus (Union, NJ)",
-    category: "Liberty Hall",
-    description: "Historic site on Liberty Hall campus."
-  },
-  {
-    id: "fire_house",
-    name: "Fire House",
-    campus: "Liberty Hall Campus (Union, NJ)",
-    category: "Liberty Hall",
-    description: "Historic structure on Liberty Hall campus."
-  },
-  {
-    id: "carriage_house",
-    name: "Carriage House",
-    campus: "Liberty Hall Campus (Union, NJ)",
-    category: "Liberty Hall",
-    description: "Historic carriage house."
-  },
-  {
-    id: "ursino",
-    name: "Ursino",
-    campus: "Liberty Hall Campus (Union, NJ)",
-    category: "Liberty Hall",
-    description: "Historic Liberty Hall structure."
-  },
-  {
-    id: "cougar_hall",
-    name: "Cougar Hall",
-    campus: "Main Campus (Union, NJ)",
-    category: "Residence Halls",
-    description: "Freshman residence."
-  },
-  {
-    id: "dougall_hall",
-    name: "Dougall Hall",
-    campus: "Main Campus (Union, NJ)",
-    category: "Residence Halls",
-    description: "Residence hall."
-  },
-  {
-    id: "whiteman_hall",
-    name: "Whiteman Hall",
-    campus: "Main Campus (Union, NJ)",
-    category: "Residence Halls",
-    description: "Residence hall."
-  },
-  {
-    id: "bartlett_hall",
-    name: "Bartlett Hall",
-    campus: "Main Campus (Union, NJ)",
-    category: "Residence Halls",
-    description: "Apartment-style upperclass housing."
-  },
-  {
-    id: "burch_hall",
-    name: "Burch Hall",
-    campus: "Main Campus (Union, NJ)",
-    category: "Residence Halls",
-    description: "Apartment-style upperclass housing."
-  },
-  {
-    id: "rogers_hall",
-    name: "Rogers Hall",
-    campus: "Main Campus (Union, NJ)",
-    category: "Residence Halls",
-    description: "Apartment-style upperclass housing."
-  },
-  {
-    id: "sozio_hall",
-    name: "Sozio Hall",
-    campus: "Main Campus (Union, NJ)",
-    category: "Residence Halls",
-    description: "Apartment-style upperclass housing."
-  },
-  {
-    id: "upperclassman_residence_hall",
-    name: "Upperclassman Residence Hall (URH)",
-    campus: "Main Campus (Union, NJ)",
-    category: "Residence Halls",
-    description: "General apartment-like residence."
-  },
-  {
-    id: "miron_student_center",
-    name: "Miron Student Center (MSC)",
-    campus: "Main Campus (Union, NJ)",
-    category: "Student Life & Services",
-    description: "Main student union with game room, food court, and meeting rooms.",
-    destinationId: "uc"
-  },
-  {
-    id: "wilkins_theatre",
-    name: "Wilkins Theatre for the Performing Arts (WT)",
-    campus: "Main Campus (Union, NJ)",
-    category: "Student Life & Services",
-    description: "Large campus theater."
-  },
-  {
-    id: "center_for_academic_success",
-    name: "Center for Academic Success (CAS)",
-    campus: "Main Campus (Union, NJ)",
-    category: "Student Life & Services",
-    description: "Student tutoring and support."
-  },
-  {
-    id: "human_rights_institute",
-    name: "Human Rights Institute (HRI)",
-    campus: "Main Campus (Union, NJ)",
-    category: "Student Life & Services",
-    description: "Academic and advocacy facility near library.",
-    destinationId: "library"
-  },
-  {
-    id: "child_study_institute",
-    name: "Child Study Institute / Campus School (CSI / CS)",
-    campus: "Main Campus (Union, NJ)",
-    category: "Student Life & Services",
-    description: "Education lab school facilities."
-  },
-  {
-    id: "public_safety_hq",
-    name: "Department of Public Safety / Police HQ",
-    campus: "Main Campus (Union, NJ)",
-    category: "Student Life & Services",
-    description: "Campus police and safety operations."
-  },
-  {
-    id: "dangola_gymnasium",
-    name: "D'Angola Gymnasium",
-    campus: "Main Campus (Union, NJ)",
-    category: "Athletics & Recreation",
-    description: "Fitness and indoor sports."
-  },
-  {
-    id: "harwood_arena",
-    name: "Harwood Arena",
-    campus: "Main Campus (Union, NJ)",
-    category: "Athletics & Recreation",
-    description: "Multi-sport arena.",
-    destinationId: "harwood"
-  },
-  {
-    id: "alumni_stadium",
-    name: "Alumni Stadium / Football Field",
-    campus: "Main Campus (Union, NJ)",
-    category: "Athletics & Recreation",
-    description: "Outdoor field with track."
-  },
-  {
-    id: "outdoor_courts",
-    name: "Basketball & Volleyball Courts",
-    campus: "Main Campus (Union, NJ)",
-    category: "Athletics & Recreation",
-    description: "Outdoor recreation courts."
-  },
-  {
-    id: "turf_field",
-    name: "Turf Field / Multipurpose Field",
-    campus: "Main Campus (Union, NJ)",
-    category: "Athletics & Recreation",
-    description: "Multipurpose turf field."
-  },
-  {
-    id: "parking_lots",
-    name: "Parking Decks & Surface Lots",
-    campus: "Main Campus (Union, NJ)",
-    category: "Support & Infrastructure",
-    description: "Numbered lots and parking structures across campus."
-  },
-  {
-    id: "safety_comms",
-    name: "Campus Safety Communication Systems",
-    campus: "Main Campus (Union, NJ)",
-    category: "Support & Infrastructure",
-    description: "Campus warning and communication infrastructure."
-  },
-  {
-    id: "james_townley_house",
-    name: "James Townley House",
-    campus: "Main Campus (Union, NJ)",
-    category: "Historic & Other",
-    description: "Historic farmhouse on campus."
-  },
-  {
-    id: "union_townley_station",
-    name: "Union/Townley Train Station Access",
-    campus: "Main Campus (Union, NJ)",
-    category: "Historic & Other",
-    description: "Regional transit access point near campus."
-  }
-];
-
-const CAMPUS_PATHS = [
-  ["kean_hall", "library"],
-  ["kean_hall", "glassman_hall"],
-  ["kean_hall", "uc"],
-  ["kean_hall", "harwood"],
-  ["glassman_hall", "downs_hall"],
-  ["library", "stem"],
-  ["library", "uc"],
-  ["stem", "downs_hall"],
-  ["uc", "harwood"],
-  ["uc", "library"],
-  ["downs_hall", "kean_hall"]
-];
+const LOCATION_TYPE_LABELS = {
+  building: "Building",
+  entrance: "Entrance",
+  parking: "Parking",
+  lawn: "Open Space",
+  field: "Athletics"
+};
 
 const campusMarkerIcon = L.icon({
   iconRetinaUrl: markerIcon2x,
@@ -362,6 +39,136 @@ const campusMarkerIcon = L.icon({
   popupAnchor: [1, -34],
   shadowSize: [41, 41]
 });
+
+function normalizeId(value) {
+  return String(value || "")
+    .trim()
+    .toLowerCase()
+    .replace(/\uFEFF/g, "")
+    .replace(/[^a-z0-9]+/g, "_")
+    .replace(/^_+|_+$/g, "");
+}
+
+function toBoolean(value) {
+  const normalized = String(value || "").trim().toLowerCase();
+  return normalized === "yes" || normalized === "true" || normalized === "1";
+}
+
+function parseCsvRow(line) {
+  const cells = [];
+  let current = "";
+  let inQuotes = false;
+
+  for (let i = 0; i < line.length; i += 1) {
+    const char = line[i];
+    const next = line[i + 1];
+
+    if (char === '"' && inQuotes && next === '"') {
+      current += '"';
+      i += 1;
+      continue;
+    }
+
+    if (char === '"') {
+      inQuotes = !inQuotes;
+      continue;
+    }
+
+    if (char === "," && !inQuotes) {
+      cells.push(current.trim());
+      current = "";
+      continue;
+    }
+
+    current += char;
+  }
+
+  cells.push(current.trim());
+  return cells;
+}
+
+function parseCsv(text) {
+  return text
+    .replace(/\r/g, "")
+    .split("\n")
+    .filter(line => line.trim().length > 0)
+    .map(parseCsvRow);
+}
+
+function parseLatLngPair(value) {
+  const parts = String(value || "")
+    .split(",")
+    .map(piece => Number(piece.trim()));
+  if (parts.length !== 2 || Number.isNaN(parts[0]) || Number.isNaN(parts[1])) return null;
+  return [parts[0], parts[1]];
+}
+
+function parseLatLngList(value) {
+  return String(value || "")
+    .split(";")
+    .map(parseLatLngPair)
+    .filter(Boolean);
+}
+
+function parseLocationsCsv(text) {
+  const rows = parseCsv(text);
+  return rows
+    .slice(1)
+    .map(columns => {
+      const position = parseLatLngPair(columns[2]);
+      const id = String(columns[0] || "").replace(/\uFEFF/g, "").trim();
+      if (!id || !position) return null;
+      return {
+        id,
+        name: columns[1] || id,
+        position,
+        campus: columns[3] || "Main",
+        routable: toBoolean(columns[4]),
+        parent: (columns[5] || "").trim() || null,
+        accessibility: toBoolean(columns[6]),
+        type: (columns[7] || "").trim().toLowerCase() || "location"
+      };
+    })
+    .filter(Boolean);
+}
+
+function parseParkingCsv(text) {
+  const rows = parseCsv(text);
+  return rows
+    .slice(1)
+    .map(columns => {
+      const id = (columns[0] || "").trim();
+      const polygon = parseLatLngList(columns[4]);
+      if (!id || polygon.length < 3) return null;
+      return {
+        id,
+        name: columns[1] || id,
+        parkingType: (columns[2] || "").trim().toLowerCase(),
+        polygon
+      };
+    })
+    .filter(Boolean);
+}
+
+function parsePathsCsv(text) {
+  const rows = parseCsv(text);
+  return rows
+    .slice(1)
+    .map(columns => {
+      const edgeId = (columns[0] || "").replace(/\uFEFF/g, "").trim();
+      const fromId = (columns[1] || "").trim();
+      const toId = (columns[2] || "").trim();
+      if (!edgeId || !fromId || !toId) return null;
+      return {
+        edgeId,
+        fromId,
+        toId,
+        mode: (columns[3] || "").trim().toLowerCase(),
+        pathCoordinates: parseLatLngList(columns[5])
+      };
+    })
+    .filter(Boolean);
+}
 
 function haversineDistanceMeters([lat1, lon1], [lat2, lon2]) {
   const toRadians = value => (value * Math.PI) / 180;
@@ -383,44 +190,66 @@ function isInsideCampus([lat, lon]) {
   );
 }
 
-function getBuildingById(id) {
-  return BUILDINGS.find(building => building.id === id);
+function getLocationById(id, locationsById) {
+  return locationsById.get(id);
 }
 
-function getNearestBuilding(position) {
-  let nearest = BUILDINGS[0];
+function getNearestLocation(position, locations) {
+  let nearest = locations[0];
   let minDistance = Number.POSITIVE_INFINITY;
 
-  BUILDINGS.forEach(building => {
-    const distance = haversineDistanceMeters(position, building.position);
+  locations.forEach(location => {
+    const distance = haversineDistanceMeters(position, location.position);
     if (distance < minDistance) {
       minDistance = distance;
-      nearest = building;
+      nearest = location;
     }
   });
 
   return nearest;
 }
 
-function buildGraph() {
+function buildGraph(routableLocations, locationsById, edges, resolveRoutableId) {
   const graph = {};
+  const edgeGeometryByDirection = {};
 
-  BUILDINGS.forEach(building => {
-    graph[building.id] = [];
+  routableLocations.forEach(location => {
+    graph[location.id] = [];
   });
 
-  CAMPUS_PATHS.forEach(([fromId, toId]) => {
-    const from = getBuildingById(fromId);
-    const to = getBuildingById(toId);
-    const weight = haversineDistanceMeters(from.position, to.position);
+  edges.forEach(edge => {
+    if (edge.mode && edge.mode !== "walk") return;
+    const fromId = resolveRoutableId(edge.fromId);
+    const toId = resolveRoutableId(edge.toId);
+    if (!fromId || !toId || fromId === toId) return;
+
+    const from = getLocationById(fromId, locationsById);
+    const to = getLocationById(toId, locationsById);
+    if (!from || !to) return;
+
+    let coordinates = edge.pathCoordinates.length > 1 ? edge.pathCoordinates : [from.position, to.position];
+    const firstDist = haversineDistanceMeters(coordinates[0], from.position);
+    const lastDist = haversineDistanceMeters(coordinates[coordinates.length - 1], from.position);
+    if (lastDist < firstDist) {
+      coordinates = [...coordinates].reverse();
+    }
+
+    let weight = 0;
+    for (let i = 1; i < coordinates.length; i += 1) {
+      weight += haversineDistanceMeters(coordinates[i - 1], coordinates[i]);
+    }
+
     graph[fromId].push({ id: toId, weight });
     graph[toId].push({ id: fromId, weight });
+    edgeGeometryByDirection[`${fromId}=>${toId}`] = coordinates;
+    edgeGeometryByDirection[`${toId}=>${fromId}`] = [...coordinates].reverse();
   });
 
-  return graph;
+  return { graph, edgeGeometryByDirection };
 }
 
 function dijkstra(startId, endId, graph) {
+  if (!startId || !endId || !graph[startId] || !graph[endId]) return [];
   if (startId === endId) return [startId];
 
   const distances = {};
@@ -472,6 +301,30 @@ function dijkstra(startId, endId, graph) {
   return route;
 }
 
+function routeIdsToCoordinates(routeIds, edgeGeometryByDirection, locationsById) {
+  if (routeIds.length === 0) return [];
+  if (routeIds.length === 1) {
+    const only = locationsById.get(routeIds[0]);
+    return only ? [only.position] : [];
+  }
+
+  const coordinates = [];
+  for (let i = 1; i < routeIds.length; i += 1) {
+    const fromId = routeIds[i - 1];
+    const toId = routeIds[i];
+    const segment =
+      edgeGeometryByDirection[`${fromId}=>${toId}`] ||
+      [locationsById.get(fromId)?.position, locationsById.get(toId)?.position].filter(Boolean);
+    if (segment.length === 0) continue;
+    if (coordinates.length === 0) {
+      coordinates.push(...segment);
+    } else {
+      coordinates.push(...segment.slice(1));
+    }
+  }
+  return coordinates;
+}
+
 function RouteViewport({ routeCoordinates }) {
   const map = useMap();
 
@@ -484,25 +337,211 @@ function RouteViewport({ routeCoordinates }) {
   return null;
 }
 
+function HighlightViewport({ destination, enabled }) {
+  const map = useMap();
+
+  useEffect(() => {
+    if (!enabled || !destination) return;
+    map.setView(destination, 19, { animate: true });
+  }, [destination, enabled, map]);
+
+  return null;
+}
+
 function MapPanel({ setShowMap, routeRequest }) {
-  const [startId, setStartId] = useState("kean_hall");
-  const [endId, setEndId] = useState("library");
+  const [startId, setStartId] = useState("");
+  const [endId, setEndId] = useState("");
   const [userPosition, setUserPosition] = useState(null);
   const [locationStatus, setLocationStatus] = useState("");
   const [campusFilter, setCampusFilter] = useState("All Campuses");
   const [directoryQuery, setDirectoryQuery] = useState("");
+  const [locationMode, setLocationMode] = useState("directions");
+  const [locations, setLocations] = useState([]);
+  const [pathEdges, setPathEdges] = useState([]);
+  const [parkingLots, setParkingLots] = useState([]);
+  const [dataError, setDataError] = useState("");
 
-  const graph = useMemo(() => buildGraph(), []);
+  useEffect(() => {
+    let cancelled = false;
+
+    async function loadCsvData() {
+      try {
+        const [locationsResponse, parkingResponse, pathsResponse] = await Promise.all([
+          fetch(LOCATION_CSV_URL),
+          fetch(PARKING_CSV_URL),
+          fetch(PATHS_CSV_URL)
+        ]);
+
+        if (!locationsResponse.ok || !parkingResponse.ok || !pathsResponse.ok) {
+          throw new Error("CSV files could not be loaded.");
+        }
+
+        const [locationsText, parkingText, pathsText] = await Promise.all([
+          locationsResponse.text(),
+          parkingResponse.text(),
+          pathsResponse.text()
+        ]);
+
+        if (cancelled) return;
+        setLocations(parseLocationsCsv(locationsText));
+        setParkingLots(parseParkingCsv(parkingText));
+        setPathEdges(parsePathsCsv(pathsText));
+        setDataError("");
+      } catch (error) {
+        if (cancelled) return;
+        setDataError(error instanceof Error ? error.message : "Map data failed to load.");
+      }
+    }
+
+    loadCsvData();
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  const locationsById = useMemo(() => {
+    const map = new Map();
+    locations.forEach(location => {
+      map.set(location.id, location);
+    });
+    return map;
+  }, [locations]);
+
+  const childrenByParent = useMemo(() => {
+    const map = new Map();
+    locations.forEach(location => {
+      if (!location.parent) return;
+      if (!map.has(location.parent)) map.set(location.parent, []);
+      map.get(location.parent).push(location.id);
+    });
+    return map;
+  }, [locations]);
+
+  const routableLocationIds = useMemo(() => {
+    const set = new Set();
+    locations.forEach(location => {
+      if (location.routable) set.add(location.id);
+    });
+    return set;
+  }, [locations]);
+
+  const aliasCandidatesByNormalizedId = useMemo(() => {
+    const map = new Map();
+    const addAlias = (alias, id) => {
+      const normalized = normalizeId(alias);
+      if (!normalized) return;
+      if (!map.has(normalized)) map.set(normalized, []);
+      if (!map.get(normalized).includes(id)) map.get(normalized).push(id);
+    };
+
+    locations.forEach(location => {
+      const id = location.id;
+      const normalizedId = normalizeId(id);
+      addAlias(id, id);
+      addAlias(normalizedId, id);
+
+      const base = normalizedId
+        .replace(/_entrance_(front|rear|side)$/g, "")
+        .replace(/_(front|rear|side)$/g, "")
+        .replace(/_main$/g, "");
+      if (base) {
+        addAlias(base, id);
+        addAlias(`${base}_main`, id);
+      }
+    });
+
+    return map;
+  }, [locations]);
+
+  const resolveRoutableId = useMemo(() => {
+    return rawId => {
+      if (!rawId) return null;
+      const requested = String(rawId).trim();
+      if (!requested) return null;
+
+      const candidates = [];
+      const pushCandidate = candidate => {
+        if (!candidate) return;
+        if (!candidates.includes(candidate)) candidates.push(candidate);
+      };
+
+      pushCandidate(requested);
+
+      const normalizedCandidates = aliasCandidatesByNormalizedId.get(normalizeId(requested)) || [];
+      normalizedCandidates.forEach(pushCandidate);
+
+      candidates.forEach(candidate => {
+        const children = childrenByParent.get(candidate) || [];
+        children.forEach(pushCandidate);
+      });
+
+      for (const candidate of candidates) {
+        if (routableLocationIds.has(candidate)) return candidate;
+      }
+      return null;
+    };
+  }, [aliasCandidatesByNormalizedId, childrenByParent, routableLocationIds]);
+
+  const routableLocations = useMemo(
+    () => locations.filter(location => location.routable).sort((a, b) => a.name.localeCompare(b.name)),
+    [locations]
+  );
+
+  const buildingMarkers = useMemo(
+    () => locations.filter(location => location.type === "building"),
+    [locations]
+  );
+
+  const entranceMarkers = useMemo(
+    () => locations.filter(location => location.type === "entrance"),
+    [locations]
+  );
+
+  const directoryPlaces = useMemo(() => {
+    return locations
+      .map(location => {
+        const resolvedDestinationId = resolveRoutableId(location.id);
+        const parentName = location.parent ? locationsById.get(location.parent)?.name : null;
+        return {
+          id: location.id,
+          name: location.name,
+          campus: location.campus || "Main",
+          category: LOCATION_TYPE_LABELS[location.type] || "Location",
+          description: parentName
+            ? `${LOCATION_TYPE_LABELS[location.type] || "Location"} for ${parentName}`
+            : `${LOCATION_TYPE_LABELS[location.type] || "Location"} on campus`,
+          destinationId: resolvedDestinationId || null
+        };
+      })
+      .sort((a, b) => a.name.localeCompare(b.name));
+  }, [locations, locationsById, resolveRoutableId]);
+
+  useEffect(() => {
+    if (routableLocations.length === 0) return;
+
+    const defaultStart =
+      resolveRoutableId("kean_hall_main") ||
+      resolveRoutableId("kean_hall_entrance_front") ||
+      routableLocations[0].id;
+    const defaultEnd =
+      resolveRoutableId("library_main") ||
+      resolveRoutableId("library") ||
+      routableLocations[Math.min(1, routableLocations.length - 1)].id;
+
+    setStartId(prev => resolveRoutableId(prev) || defaultStart);
+    setEndId(prev => resolveRoutableId(prev) || defaultEnd);
+  }, [resolveRoutableId, routableLocations]);
+
+  const { graph, edgeGeometryByDirection } = useMemo(
+    () => buildGraph(routableLocations, locationsById, pathEdges, resolveRoutableId),
+    [locationsById, pathEdges, resolveRoutableId, routableLocations]
+  );
 
   const routeBuildingIds = useMemo(() => dijkstra(startId, endId, graph), [endId, graph, startId]);
 
   const routeCoordinates = useMemo(
-    () =>
-      routeBuildingIds
-        .map(id => getBuildingById(id))
-        .filter(Boolean)
-        .map(building => building.position),
-    [routeBuildingIds]
+    () => routeIdsToCoordinates(routeBuildingIds, edgeGeometryByDirection, locationsById),
+    [edgeGeometryByDirection, locationsById, routeBuildingIds]
   );
 
   const routeDistanceMeters = useMemo(() => {
@@ -513,13 +552,16 @@ function MapPanel({ setShowMap, routeRequest }) {
     }
     return total;
   }, [routeCoordinates]);
-  const campusOptions = useMemo(
-    () => ["All Campuses", ...new Set(CAMPUS_DIRECTORY.map(place => place.campus))],
-    []
+
+  const displayRouteCoordinates = useMemo(
+    () => (locationMode === "highlight" ? [] : routeCoordinates),
+    [locationMode, routeCoordinates]
   );
+
+  const campusOptions = useMemo(() => ["All Campuses", ...new Set(directoryPlaces.map(place => place.campus))], [directoryPlaces]);
   const filteredDirectoryPlaces = useMemo(() => {
     const query = directoryQuery.trim().toLowerCase();
-    return CAMPUS_DIRECTORY.filter(place => {
+    return directoryPlaces.filter(place => {
       const matchesCampus = campusFilter === "All Campuses" || place.campus === campusFilter;
       if (!matchesCampus) return false;
       if (!query) return true;
@@ -529,9 +571,14 @@ function MapPanel({ setShowMap, routeRequest }) {
         place.description.toLowerCase().includes(query)
       );
     });
-  }, [campusFilter, directoryQuery]);
+  }, [campusFilter, directoryPlaces, directoryQuery]);
 
-  function setMyLocationAsStart() {
+  const setMyLocationAsStart = useCallback(() => {
+    if (routableLocations.length === 0) {
+      setLocationStatus("Map data is still loading.");
+      return;
+    }
+
     if (!navigator.geolocation) {
       setLocationStatus("Geolocation not supported in this browser.");
       return;
@@ -547,7 +594,7 @@ function MapPanel({ setShowMap, routeRequest }) {
           return;
         }
 
-        const nearest = getNearestBuilding(coords);
+        const nearest = getNearestLocation(coords, routableLocations);
         setStartId(nearest.id);
         setLocationStatus(`Using your location. Nearest start point: ${nearest.name}.`);
       },
@@ -556,37 +603,51 @@ function MapPanel({ setShowMap, routeRequest }) {
       },
       { enableHighAccuracy: true, timeout: 10000 }
     );
-  }
+  }, [routableLocations]);
 
   function swapRoute() {
+    setLocationMode("directions");
     setStartId(endId);
     setEndId(startId);
   }
   function routeToPlace(place) {
-    if (!place.destinationId) {
+    const resolvedDestinationId = resolveRoutableId(place.destinationId);
+    if (!resolvedDestinationId) {
       setLocationStatus("Route data not set for this location yet. Select a mapped destination above.");
       return;
     }
 
-    setEndId(place.destinationId);
+    setLocationMode("directions");
+    setEndId(resolvedDestinationId);
     setShowMap(true);
     setMyLocationAsStart();
   }
 
-  const startBuilding = getBuildingById(startId);
-  const endBuilding = getBuildingById(endId);
+  const startBuilding = getLocationById(startId, locationsById);
+  const endBuilding = getLocationById(endId, locationsById);
 
   useEffect(() => {
     if (!routeRequest) return;
 
-    if (routeRequest.destinationId && getBuildingById(routeRequest.destinationId)) {
-      setEndId(routeRequest.destinationId);
+    const mappedDestination = resolveRoutableId(routeRequest.destinationId);
+    if (mappedDestination) {
+      setEndId(mappedDestination);
     }
 
-    if (routeRequest.useCurrentLocation) {
+    const nextMode = routeRequest.locationMode === "directions" ? "directions" : "highlight";
+    setLocationMode(nextMode);
+
+    if (routeRequest.useCurrentLocation || nextMode === "directions") {
+      setLocationMode("directions");
       setMyLocationAsStart();
+    } else if (mappedDestination) {
+      const destination = getLocationById(mappedDestination, locationsById);
+      if (destination) {
+        setStartId(mappedDestination);
+        setLocationStatus(`Showing ${destination.name} on the map.`);
+      }
     }
-  }, [routeRequest]);
+  }, [locationsById, resolveRoutableId, routeRequest, setMyLocationAsStart]);
 
   return (
     <div className="panel map-panel">
@@ -605,9 +666,9 @@ function MapPanel({ setShowMap, routeRequest }) {
         <label className="route-field">
           Start
           <select value={startId} onChange={event => setStartId(event.target.value)}>
-            {BUILDINGS.map(building => (
-              <option key={building.id} value={building.id}>
-                {building.name}
+            {routableLocations.map(location => (
+              <option key={location.id} value={location.id}>
+                {location.name}
               </option>
             ))}
           </select>
@@ -620,9 +681,9 @@ function MapPanel({ setShowMap, routeRequest }) {
         <label className="route-field">
           Destination
           <select value={endId} onChange={event => setEndId(event.target.value)}>
-            {BUILDINGS.map(building => (
-              <option key={building.id} value={building.id}>
-                {building.name}
+            {routableLocations.map(location => (
+              <option key={location.id} value={location.id}>
+                {location.name}
               </option>
             ))}
           </select>
@@ -633,15 +694,21 @@ function MapPanel({ setShowMap, routeRequest }) {
         <button type="button" className="btn-primary" onClick={setMyLocationAsStart}>
           Use My Location
         </button>
+        {dataError && <span className="route-note">{dataError}</span>}
         {locationStatus && <span className="route-note">{locationStatus}</span>}
       </div>
 
       <div className="route-summary">
         <strong>{startBuilding?.name}</strong> to <strong>{endBuilding?.name}</strong>
         {" - "}
-        {routeCoordinates.length > 1
+        {locationMode === "highlight"
+          ? "Showing destination only"
+          : routeCoordinates.length > 1
           ? `${Math.round(routeDistanceMeters)} m estimated path`
           : "No route found in campus graph"}
+      </div>
+      <div className="route-note">
+        Parking overlay colors: Student (blue), Faculty/Staff (orange), Overnight (green).
       </div>
 
       <div className="directory-panel">
@@ -685,32 +752,66 @@ function MapPanel({ setShowMap, routeRequest }) {
       </div>
 
       <div className="leaflet-wrapper">
-        <MapContainer center={KEAN_MAIN_CAMPUS} zoom={16} className="leaflet-map">
+        <MapContainer center={KEAN_MAIN_CAMPUS} zoom={18} className="leaflet-map">
           <TileLayer
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           />
-          {BUILDINGS.map(building => (
+          {parkingLots.map(lot => (
+            <Polygon
+              key={lot.id}
+              positions={lot.polygon}
+              pathOptions={{
+                color: PARKING_TYPE_COLORS[lot.parkingType] || "#64748b",
+                fillColor: PARKING_TYPE_COLORS[lot.parkingType] || "#64748b",
+                fillOpacity: 0.22,
+                weight: 2
+              }}
+            >
+              <Popup>
+                <strong>{lot.name}</strong>
+                <br />
+                {lot.parkingType || "parking"}
+              </Popup>
+            </Polygon>
+          ))}
+          {buildingMarkers.map(building => (
             <Marker key={building.id} position={building.position} icon={campusMarkerIcon}>
               <Popup>{building.name}</Popup>
             </Marker>
           ))}
-          <RouteViewport routeCoordinates={routeCoordinates} />
-          {routeCoordinates.length > 1 && (
+          {entranceMarkers.map(entrance => (
+            <CircleMarker
+              key={entrance.id}
+              center={entrance.position}
+              radius={4}
+              pathOptions={{ color: "#0f172a", fillColor: "#f8fafc", fillOpacity: 1, weight: 1 }}
+            >
+              <Popup>{entrance.name}</Popup>
+            </CircleMarker>
+          ))}
+          <RouteViewport routeCoordinates={displayRouteCoordinates} />
+          <HighlightViewport destination={endBuilding?.position} enabled={locationMode === "highlight"} />
+          {displayRouteCoordinates.length > 1 && (
             <>
-              <Polyline positions={routeCoordinates} pathOptions={{ color: "#fdb813", weight: 10, opacity: 0.55 }} />
-              <Polyline positions={routeCoordinates} pathOptions={{ color: "#003667", weight: 6, opacity: 0.95 }} />
-              <CircleMarker center={routeCoordinates[0]} radius={8} pathOptions={{ color: "#16a34a", fillOpacity: 1 }}>
+              <Polyline positions={displayRouteCoordinates} pathOptions={{ color: "#fdb813", weight: 10, opacity: 0.55 }} />
+              <Polyline positions={displayRouteCoordinates} pathOptions={{ color: "#003667", weight: 6, opacity: 0.95 }} />
+              <CircleMarker center={displayRouteCoordinates[0]} radius={8} pathOptions={{ color: "#16a34a", fillOpacity: 1 }}>
                 <Popup>Route Start</Popup>
               </CircleMarker>
               <CircleMarker
-                center={routeCoordinates[routeCoordinates.length - 1]}
+                center={displayRouteCoordinates[displayRouteCoordinates.length - 1]}
                 radius={8}
                 pathOptions={{ color: "#dc2626", fillOpacity: 1 }}
               >
                 <Popup>Route Destination</Popup>
               </CircleMarker>
             </>
+          )}
+          {locationMode === "highlight" && endBuilding?.position && (
+            <CircleMarker center={endBuilding.position} radius={12} pathOptions={{ color: "#dc2626", fillOpacity: 0.25, weight: 3 }}>
+              <Popup>{endBuilding.name}</Popup>
+            </CircleMarker>
           )}
           {userPosition && (
             <CircleMarker center={userPosition} radius={7} pathOptions={{ color: "#fdb813", fillOpacity: 0.9 }}>

@@ -1,0 +1,137 @@
+﻿id,name,,campus,routable,parent,accessibility,type
+administration,Administration Building,"40.679752, -74.236319",Main,no,,yes,building
+administration_lot,Administration Lot,"40.680146, -74.236384",Main,yes,,yes,parking
+administration_main,Administration Building Entrance front,"40.679803, -74.236143",Main,no,administration,yes,entrance
+administration_side,Administration Building Entrance side,"40.67991700156569, -74.23623757429775",Main,yes,,,entrance
+alumni_stadium,Alumni Stadium,"40.681074, -74.238488",Main,no,,yes,building
+alumni_stadium_main,Alumni Stadium Main Entrance,"40.681394, -74.23742",Main,yes,alumni_stadium,yes,entrance
+barnes_nobles_glab,Barnes & Noble at GLAB,"40.682958, -74.236143",Main,Yes,,yes,building
+bartlett_hall,Bartlett Hall (AN),"40.675968, -74.234307",Main,no,,yes,building
+bartlett_hall_main,Bartlett Hall (AN) Main Entrance,"40.675979, -74.23431",Main,yes,bartlett_hall,yes,entrance
+basketball_courts,Basketball Courts,"40.677401, -74.233978",Main,yes,,yes,building
+bruce_hall,Bruce Hall (B),"40.680128, -74.234865",Main,no,,yes,building
+bruce_hall_main,Bruce Hall (B) Main Entrance,"40.680019, -74.234618",Main,yes,bruce_hall,yes,entrance
+burch_hall,Burch Hall (AE),"40.675893, -74.233733",Main,no,,yes,building
+burch_hall_main,Burch Hall (AE) Main Entrance,"40.675679, -74.233671",Main,yes,burch_hall,yes,entrance
+campus_police,Kean Police / Public Safety,"40.676771, -74.232851",Main,no,,yes,building
+campus_police_main,Kean Police / Public Safety Main Entrance,"40.676749, -74.232902",Main,yes,campus_police,yes,entrance
+cas,Maxine and Jack Lane Center for Academic Success (CAS),"40.67852, -74.233667",Main,no,,yes,building
+cas_main_front1,Maxine and Jack Lane Center for Academic Success (CAS) Entrance front1,"40.678568, -74.233363",Main,yes,cas,yes,entrance
+cas_main_front2,Maxine and Jack Lane Center for Academic Success (CAS) Entrance front2,"40.678412, -74.234182",Main,yes,,yes,entrance
+cas_main_rear,Maxine and Jack Lane Center for Academic Success (CAS) Entrance  rear,"40.678946, -74.234384",Main,yes,,yes,entrance
+Cougar Pantry,Cougar Pantry,"40.676557, -74.232478",Main,yes,,yes,entrance
+cougar_hall,Cougar Hall,"40.67901, -74.236734",Main,no,,yes,building
+cougar_hall_lot,Cougar Hall Lot,"40.678616, -74.237648",Main,yes,,yes,parking
+cougar_hall_main,Cougar Hall Main Entrance,"40.679237, -74.236822",Main,yes,cougar_hall,yes,entrance
+cougars_den,Cougars Den,"40.677733, -74.234573",Main,no,,yes,building
+d_angola_gym,D'Angola Gymnasium,"40.680088, -74.237896",Main,no,,yes,building
+d_angola_gym_main,D'Angola Gymnasium Main Entrance,"40.68004, -74.237543",Main,yes,d_angola_gym,yes,entrance
+d_angola_lot,D'Angola Lot,"40.679394, -74.23875",Main,yes,,yes,parking
+dougall_hall,Dougall Hall (DO),"40.676428, -74.233711",Main,no,,yes,building
+dougall_hall_main,Dougall Hall (DO) Main Entrance,"40.676446, -74.233576",Main,yes,dougall_hall,yes,entrance
+downs_hall,Downs Hall,"40.67675, -74.232487",Main,no,,yes,building
+downs_hall_main,Downs Hall Entrance front,"40.677054, -74.232313",Main,yes,downs_hall,yes,entrance
+downs_hall_main,Downs Hall Entrance rear,"40.676496, -74.23221",Main,yes,,yes,entrance
+east_campus_building,East Campus Building (EC),"40.680021, -74.223654",East,no,,yes,building
+east_campus_building_main,East Campus Building (EC) Main Entrance,"40.680063, -74.223575",East,yes,east_campus_building,yes,entrance
+east_campus_gym,East Campus Gym (EC),"40.680213, -74.224516",East,no,,yes,building
+east_campus_lot,East Campus Lot,"40.680689, -74.224403",East,yes,,yes,parking
+east_campus_upper_lot,East Campus Upper Lot,"40.680227, -74.223294",East,yes,,yes,parking
+enlow_recital_hall,Enlow Recital Hall,"40.679829, -74.22393",East,no,,yes,building
+enlow_recital_hall_main,Enlow Recital Hall Main Entrance,"40.679668, -74.223811",East,yes,enlow_recital_hall,yes,entrance
+facilities,Facilities (M),"40.677933, -74.236523",Main,no,,yes,building
+freshman_residence_hall,Freshman Residence Hall (FRH),"40.676528, -74.234594",Main,no,,yes,building
+freshman_residence_hall_main,Freshman Residence Hall (FRH) Main Entrance,"40.676597, -74.234606",Main,yes,freshman_residence_hall,yes,entrance
+george_hennings_research,George Hennings Research,"40.680601, -74.234041",Main,,,yes,building
+glab,Green Lane Academic Building (GLAB),"40.68264, -74.23614",Main,no,,yes,building
+glab_lot,GLAB Lot,"40.682491, -74.237025",Main,yes,,yes,parking
+glab_main,Green Lane Academic Building (GLAB) Main Entrance,"40.682573, -74.236298",Main,yes,glab,yes,entrance
+green_house,Green House / Faculty Lounge,"40.681202, -74.2347",Main,no,,yes,building
+green_house_main,Green House / Faculty Lounge Main Entrance,"40.68115, -74.234773",Main,yes,green_house,yes,entrance
+guest_house,Guest House,"40.678884, -74.238206",Main,no,,yes,building
+guest_house_main,Guest House Main Entrance,"40.678924, -74.238214",Main,yes,guest_house,yes,entrance
+harwood_arena,Harwood Arena,"40.680463, -74.237419",Main,no,,yes,building
+harwood_arena_main,Harwood Arena Main Entrance,"40.680069, -74.237517",Main,yes,harwood_arena,yes,entrance
+harwood_lot,Harwood Lot,"40.680893, -74.23704",Main,yes,,yes,parking
+hennings_hall,George Hennings Hall,"40.680143, -74.23395",Main,no,,yes,building
+hennings_research,Hennings Research Building,"40.680618006062204, -74.23398878808257",,yes,,yes,building
+hennings_hall_front,George Hennings Hall Entrance front,"40.680282, -74.233861",,yes,hennings_hall,yes,entrance
+hennings_hall_side,George Hennings Hall Entrance side,"40.680212, -74.234141",Main,yes,,yes,entrance
+hri,Human Rights Institute (HRI),"40.678259, -74.233358",Main,no,,yes,building
+hri_main,Human Rights Institute (HRI) Main Entrance,"40.678275, -74.233703",Main,yes,hri,yes,entrance
+hutchinson_hall Main,Hutchinson Hall,"40.679625, -74.233574",Main,no,,yes,building
+hutchinson_hall_front,Hutchinson Hall Entrance front,"40.679952, -74.233612",Main,yes,,yes,entrance
+hutchinson_hall_rear,Hutchinson Hall Entrance rear,"40.679549, -74.233701",Main,yes,,yes,entrance
+hutchinson_hall_side,Hutchinson Hall Entrance side,"40.679372, -74.233277",Main,yes,hutchinson_hall,yes,entrance
+Hynes_hall,Hynes Hall,"40.68291429778565, -74.232361190369",Main,no,,yes,building
+Hynes_hall_entrance_front,Hynes Hall Entrance front,"40.68281154703821, -74.23265092751998",,yes,,yes,entrance
+Hynes_hall_entrance_rear,Hynes Hall Entrance rear,"40.683041935842546, -74.23217646169108",,yes,,yes,entrance
+hynes_hall_lot,Hynes Hall Lot,"40.683246, -74.23179",Main,yes,,yes,parking
+jim_hynes_basefll_stadium,Jim Hynes '63 Baseball Stadium,"40.679945, -74.239338",Main,no,,yes,building
+jim_hynes_stadium_main,Jim Hynes '63 Stadium Main Entrance,"40.679673, -74.239102",Main,yes,jim_hynes_stadium,yes,entrance
+kean_day_care_center,Kean Day Care Center,"40.679413, -74.235357",Main,no,,yes,building
+kean_hall,Kean Hall,"40.680906, -74.235654",Main,no,,yes,building
+kean_hall_entrance_front,Kean Hall Entrance front,"40.680916038677786, -74.23575959668204",Main,yes,kean_hall,yes,entrance
+kean_hall_entrance_side,Kean Hall Entrance side,"40.68122747329496, -74.23534094830305",,yes,,yes,entrance
+kean_hall_lot,Kean Hall Lot,"40.681925, -74.235855",Main,yes,,yes,parking
+lhac,Liberty Hall Academic Center (LHAC),"40.679795, -74.227666",Liberty Hall,no,,yes,building
+lhac_lot,LHAC Lot,"40.680404, -74.229507",Liberty Hall,yes,,yes,parking
+lhac_main,Liberty Hall Academic Center (LHAC) Main Entrance,"40.679793, -74.227871",Liberty Hall,yes,lhac,yes,entrance
+liberty_hall_mansion,Liberty Hall Mansion,"40.678546, -74.228828",Liberty Hall,no,,yes,building
+liberty_hall_mansion_main,Liberty Hall Mansion Main Entrance,"40.678666, -74.229017",Liberty Hall,yes,liberty_hall_mansion,yes,entrance
+liberty_hall_visitor_parking,Liberty Hall Visitor Parking Only,"40.680593, -74.225091",Liberty Hall,yes,,yes,parking
+library,Nancy Thompson Library,"40.678044, -74.23362",Main,no,,yes,building
+library_main,Nancy Thompson Library Main Entrance,"40.678143, -74.233775",Main,yes,library,yes,entrance
+miron_center,Miron Student Center (MSC),"40.67816, -74.234987",Main,no,,yes,building
+miron_center_main,Miron Student Center (MSC) Main Entrance,"40.678165, -74.235024",Main,yes,miron_center,yes,entrance
+morris avenue lot,Morris Avenue Lot,"40.679702, -74.232546",Main,yes,,yes,parking
+naab,North Avenue Academic Building (NAAB),"40.67662, -74.229023",Main,no,,yes,building
+naab_entrance_front,North Avenue Academic Building (NAAB) Entrance front,"40.676626, -74.229034",Main,yes,naab,yes,entrance
+naab_entrance_side,North Avenue Academic Building (NAAB) Entrance side,"40.67626935252855, -74.22852600509529",,yes,,yes,entrance
+nathan_weiss_building,Nathan Weiss Building,"40.679874, -74.224134",East,no,,yes,building
+nathan_weiss_building_main,Nathan Weiss Building Main Entrance,"40.67967, -74.223811",East,yes,nathan_weiss_building,yes,entrance
+overflow_parking,Overflow Parking,"40.682698, -74.230129",Main,yes,,yes,parking
+overnight_lot,Overnight Lot,"40.675734, -74.229338",Main,yes,,yes,parking
+receiving_deliveries,Receiving / Deliveries,"40.67788, -74.236451",Main,no,,yes,building
+rogers_hall,Rogers Hall (AS),"40.67527, -74.233953",Main,no,,yes,building
+rogers_hall_main,Rogers Hall (AS) Main Entrance,"40.675279, -74.233957",Main,yes,rogers_hall,yes,entrance
+science_building,Science Building,"40.680433, -74.234453",Main,no,,yes,building
+science_building_main,Science Building Main Entrance,"40.680316, -74.234215",Main,yes,science_building,yes,entrance
+smash_burgar_at_miron,Smash Burget at Miron Center,"40.678179, -74.235151",Main,no,,yes,building
+sozio_hall,Sozio Hall (AW),"40.675569, -74.234586",Main,no,,yes,building
+sozio_hall_main,Sozio Hall (AW) Main Entrance,"40.675557, -74.234582",Main,yes,sozio_hall,yes,entrance
+starbucks_at_library,Starbucks in Nancy Thompson Library,"40.677914, -74.233875",Main,yes,,yes,building
+stem,"New Jersey Center for Science, Technology and Mathematics (STEM)","40.679721, -74.230965",Main,no,,yes,building
+stem_lot,STEM Lot,"40.680404, -74.229507",Main,yes,,yes,parking
+stem_main,"New Jersey Center for Science, Technology and Mathematics (STEM) Main Entrance","40.679765, -74.231025",Main,yes,stem,yes,entrance
+student_support_center,Student Support Center,"40.679814, -74.236167",Main,no,,yes,building
+technology_center,Technology (TEC),"40.679405, -74.234706",Main,no,,yes,building
+technology_center_main,Technology (TEC) Main Entrance,"40.679289, -74.234667",Main,yes,technology_center,yes,entrance
+townley_house,Townley House,"40.681593, -74.234827",Main,no,,yes,building
+townley_house_main,Townley House Main Entrance,"40.681588, -74.23489",Main,yes,townley_house,yes,entrance
+townsend_hall,Townsend Hall,"40.679899, -74.235533",Main,no,,yes,building
+townsend_hall_main,Townsend Hall Main Entrance,"40.679817, -74.236018",Main,yes,townsend_hall,yes,entrance
+townsend_hall_rear,Townsend Hall Main rear,"40.67931852043914, -74.23569068492266",,yes,,yes,entrance
+union_train_station,Union Township Train Station,"40.6833, -74.238509",Main,Yes,,yes,building
+upperclassman_residence_hall,Upperclassman Residence Hall (URH),"40.676731, -74.235445",Main,no,,yes,building
+upperclassman_residence_hall_main,Upperclassman Residence Hall (URH) Main Entrance,"40.676778, -74.23534",Main,yes,upperclassman_residence_hall,yes,entrance
+vaughn_eames,Vaughn-Eames Hall,"40.677631, -74.231129",Main,no,,yes,building
+vaughn_eames_front,Vaughn-Eames Hall Entrance front,"40.677657, -74.230739",Main,yes,vaughn_eames,yes,entrance
+vaughn_eames_lot,Vaughn-Eames Lot,"40.677057, -74.230852",Main,yes,,yes,parking
+vaughn_eames_rear,Vaughn-Eames Hall Entrance rear,"40.677312, -74.231341",Main,yes,,yes,entrance
+vaughn_eames_side,Vaughn-Eames Hall Entrance side,"40.677699, -74.231393",Main,yes,,yes,entrance
+whiteman_hall,Whiteman Hall (WH),"40.676384, -74.23308",Main,no,,yes,building
+whiteman_hall_main,Whiteman Hall (WH) Main Entrance,"40.676387, -74.233095",Main,yes,whiteman_hall,yes,entrance
+wilkins_lot,Wilkins Theater Lot,"40.678871, -74.231402",East,yes,,yes,parking
+wilkins_theatre,Wilkins Theatre,"40.678552, -74.231742",Main,no,,yes,building
+wilkins_theatre_front,Wilkins Theatre Entrance front,"40.678608, -74.231607",Main,yes,wilkins_theatre,yes,entrance
+wilkins_theatre_rear,Wilkins Theatre Entrance rear,"40.678593, -74.232298",Main,yes,,yes,entrance
+wilkins_theatre_side,Wilkins Theatre Entrance side,"40.678446, -74.231683",Main,yes,,yes,entrance
+enlow_hall_lawn,The Lawn at Enlow Hall,"40.681790758695435, -74.22514721600169",Main,yes,,yes,building
+kean_east_soccer_field,Kean East Soccer Field,"40.68337752740948, -74.22767345991934",Main,yes,,yes,building
+bouer_boucher_theater,Bauer Boucher Theatre Center,"40.677583746069274, -74.23078403401954",Main,yes,,yes,building
+the_thinker_statue,The Thinker Statue,"40.67906685204863, -74.23316437438024",Main,yes,,yes,building
+msc_game_room,Miron Student Center Game Room,"40.67759683780515, -74.23490151965017",Main,yes,,yes,building
+msc_turf_field,Miron Student Center Turf Field,"40.6770973334715, -74.23367869423812",Main,yes,,yes,building
+kean_tennis_courts,Kean Tennis Courts,"40.6816584439175, -74.23927450210465",Main,yes,,yes,building
+cougar_softball_field,Cougar Softball Field,"40.67996407162828, -74.23930400643496",Main,yes,,yes,building

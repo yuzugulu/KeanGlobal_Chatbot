@@ -1,6 +1,9 @@
 import { useEffect, useRef, useState } from "react";
 
-const API_BASE_URL = import.meta.env.VITE_API_URL || "http://127.0.0.1:8000";
+const ENV_API_BASE_URL = import.meta.env.VITE_API_URL?.trim();
+const API_BASE_URLS = ENV_API_BASE_URL
+  ? [ENV_API_BASE_URL]
+  : ["http://127.0.0.1:8000", "http://localhost:8000"];
 const CHAT_STORAGE_KEY = "keanglobal_chat_messages";
 
 
@@ -33,15 +36,31 @@ function ChatPanel({ setShowMap, setRouteRequest }) {
     abortControllerRef.current = new AbortController();
 
     try {
-      const response = await fetch(`${API_BASE_URL}/chat`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ message: userMessage }),
-        signal: abortControllerRef.current.signal
-      });
-      const data = await response.json().catch(() => ({}));
+      let response = null;
+      let data = {};
+      let lastNetworkError = null;
 
-      if (!response.ok) {
+      for (const baseUrl of API_BASE_URLS) {
+        try {
+          response = await fetch(`${baseUrl}/chat`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ message: userMessage }),
+            signal: abortControllerRef.current.signal
+          });
+          data = await response.json().catch(() => ({}));
+          lastNetworkError = null;
+          break;
+        } catch (error) {
+          lastNetworkError = error;
+        }
+      }
+
+      if (lastNetworkError) {
+        throw lastNetworkError;
+      }
+
+      if (!response?.ok) {
         throw new Error(data?.detail || "Request failed.");
       }
 
@@ -51,7 +70,8 @@ function ChatPanel({ setShowMap, setRouteRequest }) {
       if (data.intent === "location") {
         setRouteRequest({
           destinationId: data.destination_id || null,
-          useCurrentLocation: Boolean(data.use_current_location)
+          useCurrentLocation: Boolean(data.use_current_location),
+          locationMode: data.location_mode || "highlight"
         });
       }
     } catch (error) {
