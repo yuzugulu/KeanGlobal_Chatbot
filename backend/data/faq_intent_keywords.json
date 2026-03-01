@@ -1,0 +1,13 @@
+{
+  "admissions": ["admission", "apply", "application", "accepted", "enroll"],
+  "tuition_fees": ["tuition", "cost", "fees", "payment", "bill", "bursar"],
+  "financial_aid": ["financial aid", "fafsa", "scholarship", "grant", "loan"],
+  "registration": ["register", "registration", "add/drop", "drop", "schedule"],
+  "calendar_deadline": ["deadline", "due date", "when is", "date", "semester starts", "semester ends"],
+  "housing": ["housing", "dorm", "residence hall", "roommate", "move in"],
+  "parking_transport": ["parking", "permit", "lot", "shuttle", "bus", "train"],
+  "library": ["library", "books", "study room", "citation"],
+  "it_support": ["wifi", "email", "password", "it", "tech support", "portal"],
+  "programs": ["major", "minor", "program", "degree", "curriculum"],
+  "policies": ["policy", "policies", "rule", "conduct", "procedure"]
+}

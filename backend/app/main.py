@@ -2,6 +2,7 @@ from typing import Optional
 import os
 import re
 import csv
+import json
 from pathlib import Path
 from datetime import datetime
 from zoneinfo import ZoneInfo
@@ -77,6 +78,7 @@ CHROMA_PATH = BASE_DIR / "app" / "chroma_db"
 LOCATION_CSV_PATH = BASE_DIR.parent / "src" / "data" / "campus_locations_main_east_full.csv"
 POLICY_FOLDER = BASE_DIR / "Policies"
 RAG_DATA_FOLDER = BASE_DIR / "data"
+FAQ_INTENT_PATH = RAG_DATA_FOLDER / "faq_intent_keywords.json"
 
 client = chromadb.PersistentClient(path=str(CHROMA_PATH))
 embedding_function = embedding_functions.SentenceTransformerEmbeddingFunction(
@@ -157,7 +159,7 @@ DIRECTION_KEYWORDS = (
     "way to",
     "get to",
 )
-FAQ_INTENT_KEYWORDS = {
+DEFAULT_FAQ_INTENT_KEYWORDS = {
     "admissions": ("admission", "apply", "application", "accepted", "enroll"),
     "tuition_fees": ("tuition", "cost", "fees", "payment", "bill", "bursar"),
     "financial_aid": ("financial aid", "fafsa", "scholarship", "grant", "loan"),
@@ -170,6 +172,7 @@ FAQ_INTENT_KEYWORDS = {
     "programs": ("major", "minor", "program", "degree", "curriculum"),
     "policies": ("policy", "policies", "rule", "conduct", "procedure"),
 }
+FAQ_INTENT_KEYWORDS = {}
 
 campus_locations = []
 campus_location_by_id = {}
@@ -231,6 +234,25 @@ def load_fallback_rag_docs():
                     }
                 )
     return docs
+
+def load_faq_intent_keywords():
+    if FAQ_INTENT_PATH.exists():
+        try:
+            with open(FAQ_INTENT_PATH, "r", encoding="utf-8") as f:
+                raw = json.load(f)
+            if isinstance(raw, dict):
+                cleaned = {}
+                for topic, keywords in raw.items():
+                    if not isinstance(topic, str) or not isinstance(keywords, list):
+                        continue
+                    cleaned_list = [str(k).strip().lower() for k in keywords if str(k).strip()]
+                    if cleaned_list:
+                        cleaned[topic.strip()] = tuple(cleaned_list)
+                if cleaned:
+                    return cleaned
+        except Exception:
+            pass
+    return DEFAULT_FAQ_INTENT_KEYWORDS
 
 def build_location_aliases(place: dict) -> list[str]:
     aliases = {
@@ -315,6 +337,7 @@ def get_time_response(prompt: str):
 campus_locations = load_campus_locations()
 campus_location_by_id = {place["id"]: place for place in campus_locations}
 fallback_rag_docs = load_fallback_rag_docs()
+FAQ_INTENT_KEYWORDS = load_faq_intent_keywords()
 
 # OLLAMA
 
