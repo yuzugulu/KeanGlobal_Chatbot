@@ -97,39 +97,119 @@ class ChatRequest(BaseModel):
 
 # CALENDAR LOGIC
 
+SEASON_ALIASES = {
+    "fall": ("fall", "autumn", "guz", "güz", "sonbahar", "otono", "otoño", "秋", "秋季", "خزاں", "가을"),
+    "spring": ("spring", "bahar", "ilkbahar", "primavera", "春", "春季", "بہار", "봄"),
+    "summer": ("summer", "yaz", "verano", "夏", "夏季", "گرما", "여름"),
+    "winter": ("winter", "kis", "kış", "invierno", "冬", "冬季", "سردی", "겨울"),
+}
+
 def detect_event_category(question: str) -> Optional[str]:
     q = normalize(question)
-    if any(p in q for p in ["begin", "start", "first day", "opening"]):
-        return "start"
-    if any(p in q for p in ["end", "finish", "last day"]):
-        return "end"
-    if "recess" in q or "break" in q:
-        return "recess"
-    if "immunization" in q:
-        return "immunization"
-    if "registration" in q:
+    if any(p in q for p in ["registration", "register", "kayıt", "inscripcion", "inscripción", "注册", "اندراج", "등록"]):
         return "registration"
-    if "withdraw" in q:
+    if any(p in q for p in ["immunization", "aşı", "vacuna", "疫苗", "ویکسین", "예방접종"]):
+        return "immunization"
+    if any(p in q for p in ["withdraw", "withdrawal", "çekil", "retiro", "退课", "واپسی", "수강철회"]):
         return "withdrawal"
-    if "exam" in q:
+    if any(p in q for p in ["exam", "final", "vize", "finaller", "examen", "考试", "امتحان", "시험"]):
         return "exam"
+    if any(p in q for p in ["recess", "break", "tatil", "receso", "假期", "تعطیل", "방학"]):
+        return "recess"
+    if any(p in q for p in ["end", "finish", "bit", "termina", "结束", "ختم", "끝"]):
+        return "end"
+    if any(p in q for p in ["begin", "start", "first day", "opening", "başla", "empieza", "开始", "شروع", "시작"]):
+        return "start"
     return None
 
 def event_matches_category(event_name: str, category: str) -> bool:
     event_text = normalize(event_name)
-    category_tokens = {
-        "start": ("start", "begins", "term begins", "first day", "opening"),
-        "end": ("end", "ends", "term ends", "last day", "finish"),
-        "recess": ("recess", "break"),
-        "immunization": ("immunization"),
-        "registration": ("registration"),
-        "withdrawal": ("withdraw", "withdrawal"),
-        "exam": ("exam", "final"),
-    }
-    return any(token in event_text for token in category_tokens.get(category, (category,)))
+    if category == "start":
+        return any(token in event_text for token in ("term begins", "semester begins", "classes begin", "class begins", "instruction begins", "begins"))
+    if category == "end":
+        return any(token in event_text for token in ("term ends", "semester ends", "classes end", "class ends", "ends"))
+    if category == "recess":
+        return any(token in event_text for token in ("recess", "break"))
+    if category == "immunization":
+        return "immunization" in event_text
+    if category == "registration":
+        return "registration" in event_text
+    if category == "withdrawal":
+        return "withdraw" in event_text
+    if category == "exam":
+        return any(token in event_text for token in ("exam", "final"))
+    return False
+
+def extract_term_from_text(text: str) -> Optional[str]:
+    q = normalize(text)
+    year_match = re.search(r"(20\d{2})", q)
+    if not year_match:
+        return None
+    year = year_match.group(1)
+
+    for season_en, aliases in SEASON_ALIASES.items():
+        if any(alias in q for alias in aliases):
+            return f"{season_en} {year}"
+    return None
+
+def find_best_calendar_event(events: dict[str, str], category: str) -> Optional[tuple[str, str]]:
+    best_event = None
+    best_date = None
+    best_score = -10**9
+
+    for event, date in events.items():
+        if not event_matches_category(event, category):
+            continue
+        e = normalize(event)
+        score = 0
+
+        if category == "start":
+            if "term begins" in e or "semester begins" in e:
+                score += 120
+            if "classes begin" in e or "class begins" in e or "instruction begins" in e:
+                score += 90
+            if "registration" in e:
+                score -= 120
+            if "immunization" in e or "deadline" in e or "withdraw" in e:
+                score -= 90
+            if "begins" in e:
+                score += 20
+        elif category == "end":
+            if "term ends" in e or "semester ends" in e:
+                score += 120
+            if "classes end" in e or "class ends" in e:
+                score += 90
+            if "final deadline" in e or "registration" in e:
+                score -= 80
+            if "ends" in e:
+                score += 20
+        elif category == "registration":
+            if "registration begins" in e:
+                score += 120
+            elif "registration" in e:
+                score += 80
+        elif category == "exam":
+            if "exam week" in e or "final exam" in e:
+                score += 120
+            elif "final" in e or "exam" in e:
+                score += 70
+        else:
+            score += 50
+
+        if score > best_score:
+            best_score = score
+            best_event = event
+            best_date = date
+
+    if best_event is None:
+        return None
+    return best_event, best_date
 
 def is_calendar_question(text: str) -> bool:
-    return bool(re.search(r"(fall|spring|winter|summer)\s\d{4}", normalize(text)))
+    q = normalize(text)
+    has_year = bool(re.search(r"(20\d{2})", q))
+    has_season = any(alias in q for aliases in SEASON_ALIASES.values() for alias in aliases)
+    return has_year and has_season
 
 # TIME / LOCATION
 
@@ -148,6 +228,16 @@ LOCATION_KEYWORDS = (
     "find",
     "way to",
     "get to",
+    "nerede",
+    "nasıl giderim",
+    "cómo llegar",
+    "dónde está",
+    "在哪里",
+    "怎么去",
+    "کہاں",
+    "راستہ",
+    "어디",
+    "어떻게 가",
 )
 DIRECTION_KEYWORDS = (
     "directions",
@@ -158,6 +248,11 @@ DIRECTION_KEYWORDS = (
     "navigate",
     "way to",
     "get to",
+    "nasıl giderim",
+    "cómo llegar",
+    "怎么去",
+    "راستہ",
+    "어떻게 가",
 )
 DEFAULT_FAQ_INTENT_KEYWORDS = {
     "admissions": ("admission", "apply", "application", "accepted", "enroll"),
@@ -177,6 +272,124 @@ FAQ_INTENT_KEYWORDS = {}
 campus_locations = []
 campus_location_by_id = {}
 fallback_rag_docs = []
+
+SUPPORTED_LANGS = {"en", "tr", "es", "zh", "ur", "ko"}
+LANGUAGE_NAMES = {
+    "en": "English",
+    "tr": "Turkish",
+    "es": "Spanish",
+    "zh": "Mandarin Chinese",
+    "ur": "Urdu",
+    "ko": "Korean",
+}
+TRANSLATIONS = {
+    "location_opening_specific": {
+        "en": "{name} is on {campus}. Opening map.",
+        "tr": "{name}, {campus} kampüsünde. Harita açılıyor.",
+        "es": "{name} está en {campus}. Abriendo mapa.",
+        "zh": "{name} 位于 {campus}。正在打开地图。",
+        "ur": "{name} {campus} میں ہے۔ نقشہ کھولا جا رہا ہے۔",
+        "ko": "{name}은(는) {campus}에 있습니다. 지도를 여는 중입니다.",
+    },
+    "location_opening_generic": {
+        "en": "Opening campus map. Please pick a destination or search the directory.",
+        "tr": "Kampüs haritası açılıyor. Lütfen bir hedef seç veya dizinde ara.",
+        "es": "Abriendo el mapa del campus. Elige un destino o busca en el directorio.",
+        "zh": "正在打开校园地图。请选择目的地或在目录中搜索。",
+        "ur": "کیمپس کا نقشہ کھولا جا رہا ہے۔ براہِ کرم منزل منتخب کریں یا ڈائریکٹری میں تلاش کریں۔",
+        "ko": "캠퍼스 지도를 여는 중입니다. 목적지를 선택하거나 디렉터리에서 검색하세요.",
+    },
+    "fallback_no_context": {
+        "en": "I couldn't reach Ollama and I don't have matching campus context yet.",
+        "tr": "Ollama'ya ulaşamadım ve eşleşen kampüs bağlamı henüz yok.",
+        "es": "No pude conectar con Ollama y todavía no tengo contexto del campus que coincida.",
+        "zh": "我无法连接到 Ollama，且目前没有匹配的校园上下文。",
+        "ur": "میں Ollama تک نہیں پہنچ سکا اور ابھی متعلقہ کیمپس معلومات دستیاب نہیں ہیں۔",
+        "ko": "Ollama에 연결할 수 없고, 일치하는 캠퍼스 컨텍스트도 아직 없습니다.",
+    },
+    "fallback_best_match": {
+        "en": "Ollama is unavailable right now. Best match from campus records: {line}",
+        "tr": "Ollama şu anda kullanılamıyor. Kampüs kayıtlarından en iyi eşleşme: {line}",
+        "es": "Ollama no está disponible ahora. Mejor coincidencia en registros del campus: {line}",
+        "zh": "Ollama 当前不可用。校园记录中的最佳匹配：{line}",
+        "ur": "فی الحال Ollama دستیاب نہیں۔ کیمپس ریکارڈ سے بہترین مطابقت: {line}",
+        "ko": "현재 Ollama를 사용할 수 없습니다. 캠퍼스 기록에서 가장 일치하는 내용: {line}",
+    },
+    "fallback_top_context": {
+        "en": "Ollama is unavailable right now. Top context match: {line}",
+        "tr": "Ollama şu anda kullanılamıyor. En iyi bağlam eşleşmesi: {line}",
+        "es": "Ollama no está disponible ahora. Mejor contexto encontrado: {line}",
+        "zh": "Ollama 当前不可用。最佳上下文匹配：{line}",
+        "ur": "فی الحال Ollama دستیاب نہیں۔ بہترین سیاقی مطابقت: {line}",
+        "ko": "현재 Ollama를 사용할 수 없습니다. 가장 높은 컨텍스트 일치: {line}",
+    },
+}
+
+DATE_TRANSLATIONS = {
+    "tr": {
+        "Monday": "Pazartesi", "Tuesday": "Salı", "Wednesday": "Çarşamba", "Thursday": "Perşembe",
+        "Friday": "Cuma", "Saturday": "Cumartesi", "Sunday": "Pazar",
+        "January": "Ocak", "February": "Şubat", "March": "Mart", "April": "Nisan",
+        "May": "Mayıs", "June": "Haziran", "July": "Temmuz", "August": "Ağustos",
+        "September": "Eylül", "October": "Ekim", "November": "Kasım", "December": "Aralık",
+    },
+    "es": {
+        "Monday": "lunes", "Tuesday": "martes", "Wednesday": "miércoles", "Thursday": "jueves",
+        "Friday": "viernes", "Saturday": "sábado", "Sunday": "domingo",
+        "January": "enero", "February": "febrero", "March": "marzo", "April": "abril",
+        "May": "mayo", "June": "junio", "July": "julio", "August": "agosto",
+        "September": "septiembre", "October": "octubre", "November": "noviembre", "December": "diciembre",
+    },
+    "zh": {
+        "Monday": "星期一", "Tuesday": "星期二", "Wednesday": "星期三", "Thursday": "星期四",
+        "Friday": "星期五", "Saturday": "星期六", "Sunday": "星期日",
+        "January": "1月", "February": "2月", "March": "3月", "April": "4月",
+        "May": "5月", "June": "6月", "July": "7月", "August": "8月",
+        "September": "9月", "October": "10月", "November": "11月", "December": "12月",
+    },
+    "ur": {
+        "Monday": "پیر", "Tuesday": "منگل", "Wednesday": "بدھ", "Thursday": "جمعرات",
+        "Friday": "جمعہ", "Saturday": "ہفتہ", "Sunday": "اتوار",
+        "January": "جنوری", "February": "فروری", "March": "مارچ", "April": "اپریل",
+        "May": "مئی", "June": "جون", "July": "جولائی", "August": "اگست",
+        "September": "ستمبر", "October": "اکتوبر", "November": "نومبر", "December": "دسمبر",
+    },
+    "ko": {
+        "Monday": "월요일", "Tuesday": "화요일", "Wednesday": "수요일", "Thursday": "목요일",
+        "Friday": "금요일", "Saturday": "토요일", "Sunday": "일요일",
+        "January": "1월", "February": "2월", "March": "3월", "April": "4월",
+        "May": "5월", "June": "6월", "July": "7월", "August": "8월",
+        "September": "9월", "October": "10월", "November": "11월", "December": "12월",
+    },
+}
+
+def detect_language(text: str) -> str:
+    t = text.strip().lower()
+    if re.search(r"[\u4e00-\u9fff]", t):
+        return "zh"
+    if re.search(r"[\uac00-\ud7af]", t):
+        return "ko"
+    if re.search(r"[\u0600-\u06ff]", t):
+        return "ur"
+    tr_chars = set("çğıöşü")
+    if any(ch in tr_chars for ch in t) or any(x in t for x in (" nasıl ", " nerede", " ne zaman", "güz", "bahar")):
+        return "tr"
+    if any(x in t for x in ("¿", "¡", " dónde", " cuándo", " qué", "becas", "semestre")):
+        return "es"
+    return "en"
+
+def trn(key: str, lang: str, **kwargs) -> str:
+    lang = lang if lang in SUPPORTED_LANGS else "en"
+    template = TRANSLATIONS.get(key, {}).get(lang) or TRANSLATIONS.get(key, {}).get("en", "")
+    return template.format(**kwargs)
+
+def localize_date_text(text: str, lang: str) -> str:
+    mapping = DATE_TRANSLATIONS.get(lang)
+    if not mapping:
+        return text
+    for en_word, local_word in mapping.items():
+        text = re.sub(rf"\b{re.escape(en_word)}\b", local_word, text)
+    return text
 
 def load_campus_locations():
     rows = []
@@ -349,10 +562,21 @@ def build_ollama_timeout():
         pool=OLLAMA_CONNECT_TIMEOUT_SECONDS,
     )
 
-async def query_ollama(prompt: str):
+async def query_ollama(prompt: str, lang: str):
+    lang_name = LANGUAGE_NAMES.get(lang, "English")
     payload = {
         "model": MODEL_NAME,
-        "messages": [{"role": "user", "content": prompt}],
+        "messages": [
+            {
+                "role": "system",
+                "content": (
+                    "You are KeanGlobal assistant. "
+                    f"Respond only in {lang_name}. "
+                    "Be concise, factual, and do not invent policy/calendar facts."
+                ),
+            },
+            {"role": "user", "content": prompt},
+        ],
         "stream": False,
     }
 
@@ -431,9 +655,9 @@ def build_rag_prompt(user_text: str, context_blocks: list[str], faq_topic: Optio
         f"User question: {user_text}"
     )
 
-def build_fallback_answer(question: str, context_blocks: list[str]) -> str:
+def build_fallback_answer(question: str, context_blocks: list[str], lang: str) -> str:
     if not context_blocks:
-        return "I couldn't reach Ollama and I don't have matching campus context yet."
+        return trn("fallback_no_context", lang)
 
     question_tokens = tokenize(question)
     best_line = None
@@ -451,8 +675,8 @@ def build_fallback_answer(question: str, context_blocks: list[str]) -> str:
                 best_line = line
 
     if best_line:
-        return f"Ollama is unavailable right now. Best match from campus records: {best_line}"
-    return f"Ollama is unavailable right now. Top context match: {context_blocks[0][:280]}"
+        return trn("fallback_best_match", lang, line=best_line)
+    return trn("fallback_top_context", lang, line=context_blocks[0][:280])
 
 # ROUTES
 
@@ -463,6 +687,7 @@ def health():
 @app.post("/chat")
 async def chat(req: ChatRequest):
     user_text = req.message.strip()
+    lang = detect_language(user_text)
     faq_topic = detect_faq_intent(user_text)
 
     if is_location_question(user_text):
@@ -472,14 +697,19 @@ async def chat(req: ChatRequest):
         if destination_id:
             destination = campus_location_by_id.get(destination_id, {})
             return {
-                "answer": f"{destination.get('name', 'That location')} is on {destination.get('campus', 'campus')}. Opening map.",
+                "answer": trn(
+                    "location_opening_specific",
+                    lang,
+                    name=destination.get("name", "That location"),
+                    campus=destination.get("campus", "campus"),
+                ),
                 "intent": "location",
                 "destination_id": destination_id,
                 "use_current_location": use_current_location,
                 "location_mode": location_mode,
             }
         return {
-            "answer": "Opening campus map. Please pick a destination or search the directory.",
+            "answer": trn("location_opening_generic", lang),
             "intent": "location",
             "destination_id": None,
             "use_current_location": use_current_location,
@@ -487,15 +717,18 @@ async def chat(req: ChatRequest):
         }
 
     if is_calendar_question(user_text):
-        term_match = re.search(r"(fall|spring|winter|summer)\s(\d{4})", normalize(user_text))
-        if term_match:
-            term = f"{term_match.group(1)} {term_match.group(2)}"
+        term = extract_term_from_text(user_text)
+        if term:
             matched = next((t for t in calendar_data if term in t), None)
             category = detect_event_category(user_text)
             if matched and category:
-                for event, date in calendar_data[matched].items():
-                    if event_matches_category(event, category):
-                        return {"answer": f"{event.title()}: {date}", "intent": "calendar"}
+                best_event = find_best_calendar_event(calendar_data[matched], category)
+                if best_event:
+                    event, date = best_event
+                    return {
+                        "answer": f"{localize_date_text(event.title(), lang)}: {localize_date_text(date, lang)}",
+                        "intent": "calendar",
+                    }
 
     context_blocks = retrieve_rag_context(user_text)
     if not context_blocks:
@@ -504,12 +737,12 @@ async def chat(req: ChatRequest):
     prompt = build_rag_prompt(user_text, context_blocks, faq_topic)
 
     try:
-        reply = await query_ollama(prompt)
+        reply = await query_ollama(prompt, lang)
     except httpx.HTTPError:
-        fallback_answer = build_fallback_answer(user_text, context_blocks)
+        fallback_answer = build_fallback_answer(user_text, context_blocks, lang)
         return {"answer": fallback_answer, "intent": "faq" if faq_topic else "general", "faq_topic": faq_topic, "sources_used": len(context_blocks)}
     except Exception:
-        fallback_answer = build_fallback_answer(user_text, context_blocks)
+        fallback_answer = build_fallback_answer(user_text, context_blocks, lang)
         return {"answer": fallback_answer, "intent": "faq" if faq_topic else "general", "faq_topic": faq_topic, "sources_used": len(context_blocks)}
 
     return {"answer": reply, "intent": "faq" if faq_topic else "general", "faq_topic": faq_topic, "sources_used": len(context_blocks)}
