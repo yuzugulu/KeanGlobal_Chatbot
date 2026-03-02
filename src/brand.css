@@ -294,6 +294,14 @@ input:focus {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.map-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .route-controls {
@@ -386,6 +394,18 @@ body.dark .directory-panel {
   color: var(--text-secondary);
 }
 
+.directory-head-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.directory-toggle-btn {
+  padding: 6px 10px;
+  font-size: 12px;
+  line-height: 1.1;
+}
+
 .directory-controls {
   display: grid;
   grid-template-columns: 220px 1fr;
@@ -441,7 +461,97 @@ body.dark .directory-panel {
   cursor: not-allowed;
 }
 
+.leaflet-popup-content {
+  margin: 10px 12px;
+}
+
+.building-popup {
+  width: min(320px, 76vw);
+  max-height: 260px;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+.building-popup-title {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.25;
+  color: #0f172a;
+}
+
+.building-popup-campus {
+  margin-top: 2px;
+  font-size: 12px;
+  color: #475569;
+}
+
+.building-popup-section {
+  margin-top: 10px;
+}
+
+.building-popup-label {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+  color: #1e3a8a;
+  text-transform: uppercase;
+}
+
+.building-popup-text {
+  margin-top: 2px;
+  font-size: 13px;
+  line-height: 1.35;
+  color: #1f2937;
+}
+
+.building-popup-list {
+  margin: 4px 0 0 18px;
+  padding: 0;
+  font-size: 13px;
+  line-height: 1.35;
+  color: #1f2937;
+}
+
+body.dark .building-popup-title {
+  color: #f8fafc;
+}
+
+body.dark .building-popup-campus {
+  color: #cbd5e1;
+}
+
+body.dark .building-popup-label {
+  color: #93c5fd;
+}
+
+body.dark .building-popup-text,
+body.dark .building-popup-list {
+  color: #e2e8f0;
+}
+
 @media (max-width: 900px) {
+  .map-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .map-header-actions {
+    width: 100%;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .directory-head {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .directory-head-actions {
+    width: 100%;
+    justify-content: space-between;
+  }
+
   .directory-controls {
     grid-template-columns: 1fr;
   }

@@ -4,6 +4,7 @@ import { CircleMarker, MapContainer, Marker, Polygon, Polyline, Popup, TileLayer
 import markerIcon2x from "leaflet/dist/images/marker-icon-2x.png";
 import markerIcon from "leaflet/dist/images/marker-icon.png";
 import markerShadow from "leaflet/dist/images/marker-shadow.png";
+import buildingProfiles from "../data/building_profiles.json";
 
 const KEAN_MAIN_CAMPUS = [40.6798, -74.2341];
 const CAMPUS_BOUNDS = {
@@ -150,6 +151,32 @@ function parseParkingCsv(text) {
     .filter(Boolean);
 }
 
+function formatParkingTypeLabel(parkingType) {
+  const normalized = String(parkingType || "").trim().toLowerCase();
+  if (normalized === "faculty_staff") return "Faculty/Staff Parking";
+  if (normalized === "overnight") return "Overnight Parking";
+  if (normalized === "visitor") return "Visitor Parking";
+  if (normalized === "student") return "Student Parking";
+  return "Parking";
+}
+
+function inferParkingTypeFromName(name) {
+  const text = String(name || "").toLowerCase();
+  if (text.includes("overnight")) return "overnight";
+  if (text.includes("faculty") || text.includes("staff")) return "faculty_staff";
+  if (text.includes("visitor")) return "visitor";
+  return "student";
+}
+
+function createSquareAroundPoint([lat, lon], delta = 0.00012) {
+  return [
+    [lat + delta, lon - delta],
+    [lat + delta, lon + delta],
+    [lat - delta, lon + delta],
+    [lat - delta, lon - delta]
+  ];
+}
+
 function parsePathsCsv(text) {
   const rows = parseCsv(text);
   return rows
@@ -168,6 +195,26 @@ function parsePathsCsv(text) {
       };
     })
     .filter(Boolean);
+}
+
+function getBuildingProfile(building) {
+  const profile = buildingProfiles[building.id];
+  if (profile) return profile;
+
+  const isResidence = /hall|residence/i.test(building.name);
+  if (isResidence) {
+    return {
+      usage: "Residential facility for campus housing.",
+      departments: ["Housing and Residence Life"],
+      notes: "Contact Housing and Residence Life for occupancy and assignment details."
+    };
+  }
+
+  return {
+    usage: "Campus building used for academic, student, or operational functions.",
+    departments: ["Details available from campus directory"],
+    notes: "Detailed profile for this building is being added."
+  };
 }
 
 function haversineDistanceMeters([lat1, lon1], [lat2, lon2]) {
@@ -356,6 +403,8 @@ function MapPanel({ setShowMap, routeRequest }) {
   const [campusFilter, setCampusFilter] = useState("All Campuses");
   const [directoryQuery, setDirectoryQuery] = useState("");
   const [locationMode, setLocationMode] = useState("directions");
+  const [showBuildingList, setShowBuildingList] = useState(false);
+  const [showDirectoryPanel, setShowDirectoryPanel] = useState(true);
   const [locations, setLocations] = useState([]);
   const [pathEdges, setPathEdges] = useState([]);
   const [parkingLots, setParkingLots] = useState([]);
@@ -496,6 +545,24 @@ function MapPanel({ setShowMap, routeRequest }) {
     () => locations.filter(location => location.type === "entrance"),
     [locations]
   );
+
+  const supplementalParkingLots = useMemo(() => {
+    const existingNames = new Set(parkingLots.map(lot => normalizeId(lot.name)));
+    const existingIds = new Set(parkingLots.map(lot => normalizeId(lot.id)));
+
+    return locations
+      .filter(location => location.type === "parking")
+      .filter(location => !existingNames.has(normalizeId(location.name)) && !existingIds.has(normalizeId(location.id)))
+      .map(location => ({
+        id: `supp_${location.id}`,
+        name: location.name,
+        parkingType: inferParkingTypeFromName(location.name),
+        polygon: createSquareAroundPoint(location.position),
+        approximate: true
+      }));
+  }, [locations, parkingLots]);
+
+  const allParkingLots = useMemo(() => [...parkingLots, ...supplementalParkingLots], [parkingLots, supplementalParkingLots]);
 
   const directoryPlaces = useMemo(() => {
     return locations
@@ -653,42 +720,52 @@ function MapPanel({ setShowMap, routeRequest }) {
     <div className="panel map-panel">
       <div className="map-header">
         <h3 className="panel-title">Campus Map</h3>
-
-        <button
-          className="btn-secondary"
-          onClick={() => setShowMap(false)}
-        >
-          Close Map
-        </button>
+        <div className="map-header-actions">
+          <button
+            type="button"
+            className="btn-secondary"
+            onClick={() => setShowBuildingList(prev => !prev)}
+          >
+            {showBuildingList ? "Hide Building List" : "Show Building List"}
+          </button>
+          <button
+            className="btn-secondary"
+            onClick={() => setShowMap(false)}
+          >
+            Close Map
+          </button>
+        </div>
       </div>
 
-      <div className="route-controls">
-        <label className="route-field">
-          Start
-          <select value={startId} onChange={event => setStartId(event.target.value)}>
-            {routableLocations.map(location => (
-              <option key={location.id} value={location.id}>
-                {location.name}
-              </option>
-            ))}
-          </select>
-        </label>
+      {showBuildingList && (
+        <div className="route-controls">
+          <label className="route-field">
+            Start
+            <select value={startId} onChange={event => setStartId(event.target.value)}>
+              {routableLocations.map(location => (
+                <option key={location.id} value={location.id}>
+                  {location.name}
+                </option>
+              ))}
+            </select>
+          </label>
 
-        <button type="button" className="btn-secondary route-swap" onClick={swapRoute}>
-          Swap
-        </button>
+          <button type="button" className="btn-secondary route-swap" onClick={swapRoute}>
+            Swap
+          </button>
 
-        <label className="route-field">
-          Destination
-          <select value={endId} onChange={event => setEndId(event.target.value)}>
-            {routableLocations.map(location => (
-              <option key={location.id} value={location.id}>
-                {location.name}
-              </option>
-            ))}
-          </select>
-        </label>
-      </div>
+          <label className="route-field">
+            Destination
+            <select value={endId} onChange={event => setEndId(event.target.value)}>
+              {routableLocations.map(location => (
+                <option key={location.id} value={location.id}>
+                  {location.name}
+                </option>
+              ))}
+            </select>
+          </label>
+        </div>
+      )}
 
       <div className="route-actions">
         <button type="button" className="btn-primary" onClick={setMyLocationAsStart}>
@@ -713,42 +790,55 @@ function MapPanel({ setShowMap, routeRequest }) {
 
       <div className="directory-panel">
         <div className="directory-head">
-          <strong>Kean Campus Directory</strong>
-          <span>{filteredDirectoryPlaces.length} locations</span>
+          <strong>{showDirectoryPanel ? "Kean Campus Directory" : "Directory Hidden"}</strong>
+          <div className="directory-head-actions">
+            <span>{filteredDirectoryPlaces.length} locations</span>
+            <button
+              type="button"
+              className="btn-secondary directory-toggle-btn"
+              onClick={() => setShowDirectoryPanel(prev => !prev)}
+            >
+              {showDirectoryPanel ? "Hide Directory" : "Show Directory"}
+            </button>
+          </div>
         </div>
-        <div className="directory-controls">
-          <select value={campusFilter} onChange={event => setCampusFilter(event.target.value)}>
-            {campusOptions.map(option => (
-              <option key={option} value={option}>
-                {option}
-              </option>
-            ))}
-          </select>
-          <input
-            value={directoryQuery}
-            onChange={event => setDirectoryQuery(event.target.value)}
-            placeholder="Search building, service, or campus..."
-          />
-        </div>
-        <div className="directory-list">
-          {filteredDirectoryPlaces.map(place => (
-            <div key={place.id} className="directory-item">
-              <div className="directory-item-main">
-                <div className="directory-item-name">{place.name}</div>
-                <div className="directory-item-meta">{place.campus} • {place.category}</div>
-                <div className="directory-item-desc">{place.description}</div>
-              </div>
-              <button
-                type="button"
-                className="btn-secondary directory-route-btn"
-                onClick={() => routeToPlace(place)}
-                disabled={!place.destinationId}
-              >
-                {place.destinationId ? "Route" : "Info Only"}
-              </button>
+        {showDirectoryPanel && (
+          <>
+            <div className="directory-controls">
+              <select value={campusFilter} onChange={event => setCampusFilter(event.target.value)}>
+                {campusOptions.map(option => (
+                  <option key={option} value={option}>
+                    {option}
+                  </option>
+                ))}
+              </select>
+              <input
+                value={directoryQuery}
+                onChange={event => setDirectoryQuery(event.target.value)}
+                placeholder="Search building, service, or campus..."
+              />
             </div>
-          ))}
-        </div>
+            <div className="directory-list">
+              {filteredDirectoryPlaces.map(place => (
+                <div key={place.id} className="directory-item">
+                  <div className="directory-item-main">
+                    <div className="directory-item-name">{place.name}</div>
+                    <div className="directory-item-meta">{place.campus} • {place.category}</div>
+                    <div className="directory-item-desc">{place.description}</div>
+                  </div>
+                  <button
+                    type="button"
+                    className="btn-secondary directory-route-btn"
+                    onClick={() => routeToPlace(place)}
+                    disabled={!place.destinationId}
+                  >
+                    {place.destinationId ? "Route" : "Info Only"}
+                  </button>
+                </div>
+              ))}
+            </div>
+          </>
+        )}
       </div>
 
       <div className="leaflet-wrapper">
@@ -757,7 +847,7 @@ function MapPanel({ setShowMap, routeRequest }) {
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           />
-          {parkingLots.map(lot => (
+          {allParkingLots.map(lot => (
             <Polygon
               key={lot.id}
               positions={lot.polygon}
@@ -771,15 +861,40 @@ function MapPanel({ setShowMap, routeRequest }) {
               <Popup>
                 <strong>{lot.name}</strong>
                 <br />
-                {lot.parkingType || "parking"}
+                {formatParkingTypeLabel(lot.parkingType)}
+                {lot.approximate ? " (approximate)" : ""}
               </Popup>
             </Polygon>
           ))}
-          {buildingMarkers.map(building => (
-            <Marker key={building.id} position={building.position} icon={campusMarkerIcon}>
-              <Popup>{building.name}</Popup>
-            </Marker>
-          ))}
+          {buildingMarkers.map(building => {
+            const profile = getBuildingProfile(building);
+            return (
+              <Marker key={building.id} position={building.position} icon={campusMarkerIcon}>
+                <Popup>
+                  <div className="building-popup">
+                    <h4 className="building-popup-title">{building.name}</h4>
+                    <div className="building-popup-campus">{building.campus || "Main"} Campus</div>
+                    <div className="building-popup-section">
+                      <div className="building-popup-label">Use</div>
+                      <div className="building-popup-text">{profile.usage}</div>
+                    </div>
+                    <div className="building-popup-section">
+                      <div className="building-popup-label">Departments</div>
+                      <ul className="building-popup-list">
+                        {profile.departments.map(department => (
+                          <li key={department}>{department}</li>
+                        ))}
+                      </ul>
+                    </div>
+                    <div className="building-popup-section">
+                      <div className="building-popup-label">Relevant Info</div>
+                      <div className="building-popup-text">{profile.notes}</div>
+                    </div>
+                  </div>
+                </Popup>
+              </Marker>
+            );
+          })}
           {entranceMarkers.map(entrance => (
             <CircleMarker
               key={entrance.id}

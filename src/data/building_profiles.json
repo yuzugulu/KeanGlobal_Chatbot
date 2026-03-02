@@ -1,0 +1,317 @@
+{
+  "administration": {
+    "usage": "Administrative and student-service operations.",
+    "departments": ["Financial Aid", "Registrar", "Student Accounts"],
+    "notes": "Primary office building for core student records and enrollment services."
+  },
+  "bruce_hall": {
+    "usage": "Academic classrooms and faculty offices.",
+    "departments": ["Science and related programs"],
+    "notes": "Used for classes, advising, and departmental activity."
+  },
+  "cas": {
+    "usage": "Academic support and tutoring center.",
+    "departments": ["Center for Academic Success", "Peer Tutoring"],
+    "notes": "Students can access tutoring, workshops, and support resources."
+  },
+  "campus_police": {
+    "usage": "Campus public safety and emergency response.",
+    "departments": ["Department of Public Safety"],
+    "notes": "Security services, incident response, and safety reporting."
+  },
+  "d_angola_gym": {
+    "usage": "Athletics and recreation facility.",
+    "departments": ["Athletics", "Recreation"],
+    "notes": "Includes fitness and gym activity spaces."
+  },
+  "downs_hall": {
+    "usage": "Academic classrooms and offices.",
+    "departments": ["Academic departments (varies by term)"],
+    "notes": "Used for instruction and departmental operations."
+  },
+  "east_campus_building": {
+    "usage": "East Campus academic building.",
+    "departments": ["Academic programs (East Campus)"],
+    "notes": "Hosts classes and faculty/staff offices."
+  },
+  "east_campus_gym": {
+    "usage": "Athletics and recreation (East Campus).",
+    "departments": ["Athletics", "Recreation"],
+    "notes": "Supports training, events, and recreation programming."
+  },
+  "enlow_recital_hall": {
+    "usage": "Performance and recital venue.",
+    "departments": ["Music and Performing Arts events"],
+    "notes": "Used for recitals, concerts, and campus performances."
+  },
+  "glab": {
+    "usage": "Academic instruction and student-facing retail/services.",
+    "departments": ["Classrooms", "Bookstore-related services"],
+    "notes": "Green Lane Academic Building (GLAB)."
+  },
+  "harwood_arena": {
+    "usage": "Athletics arena and event space.",
+    "departments": ["Athletics"],
+    "notes": "Used for sports events and large gatherings."
+  },
+  "hri": {
+    "usage": "Academic and advocacy-focused institute space.",
+    "departments": ["Human Rights Institute"],
+    "notes": "Supports research, programming, and related events."
+  },
+  "hennings_hall": {
+    "usage": "Academic building with classes and offices.",
+    "departments": ["Academic departments (varies)"],
+    "notes": "Instructional and faculty workspaces."
+  },
+  "Hynes_hall": {
+    "usage": "Academic classrooms and offices.",
+    "departments": ["Business/public administration-related programs"],
+    "notes": "Commonly used for instruction and administrative support."
+  },
+  "kean_hall": {
+    "usage": "Central academic building.",
+    "departments": ["Classrooms", "Faculty offices"],
+    "notes": "Major classroom and campus navigation anchor."
+  },
+  "library": {
+    "usage": "Library and learning resources.",
+    "departments": ["Nancy Thompson Library", "Research support"],
+    "notes": "Study spaces, collections, and academic research services."
+  },
+  "miron_center": {
+    "usage": "Student life and engagement hub.",
+    "departments": ["Student activities", "Dining and lounge spaces"],
+    "notes": "Miron Student Center (MSC) with student-focused services."
+  },
+  "naab": {
+    "usage": "Academic instruction and program space.",
+    "departments": ["North Avenue Academic programs"],
+    "notes": "North Avenue Academic Building (NAAB)."
+  },
+  "nathan_weiss_building": {
+    "usage": "East Campus academic facility.",
+    "departments": ["Academic departments (East Campus)"],
+    "notes": "Hosts classes and support spaces."
+  },
+  "science_building": {
+    "usage": "Science instruction and lab-focused activity.",
+    "departments": ["Science programs", "Laboratory instruction"],
+    "notes": "Includes coursework and science support functions."
+  },
+  "stem": {
+    "usage": "STEM education and collaborative learning.",
+    "departments": ["Science", "Technology", "Engineering", "Mathematics"],
+    "notes": "New Jersey Center for Science, Technology and Mathematics."
+  },
+  "student_support_center": {
+    "usage": "Student support and administrative services.",
+    "departments": ["Student support offices"],
+    "notes": "Centralized access point for student help resources."
+  },
+  "technology_center": {
+    "usage": "Technology-focused classes and office space.",
+    "departments": ["Technology programs"],
+    "notes": "Supports instruction and technology-related activities."
+  },
+  "townsend_hall": {
+    "usage": "Academic classrooms and offices.",
+    "departments": ["Academic departments (varies)"],
+    "notes": "Instruction and faculty office space."
+  },
+  "vaughn_eames": {
+    "usage": "Academic instruction and department offices.",
+    "departments": ["Academic departments (varies)"],
+    "notes": "Classrooms and faculty/staff support areas."
+  },
+  "wilkins_theatre": {
+    "usage": "Performing arts and event venue.",
+    "departments": ["Theatre and campus events"],
+    "notes": "Hosts productions, events, and performances."
+  },
+  "alumni_stadium": {
+    "usage": "Outdoor athletics and large campus events.",
+    "departments": ["Athletics", "Event operations"],
+    "notes": "Primary stadium facility for field sports and spectator events."
+  },
+  "barnes_nobles_glab": {
+    "usage": "Campus bookstore and retail student services.",
+    "departments": ["Bookstore services", "Academic materials support"],
+    "notes": "Student textbook and branded merchandise location."
+  },
+  "bartlett_hall": {
+    "usage": "Residential housing for students.",
+    "departments": ["Housing and Residence Life"],
+    "notes": "Residence hall with student living accommodations."
+  },
+  "basketball_courts": {
+    "usage": "Outdoor recreation and intramural play.",
+    "departments": ["Campus Recreation", "Athletics support"],
+    "notes": "Open courts for basketball and casual activity."
+  },
+  "burch_hall": {
+    "usage": "Student residential housing.",
+    "departments": ["Housing and Residence Life"],
+    "notes": "Residence spaces for undergraduate students."
+  },
+  "cougar_hall": {
+    "usage": "Student residence facility.",
+    "departments": ["Housing and Residence Life"],
+    "notes": "Dormitory-style housing for campus residents."
+  },
+  "cougars_den": {
+    "usage": "Campus dining and student gathering area.",
+    "departments": ["Dining Services", "Student Life"],
+    "notes": "Food and social space used between classes and events."
+  },
+  "dougall_hall": {
+    "usage": "Residential hall for student housing.",
+    "departments": ["Housing and Residence Life"],
+    "notes": "On-campus residence with student support access."
+  },
+  "facilities": {
+    "usage": "Operations and facilities management support.",
+    "departments": ["Facilities Management"],
+    "notes": "Building services, maintenance coordination, and operations."
+  },
+  "freshman_residence_hall": {
+    "usage": "First-year student residence housing.",
+    "departments": ["Housing and Residence Life"],
+    "notes": "Residence area focused on freshman living."
+  },
+  "george_hennings_research": {
+    "usage": "Research and academic project support space.",
+    "departments": ["Research programs", "Academic labs"],
+    "notes": "Supports faculty and student research initiatives."
+  },
+  "green_house": {
+    "usage": "Support space and campus lounge functions.",
+    "departments": ["Faculty/staff support"],
+    "notes": "Used for meetings, collaboration, and campus support activity."
+  },
+  "guest_house": {
+    "usage": "Guest and special-use campus facility.",
+    "departments": ["Campus administration support"],
+    "notes": "Used for hosted visitors and university-related functions."
+  },
+  "hennings_research": {
+    "usage": "Research-focused academic building.",
+    "departments": ["Research units", "Academic support"],
+    "notes": "Project and investigation space tied to academic programs."
+  },
+  "hutchinson_hall Main": {
+    "usage": "Academic classrooms and offices.",
+    "departments": ["Academic departments (varies by term)"],
+    "notes": "Instructional building used for classes and advising."
+  },
+  "jim_hynes_basefll_stadium": {
+    "usage": "Athletics competition and training venue.",
+    "departments": ["Athletics"],
+    "notes": "Jim Hynes baseball stadium for games and team operations."
+  },
+  "jim_hynes_stadium": {
+    "usage": "Athletics competition and training venue.",
+    "departments": ["Athletics"],
+    "notes": "Jim Hynes baseball stadium for games, team training, and athletic events."
+  },
+  "kean_day_care_center": {
+    "usage": "Childcare and early education support.",
+    "departments": ["Child care services"],
+    "notes": "Provides childcare-related campus services."
+  },
+  "lhac": {
+    "usage": "Academic center for classes and support services.",
+    "departments": ["Academic programs", "Student support services"],
+    "notes": "Liberty Hall Academic Center (LHAC)."
+  },
+  "liberty_hall_mansion": {
+    "usage": "Historic and educational site.",
+    "departments": ["Liberty Hall Museum programs"],
+    "notes": "Historic mansion used for tours, events, and educational programming."
+  },
+  "receiving_deliveries": {
+    "usage": "Logistics intake and campus deliveries.",
+    "departments": ["Facilities operations", "Receiving"],
+    "notes": "Central receiving point for institutional deliveries."
+  },
+  "rogers_hall": {
+    "usage": "Student residential housing.",
+    "departments": ["Housing and Residence Life"],
+    "notes": "Residence hall with on-campus student accommodations."
+  },
+  "smash_burgar_at_miron": {
+    "usage": "Dining location inside student center.",
+    "departments": ["Dining Services"],
+    "notes": "Food service point at Miron Student Center."
+  },
+  "sozio_hall": {
+    "usage": "Residential student housing.",
+    "departments": ["Housing and Residence Life"],
+    "notes": "Campus residence hall for student living."
+  },
+  "starbucks_at_library": {
+    "usage": "Coffee and quick-service campus dining.",
+    "departments": ["Dining Services"],
+    "notes": "Coffee point located at/near Nancy Thompson Library."
+  },
+  "townley_house": {
+    "usage": "Historic campus facility and event space.",
+    "departments": ["Special programs", "Campus events"],
+    "notes": "Heritage location used for university programming."
+  },
+  "union_train_station": {
+    "usage": "Transit access point for campus commuters.",
+    "departments": ["Commuter and transportation support"],
+    "notes": "Nearby rail access used by students, staff, and visitors."
+  },
+  "upperclassman_residence_hall": {
+    "usage": "Upperclass student residential housing.",
+    "departments": ["Housing and Residence Life"],
+    "notes": "Residence options tailored to upperclass students."
+  },
+  "whiteman_hall": {
+    "usage": "Student residential housing.",
+    "departments": ["Housing and Residence Life"],
+    "notes": "On-campus residence hall with housing services."
+  },
+  "enlow_hall_lawn": {
+    "usage": "Outdoor campus green space.",
+    "departments": ["Campus events", "Student activities"],
+    "notes": "Open lawn used for gatherings and informal activity."
+  },
+  "kean_east_soccer_field": {
+    "usage": "Athletics field for soccer and training.",
+    "departments": ["Athletics"],
+    "notes": "East Campus soccer competition and practice field."
+  },
+  "bouer_boucher_theater": {
+    "usage": "Performance and theatre event venue.",
+    "departments": ["Performing Arts", "Campus events"],
+    "notes": "Theatre center for performances, rehearsals, and showcases."
+  },
+  "the_thinker_statue": {
+    "usage": "Campus landmark and public art feature.",
+    "departments": ["Campus cultural assets"],
+    "notes": "Recognized wayfinding landmark on campus grounds."
+  },
+  "msc_game_room": {
+    "usage": "Student recreation and social activity space.",
+    "departments": ["Student Life", "Recreation"],
+    "notes": "Game and lounge space within Miron Student Center."
+  },
+  "msc_turf_field": {
+    "usage": "Outdoor recreation and organized activities.",
+    "departments": ["Campus Recreation", "Athletics support"],
+    "notes": "Multipurpose turf field for activity and programming."
+  },
+  "kean_tennis_courts": {
+    "usage": "Athletics and recreational tennis courts.",
+    "departments": ["Athletics", "Campus Recreation"],
+    "notes": "Used for training, matches, and student recreation."
+  },
+  "cougar_softball_field": {
+    "usage": "Softball competition and practice facility.",
+    "departments": ["Athletics"],
+    "notes": "Home field for softball activities and events."
+  }
+}

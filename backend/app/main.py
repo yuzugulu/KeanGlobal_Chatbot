@@ -254,6 +254,100 @@ DIRECTION_KEYWORDS = (
     "راستہ",
     "어떻게 가",
 )
+LOCATION_ALIAS_OVERRIDES = {
+    "miron_center": (
+        "student center",
+        "miron",
+        "msc",
+        "miron student center",
+        "campus center"
+    ),
+    "library": (
+        "library",
+        "nancy thompson library",
+        "thompson library"
+    ),
+    "barnes_nobles_glab": (
+        "bookstore",
+        "barnes and noble",
+        "barnes noble",
+        "campus bookstore"
+    ),
+    "campus_police": (
+        "campus police",
+        "public safety",
+        "police",
+        "safety office",
+        "security office"
+    ),
+    "administration": (
+        "administration",
+        "administration building",
+        "financial aid",
+        "registrar",
+        "student accounts",
+        "admissions office"
+    ),
+    "cas": (
+        "cas",
+        "center for academic success",
+        "academic success center",
+        "tutoring center"
+    ),
+    "glab": (
+        "glab",
+        "green lane academic building",
+        "green lane building"
+    ),
+    "hri": (
+        "hri",
+        "human rights institute"
+    ),
+    "technology_center": (
+        "technology center",
+        "tech center",
+        "tec"
+    ),
+    "naab": (
+        "naab",
+        "north avenue academic building",
+        "north avenue building"
+    ),
+    "stem": (
+        "stem",
+        "stem building",
+        "science technology engineering mathematics building",
+        "nj stem center"
+    ),
+    "harwood_arena": (
+        "harwood",
+        "harwood arena",
+        "arena"
+    ),
+    "wilkins_theatre": (
+        "wilkins",
+        "wilkins theatre",
+        "theater",
+        "theatre"
+    ),
+    "lhac": (
+        "lhac",
+        "liberty hall academic center"
+    ),
+    "nathan_weiss_building": (
+        "nathan weiss",
+        "east campus building",
+        "ecb"
+    ),
+    "union_train_station": (
+        "train station",
+        "rail station",
+        "union train station",
+        "nj transit station",
+        "transit station",
+        "station"
+    )
+}
 DEFAULT_FAQ_INTENT_KEYWORDS = {
     "admissions": ("admission", "apply", "application", "accepted", "enroll"),
     "tuition_fees": ("tuition", "cost", "fees", "payment", "bill", "bursar"),
@@ -477,6 +571,9 @@ def build_location_aliases(place: dict) -> list[str]:
     acronym_match = re.findall(r"\(([A-Za-z0-9&/ ]+)\)", place["name"])
     for value in acronym_match:
         aliases.add(value)
+
+    for extra_alias in LOCATION_ALIAS_OVERRIDES.get(place["id"], ()):
+        aliases.add(extra_alias)
 
     return [normalize(alias) for alias in aliases if normalize(alias)]
 
