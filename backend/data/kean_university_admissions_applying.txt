@@ -1,0 +1,701 @@
+KEAN UNIVERSITY ADMISSIONS / APPLICATION / READMISSION KNOWLEDGE BASE
+RAG-ready plain text file
+Compiled from official Kean University admissions pages
+Compilation date: 2026-03-03
+Scope: applying, admission, readmission, accepted-student next steps, international admissions, special programs, EOF, non-matriculated/visiting, document submission, graduate deadlines
+
+============================================================
+1. MASTER PORTALS AND GENERAL CONTACTS
+============================================================
+
+Main apply hub:
+- Kean "Apply Now" page organizes applicants into Freshman, Transfer, Graduate, International, and Coming Back to Kean / Readmit.
+- Undergraduate freshmen, transfers, and readmits are directed to the Kean University Online Application Portal / Cougar App.
+- Graduate and international applicants are directed to apply.kean.edu.
+- Applicants can also use the relevant portal to track application status.
+
+Main portals:
+- Undergraduate / transfer / readmit portal: Cougar App / Kean University Online Application Portal
+- Graduate portal: apply.kean.edu
+- International portal: apply.kean.edu
+- Common Application is accepted for freshman and some international undergraduate applicants.
+
+Main admissions contact:
+Office of Admissions
+Kean Hall - North Wing
+1000 Morris Avenue
+Union, NJ 07083
+Phone: (908) 737-7100
+Fax: (908) 737-7105
+Email: admitme@kean.edu
+
+Submit application items contact:
+Kean University
+Office of Admissions
+1000 Morris Avenue
+Union, New Jersey 07083
+Email: ugprocessing@kean.edu
+Fax: (908) 737-7105
+Note: Kean says to include your First Name, Last Name, Middle Initial and Birthdate, or your Kean Applicant ID, with each emailed / mailed / faxed item.
+TOEFL / IELTS school code listed by Kean: 2517
+
+Source URLs:
+- https://www.kean.edu/apply-now
+- https://www.kean.edu/offices/admissions/submit-application-items
+- https://www.kean.edu/offices/admissions
+
+============================================================
+2. FRESHMAN / FIRST-YEAR ADMISSION
+============================================================
+
+Kean describes freshman admission as test-optional and provides application instructions plus deadlines for fall enrollment.
+
+Fall freshman dates currently listed by Kean:
+- January 15: Architectural Studies (B.A.) priority deadline
+- March 1: preferred FAFSA deadline
+- March 1: Nursing Prelicensure (BSN 3-year) fall start only
+- April 30: preferred application deadline; applications are accepted on a rolling basis thereafter
+- May 1: National Decision Day / preferred tuition deposit deadline
+- May 1: EOF program application deadline (fall semester admission only)
+
+Freshman application steps:
+1. Complete a Kean University Online Application
+2. Kean is also a member institution of the Common Application
+3. Pay the $75 application fee through the online application, or by mail if preferred
+4. Send supporting documentation
+
+Freshman supporting documentation:
+- Naviance partner schools: Kean says academic and supplemental documents must be submitted through Parchment regardless of whether the student applies via Kean or Common App.
+- STARS / SRAR: Kean says it partners with Self-Reported Transcript and Academic Record System (STARS / SRAR) for freshmen educated in the United States or at a U.S. school abroad. Completing a STARS report is treated as equivalent to submitting the high school transcript for application completion.
+- Kean also states that all applicants are required to submit an official high school transcript to be considered for admission.
+- The transcript must indicate 16 college-preparatory courses:
+  * 4 English
+  * 3 Mathematics
+  * 2 History
+  * 2 Lab Sciences
+  * 2 years of the same foreign language
+  * 3 approved electives in social studies, science, or mathematics
+
+Standardized tests:
+- Kean says submitting SAT and/or ACT scores is optional for freshman admission.
+- Kean lists CEEB / school code 2517 for score submission.
+- The freshman page says some exceptions exist where scores are still required; use the live Kean page for current exception details.
+
+Accepted freshman next steps:
+- Submit $95 tuition deposit
+- Apply for financial aid; FAFSA priority date listed as March 1
+- Apply for housing (housing application fee listed as $125 non-refundable on the accepted steps page)
+- Complete placement testing if required
+- Receive advisement and register
+
+Freshman sources:
+- https://www.kean.edu/offices/admissions-0/freshman-application-instructions
+- https://www.kean.edu/accepted/steps-enrollment
+
+============================================================
+3. TRANSFER ADMISSION
+============================================================
+
+Kean states that students who earned college credits after high school graduation must apply as transfer students.
+
+Transfer deadlines currently listed by Kean:
+- November 1: spring priority deadline
+- March 1: Nursing Prelicensure (BSN 3-year) - listed on the page for Fall 2025 start only
+- May 1: Architectural Studies (B.A.) - fall start only
+- May 30: Graphic Design (B.F.A.)
+- June 1: fall priority deadline
+- June 1: Interior Design (B.F.A.) - fall start only
+
+Transfer application requirements and notes:
+- All supplemental documents are required by the deadline for the application to be considered complete.
+- Applicants should check the Cougar App portal for missing supplemental items.
+- Kean lists these common supplemental items:
+  * submitted online application
+  * final high school transcript for applicants with fewer than 30 college credits
+  * official transcripts from every college and post-secondary school attended
+  * $75 non-refundable application fee
+  * international students who need an I-20 must also complete the International Student Application Supplement
+
+Transfer transcript delivery:
+- Official electronic transcripts should be sent to ugprocessing@kean.edu (Office of Transfer Admissions)
+- If electronic copies are unavailable, official sealed transcripts can be mailed to Kean Hall, 1000 Morris Avenue, Union, NJ 07083
+
+Transfer admissions contact:
+- Phone: (908) 737-7100
+- Email: transfer@kean.edu
+
+Transfer agreements:
+- Kean highlights articulation / transfer agreements with multiple New Jersey community colleges, including Bergen Community College, Essex County College, Hudson County Community College, Middlesex County College, College of Saint Elizabeth, and Union College.
+
+Accepted transfer next steps on Kean's accepted page:
+- Review program evaluation in KeanWISE
+- Submit $95 non-refundable tuition deposit
+- Apply for housing (housing application fee listed as $125 non-refundable)
+- Schedule advising
+- Register for classes in KeanWISE or via Cougar Help Center
+- Attend new transfer student orientation
+
+Transfer sources:
+- https://www.kean.edu/offices/admissions/transfer-admissions/transfer-application-instructions
+- https://www.kean.edu/offices/admissions/transfer-admissions
+- https://www.kean.edu/accepted/steps-enrollment
+
+============================================================
+4. GRADUATE ADMISSION
+============================================================
+
+Kean says graduate applicants should apply online and that paper application is not available.
+
+Graduate application basics:
+- Apply through the Graduate Application Portal
+- $75 non-refundable application fee
+- Deadlines vary by program
+- Some programs may require standardized tests depending on the program
+- Status tracking and document upload are handled through the application portal
+
+Graduate application materials described by Kean:
+- Official transcripts from all institutions attended
+- Letters of recommendation
+- Resume or CV
+- Copy of professional licenses if required
+- Other supporting materials required by the specific program
+
+Graduate transcript / materials address:
+Kean University
+Kean Hall
+Office of Graduate Admissions
+1000 Morris Avenue
+Union, New Jersey 07083
+
+Graduate electronic transcript guidance:
+- Kean's Graduate Admissions FAQ says official electronic transcripts from all institutions attended should be sent directly to ugprocessing@kean.edu by institution.
+- If study abroad coursework is not listed on the primary transcript, Kean says an official transcript from the institution abroad is also required.
+
+Graduate portal upload options after application submission:
+- Personal Essay
+- Resume / CV
+- Professional Licenses
+- Essay / Writing Sample
+
+Graduate contact:
+- (908) 737-4723
+- gradadmissions@kean.edu
+
+Graduate fee waivers / promo codes:
+- Kean says students who attend certain in-person or virtual graduate events may be eligible for a promo code for a fee waiver.
+
+Graduate accepted-student next steps:
+- Submit non-refundable tuition deposit
+  * $175 for most graduate programs
+  * $500 for Counseling (Ph.D., M.A., Certification), Combined School and Clinical Psychology (Psy.D.), Occupational Therapy (OTD, M.S.), Physical Therapy (DPT), Physician Assistant Studies (M.S.), and Speech-Language Pathology Doctorate / M.A.
+- Contact academic program coordinator for preregistration advisement
+- Register for classes in KeanWISE or through Cougar Help Center
+- Submit health and immunization records
+- Review tuition and payment options
+
+Graduate deferral policy:
+- Kean says accepted graduate students may request a deferral for up to one academic year, depending on program
+- Deferrals are not permitted for PsyD, DPT, Physician Assistant Studies, and Occupational Therapy
+- Kean says a deferral will not be processed without the required non-refundable tuition deposit
+
+Graduate sources:
+- https://www.kean.edu/offices/admissions/graduate/graduate-application-instructions/graduate-application-instructions
+- https://www.kean.edu/offices/admissions/graduate/graduate-admissions-faqs
+- https://www.kean.edu/accepted/steps-enrollment
+
+============================================================
+5. GRADUATE PROGRAM APPLICATION DEADLINES
+============================================================
+
+Important note:
+- Kean says the table on this page outlines deadlines for all relevant start terms and tells applicants to review the specific program page for up-to-date information.
+- For RAG use, treat this section as a snapshot of the published graduate deadlines page and re-check the program page when an answer depends on a specific program deadline.
+
+Snapshot examples from Kean's graduate deadlines page:
+- Accounting (M.S.): June 30 fall on-campus / August 15 fall online / December 1 spring on-campus / January 5 spring online
+- Applied Behavior Analysis: Autism and Development Disabilities (M.A.): June 30 fall / December 1 spring
+- Architecture (M.Arch.): January 15 priority deadline for fall
+- Athletic Training (M.S.): June 5 for Summer II
+- Bilingual Education (Certificate): June 30 fall / December 1 spring
+- Fine Arts M.A. programs: August 1 fall / January 1 spring
+- Genetic Counseling (M.S.): December 1
+- Licensed Professional Counselor certificate: February 15 all campuses / October 5 all campuses
+- Marriage and Family Therapy (M.A.): March 31
+- Occupational Therapy (M.S.) and OTD: January 15
+- Physical Therapy (DPT): October 15
+- Physician Assistant Studies (M.S.): January 15 priority / April 1 regular
+- School Psychology (Professional Diploma): February 7
+- Social Work (M.S.W.): March 31 for 2-year option; June 30 for advanced and 3-year option
+- Speech-Language Pathology (M.A.): February 15 / January 15 depending on term
+- Speech-Language Pathology Doctorate (SLPD): January 15
+- Post-baccalaureate and graduate certificate deadlines vary by program
+
+Source URL:
+- https://www.kean.edu/offices/admissions/graduate/graduate-program-application-deadlines
+
+============================================================
+6. INTERNATIONAL APPLICANTS - OVERVIEW
+============================================================
+
+Kean's international admissions pages say:
+- You are considered an international applicant if you are applying to study at Kean from outside your home country.
+- International applicants must meet additional requirements including English proficiency and visa eligibility.
+- Kean reviews international applications on a rolling basis, but publishes preferred deadlines.
+- International and domestic students are directed to apply through apply.kean.edu on the FAQ page; the more specific international undergraduate pages also mention Kean and Common Application routes for freshman and transfer applicants.
+- Applicants can check application completeness and missing items in the application portal.
+- Kean's FAQ says undergraduate international decisions typically take 2-4 weeks once all materials are received; graduate timelines vary by department.
+
+Preferred international deadlines currently published:
+International freshman:
+- February 15: Architectural Studies (B.A.)
+- April 30: preferred application deadline
+- May 1: preferred tuition deposit deadline
+
+International transfer:
+- November 1: spring priority deadline
+- May 1: Architectural Studies (B.A.)
+- May 30: Graphic Design (B.F.A.)
+- June 1: fall priority deadline
+
+International fee:
+- $75 non-refundable application fee
+- Kean says promo codes may be available to students who attend certain virtual information sessions
+
+International admissions contacts:
+For visa / I-20 assistance:
+Center for International Studies
+Email: cis@kean.edu
+Phone: (908) 737-0350
+
+For admissions-related international inquiries:
+Office of Admissions: Graduate, International, and Special Populations
+Email: international@kean.edu
+Phone: (908) 737-4723
+
+International sources:
+- https://www.kean.edu/offices/admissions/international-applicants
+- https://www.kean.edu/offices/admissions/international-admissions-frequently-asked-questions
+
+============================================================
+7. INTERNATIONAL FRESHMAN APPLICANTS
+============================================================
+
+Application:
+- Kean University Online Application or Common Application
+- $75 non-refundable application fee
+
+Required supporting documents highlighted by Kean:
+- Course-by-course evaluation, including GPA, of the official high school / secondary school transcript or mark sheet
+- Evaluation must be completed by a NACES-affiliated agency
+
+English proficiency:
+- Kean's international freshman page includes English proficiency requirements and waiver notes.
+- The page states scores must be from tests taken within the past two years and must be sent directly from the testing agency.
+- Waiver policy on the page says applicants may request a waiver by submitting official documentation stating that they completed secondary schooling at an institution where English is the language of instruction.
+- Kean also notes that applicants to fully online programs are not eligible for English proficiency waivers.
+
+International freshman source:
+- https://www.kean.edu/offices/admissions/international-freshmen-applicants
+
+============================================================
+8. INTERNATIONAL TRANSFER APPLICANTS
+============================================================
+
+Application:
+- Kean University Online Application or Common Application
+- $75 non-refundable application fee
+
+International transfer academic records:
+- U.S. college / university transcripts, if applicable, should be sent electronically to UGProcessing@kean.edu, attention Transfer Admissions
+- International university transcripts require a course-by-course evaluation of the official university transcript
+- Evaluation must be completed by a NACES-affiliated agency
+
+English proficiency waiver notes on Kean's page:
+- Applicants may request a waiver by submitting official documentation confirming that secondary education was completed in English
+- OR an official transcript showing at least 6 credits of college-level English courses at an accredited U.S. institution with grade C or better
+- Applicants to fully online programs are not eligible for English proficiency waivers
+
+International transfer source:
+- https://www.kean.edu/offices/admissions/international-transfer-applicant
+
+============================================================
+9. INTERNATIONAL GRADUATE APPLICANTS
+============================================================
+
+Application:
+- Apply through Kean University Online Application / apply.kean.edu
+- $75 non-refundable application fee
+
+Academic records:
+- Official transcripts from all previously attended institutions
+- Kean may require a course-by-course evaluation of the official university transcript
+- Evaluations must be completed by a NACES-affiliated agency
+
+English proficiency listed on the page:
+- TOEFL: minimum 79 internet-based or 550 paper-based
+- IELTS: minimum 6.0
+- Duolingo English Test: minimum 105
+- Scores must be from tests taken within the past two years
+- Scores must be sent directly from the testing agency
+
+Important page note:
+- The page also includes a line stating "TOEFL exams taken after January 21, 2026 will require a minimum total score of 4." This wording appears on the live page and should be verified against the current official Kean page before use in production answers because the phrasing may be incomplete or in transition.
+
+Waiver policy:
+- Applicants may request a waiver by submitting either:
+  * official documentation confirming completion of a bachelor's or master's degree from an institution where English is the language of instruction
+  * official transcripts showing completion of a bachelor's or master's degree from an accredited U.S. college or university
+- Fully online programs are not eligible for English proficiency waivers
+
+International graduate source:
+- https://www.kean.edu/international-graduate-applicants
+
+============================================================
+10. INTERNATIONAL STUDENTS AFTER ADMISSION / I-20 / VISA
+============================================================
+
+Kean states that admitted international students who need an F-1 visa must submit the I-20 application plus:
+- sponsor bank statements or other financial documents
+- copy of passport (photo and biographical information)
+- tuition deposit
+
+If transferring a SEVIS record from another U.S. institution, Kean says the student must also submit:
+- copy of F-1 visa or Form I-797A if change of status was completed in the United States
+- I-94 record
+- request for F-1 status transfer information
+- copies of all previously issued I-20 forms
+
+Source:
+- https://www.kean.edu/offices/admissions/international-applicants
+
+============================================================
+11. READMISSION / COMING BACK TO KEAN
+============================================================
+
+Kean readmission is for former Kean students who were admitted and enrolled but did not complete degree requirements.
+
+Readmission eligibility rules currently listed by Kean:
+- Student left the university in good standing; dismissed students should contact retain@kean.edu for reinstatement information
+- Returning undergraduate students must have been away from Kean for three or more semesters; if away less than three semesters, Kean directs them to academic advising requirements instead
+- Returning graduate students must have been away at least three but less than six semesters; if away six semesters or more, Kean says a new graduate admission application is required
+- cumulative GPA must be 2.0 or higher
+- readmission to the university does not guarantee readmission to the prior major; student may be readmitted as an intended major and must meet current declaration / entrance requirements
+- current curricular requirements apply upon readmission
+- degree requirements must be completed within 10 years from the date of matriculation unless extended by written request and approval
+
+Readmission process and dates:
+- $75 application fee is waived
+- Applications are usually reviewed 3-5 days after they are marked complete
+- Decisions are sent by email and posted on the application portal
+
+Readmission windows listed by Kean:
+Union and Ocean campuses:
+- Fall opens December 15 / closes August 1
+- Spring opens August 15 / closes December 7
+
+Kean Online:
+- Fall opens December 15 / closes August 7
+- Spring opens August 15 / closes December 14
+
+Readmission transcript guidance:
+- If the student attended other institutions after leaving Kean, official transcripts for all colleges and post-secondary schools attended since leaving Kean must be submitted
+- If admitted to Kean before 2010, Kean strongly encourages submission of all official transcripts, including institutions attended prior to Kean
+
+Readmission + financial aid:
+- Kean instructs accepted readmit students to file the FAFSA for financial aid consideration
+- Students who were on academic probation may still receive aid but may need SAP committee review
+
+Readmitted student next steps on accepted page:
+- Log back into KeanWISE
+- Get academic advisement
+- Register for classes online or through Cougar Help Center
+- Final checklist includes financial aid package, scholarships, immunization form, housing, meal plan, tuition bill, ID card, health insurance, parking pass, and reviewing academic calendar
+
+Readmission contact mentioned on accepted steps page:
+- readmit@kean.edu
+- (908) 737-7130 for registration trouble
+
+Readmission sources:
+- https://www.kean.edu/offices/admissions/readmission-kean
+- https://www.kean.edu/accepted/steps-enrollment
+
+============================================================
+12. ACCEPTED STUDENTS / NEXT STEPS SUMMARY
+============================================================
+
+Accepted-student resources appear under Kean's Admissions & Aid section and include:
+- Next Steps
+- Accepted Student Events
+- Accepted Online Students
+- Parent Portal
+
+Freshman accepted summary:
+- $95 tuition deposit
+- financial aid / FAFSA
+- housing
+- placement testing
+- advising and registration
+
+Transfer accepted summary:
+- review program evaluation
+- $95 tuition deposit
+- housing
+- advising and registration
+- transfer orientation
+
+Graduate accepted summary:
+- deposit ($175 general or $500 for certain programs)
+- contact academic program coordinator
+- register for classes
+- submit health / immunization records
+- review tuition / billing
+
+Additional note for special admission programs:
+- Accepted students in EOF, Bridge to Success, or Spanish Speaking Program are directed to the Educational Opportunities Center website for enrollment information.
+
+Sources:
+- https://www.kean.edu/offices/admissions
+- https://www.kean.edu/accepted/steps-enrollment
+
+============================================================
+13. SPECIAL PROGRAM ADMISSIONS REQUIREMENTS
+============================================================
+
+Michael Graves College:
+- Kean states that entry to Michael Graves College requires a portfolio of original creative work.
+- Portfolios are submitted digitally via the Kean University Application Portal.
+- Common Application students receive an email with instructions to create an account and access the profile / portfolio submission area.
+- Kean says enrollment is limited and competitive.
+- Main contacts:
+  * Robert Busch School of Design Main Office: (908) 737-4740
+  * School of Public Architecture Main Office: (908) 737-0560
+
+Architecture:
+- Upload 10 to 12 pieces of creative work
+- Work should show creative thinking and skill in basic design and drawing
+- Work may include self-created or school-created original work
+
+Graphic Design:
+- Kean lists two portfolio options
+- One option includes a 60 to 120 second video explaining interest in Graphic Design at Kean plus at least ten works demonstrating proficiency in various media and design programs
+- Kean emphasizes labeling and identifying each portfolio item
+
+Interior Design:
+- Requires 60 to 120 second video explaining reasons for pursuing Interior Design at Kean
+- Requires 10 to 12 individual pieces of creative work
+- Kean says submissions without the required video will not be accepted
+- The page states that use of AI in any form for this submission will result in immediate rejection
+
+Theatre:
+- Apply to Kean first
+- After application review, students receive invitation to schedule an audition
+- All theatre degree programs require an audition or portfolio review
+- Acting applicants prepare two contrasting monologues or a monologue and contrasting song, total not more than four minutes
+- Designers / technicians / stage managers / generalists submit portfolio samples
+- Theatre education applicants choose either an audition or portfolio for faculty interview
+- Out-of-state students may submit virtual audition through the application portal
+- Current Kean students changing major to Theatre must audition in person
+- Theatre Conservatory contact: (908) 737-4420
+
+Music:
+- Apply to Kean first
+- Once all materials are received and academic admission requirements are met, Kean says the applicant will be invited to schedule an audition
+- Music programs require either an in-person audition or a video portfolio review
+- Students seeking scholarship / financial assistance consideration are advised to complete application and audition before March 1
+- Contact: music@kean.edu / (908) 737-4330
+- Entering music majors must take theory placement and piano placement exams; music history placement test may also apply
+
+Fine Arts / Art Education:
+Art Education:
+- academic writing sample
+- art portfolio with 12 to 15 images, at least 8 showing freehand drawing and painting
+- interview with program coordinator upon request
+- competitive admission; page advises contacting Dr. Irina Nikitovic / stanici@kean.edu
+
+Studio Art (B.F.A.):
+- portfolio of 10 to 15 work samples including sketches, observational drawing, and color work; may include 3D work, photography, prints, digital work, or mixed media
+- competitive admission
+- contact Jennifer Crupi / jcrupi@kean.edu
+- accepted students may initially receive provisional status and later complete a second portfolio review for full admission
+
+Special program source:
+- https://www.kean.edu/offices/admissions-0/special-program-admissions-requirements
+
+============================================================
+14. EOF (EDUCATIONAL OPPORTUNITY FUND)
+============================================================
+
+Overview:
+- Kean has separate EOF admission pathways for freshmen, transfers, current Kean students, readmits, and graduate students.
+
+EOF application process page:
+- Freshmen seeking EOF must complete the Kean application and indicate interest by selecting EOF Freshman on the Common Application or Kean online application.
+- Transfer applicants seeking EOF must complete the Kean application and select EOF Transfer status. This includes previous EOF scholars and students seeking EOF for the first time.
+- Current Kean students up to junior year, and incoming freshmen who did not participate in EOF summer, may apply for available EOF spots through the EOF Academic Year application.
+- EOF re-admit students who stopped out for at least one semester must complete the EOF Academic Year application for the year they plan to return.
+- Graduate EOF assistance is described on a separate EOF Graduate Grant page.
+
+EOF freshman admission page:
+- Kean says EOF freshman applicants must be eligible for the EOF grant and meet household income guidelines.
+- Kean asks for proof of FAFSA completion and says Kean should be listed as one of the college choices.
+- Proof can include a screenshot of the FAFSA completion confirmation page and must show the student's name.
+
+EOF academic year application page:
+- The live page currently says students interested in becoming EOF must complete the 2025-26 EOF Application, select "First Time EOF Applicant" under Application Status, and submit proof of 2025-26 FAFSA completion to EOFAdmissions@kean.edu.
+
+EOF FAQ:
+- Must be U.S. citizen or permanent resident
+- Must be New Jersey resident for 12 consecutive months prior to receiving the award
+- Must meet academic criteria set by the institution
+- Must file FAFSA
+- Must demonstrate educationally and economically disadvantaged background
+- Must apply and be accepted to a participating New Jersey college or university
+
+IMPORTANT RAG NOTE:
+- Kean's live EOF pages currently show mixed aid years: the EOF Academic Year Admission page references 2025-26 materials, while the EOF Freshman Admission page references 2026-27 FAFSA completion. A production chatbot should treat these dates carefully and prefer the latest live page wording.
+
+EOF sources:
+- https://www.kean.edu/applyeof
+- https://www.kean.edu/eof/eof-freshman-admission
+- https://www.kean.edu/eofayapp
+- https://www.kean.edu/eof/eof-faq
+
+============================================================
+15. NON-MATRICULATED / VISITING STUDENTS
+============================================================
+
+Undergraduate visiting students:
+- If enrolled and in good academic standing at a regionally accredited college or university, a student may enroll as a visiting non-matriculated undergraduate student
+- Required:
+  * completed Non-Matriculated / Visiting Student Application
+  * enrollment certification / verification from home institution
+- Important information:
+  * maximum 12 credits
+  * must stay enrolled in consecutive semesters to remain active; if three semesters are missed, must reapply
+  * registration based on seat availability
+  * no financial aid eligibility
+
+Graduate non-matriculated students:
+- Intended for students who hold a bachelor's degree or equivalent and want to take graduate coursework, such as prerequisites or personal enrichment
+- Required:
+  * completed Non-Matriculated / Visiting Student Application
+  * proof of degree (diploma or unofficial transcript)
+  * non-U.S. degrees must include NACES evaluation
+- Important information:
+  * maximum 6 credits
+  * registration based on seat availability
+  * must stay enrolled in consecutive semesters to remain active; if three semesters are missed, must reapply
+  * not guaranteed admission to a graduate program
+  * no financial aid eligibility
+  * restrictions may apply; contact graduate program coordinator
+
+Special populations on the same page:
+- Newly admitted matriculated students who want to take a course before program start should complete the Non-Matriculated / Visiting Student Application
+- High School Juniors and Seniors may register for 3 credits in Summer Session II with:
+  * counselor recommendation letter
+  * written approval from a Kean academic department chairperson
+  * completed Non-Matriculated / Visiting Student Application
+- Senior Citizens:
+  * NJ residents age 65+
+  * may register for open undergraduate classes on a space-available basis
+  * not responsible for tuition or student leadership fee, but responsible for remaining fees per credit
+  * must complete Non-Matriculated / Visiting Student Application
+
+Nondegree contact:
+Office of Admissions | Graduate, International & Special Populations
+Phone: 908-737-GRAD (4723)
+Email: nondegree@kean.edu
+
+Source:
+- https://www.kean.edu/offices/admissions/non-matriculatedvisiting-students
+
+============================================================
+16. USEFUL OPERATIONAL RULES FOR A CHATBOT
+============================================================
+
+Recommended routing rules:
+- If user says "freshman", "first-year", "high school senior" -> use freshman section
+- If user has college credits earned after high school graduation -> use transfer section
+- If user is former Kean student -> check readmission eligibility rules first
+- If user is international -> ask whether freshman, transfer, or graduate, then use international section plus I-20 / visa section
+- If user asks about portfolio / audition majors -> use special program section
+- If user asks about EOF -> use EOF section and warn that live pages currently show mixed aid years
+- If user asks to take a class without full admission -> use non-matriculated / visiting section
+- If user asks "how do I send my transcripts / documents?" -> use submit application items section
+- If user asks "how do I check my status?" -> route to Cougar App or apply.kean.edu depending on applicant type
+- If user asks graduate deadline for a specific program -> use graduate deadlines section but advise re-checking the specific program page because Kean says program pages are the current source of truth
+
+Ambiguity handling:
+- "Apply to Kean" is ambiguous; ask whether the student is freshman, transfer, graduate, international, readmit, or nondegree.
+- "International student" is ambiguous; ask whether the applicant is freshman, transfer, or graduate.
+- "I used to go to Kean" should trigger readmission logic before normal undergraduate admissions logic.
+
+============================================================
+17. PRIMARY SOURCE INDEX
+============================================================
+
+1. Apply Now
+https://www.kean.edu/apply-now
+
+2. Admissions & Aid hub
+https://www.kean.edu/offices/admissions
+
+3. Freshman Application Instructions
+https://www.kean.edu/offices/admissions-0/freshman-application-instructions
+
+4. Transfer Admissions
+https://www.kean.edu/offices/admissions/transfer-admissions
+
+5. Transfer Application Instructions
+https://www.kean.edu/offices/admissions/transfer-admissions/transfer-application-instructions
+
+6. Submit Application Items
+https://www.kean.edu/offices/admissions/submit-application-items
+
+7. Readmission to Kean
+https://www.kean.edu/offices/admissions/readmission-kean
+
+8. Steps to Enrollment / Accepted Students
+https://www.kean.edu/accepted/steps-enrollment
+
+9. Graduate Application Instructions
+https://www.kean.edu/offices/admissions/graduate/graduate-application-instructions/graduate-application-instructions
+
+10. Graduate Admissions FAQs
+https://www.kean.edu/offices/admissions/graduate/graduate-admissions-faqs
+
+11. Graduate Program Application Deadlines
+https://www.kean.edu/offices/admissions/graduate/graduate-program-application-deadlines
+
+12. International Applicants
+https://www.kean.edu/offices/admissions/international-applicants
+
+13. International Admissions Frequently Asked Questions
+https://www.kean.edu/offices/admissions/international-admissions-frequently-asked-questions
+
+14. International Freshmen Applicants
+https://www.kean.edu/offices/admissions/international-freshmen-applicants
+
+15. International Transfer Applicant
+https://www.kean.edu/offices/admissions/international-transfer-applicant
+
+16. International Graduate Applicants
+https://www.kean.edu/international-graduate-applicants
+
+17. Special Program Admissions Requirements
+https://www.kean.edu/offices/admissions-0/special-program-admissions-requirements
+
+18. EOF Application Process
+https://www.kean.edu/applyeof
+
+19. EOF Freshman Admission
+https://www.kean.edu/eof/eof-freshman-admission
+
+20. EOF Academic Year Admission
+https://www.kean.edu/eofayapp
+
+21. EOF FAQ
+https://www.kean.edu/eof/eof-faq
+
+22. Non-Matriculated / Visiting Students
+https://www.kean.edu/offices/admissions/non-matriculatedvisiting-students

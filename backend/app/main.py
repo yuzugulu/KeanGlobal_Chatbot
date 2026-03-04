@@ -78,6 +78,54 @@ def normalize(text: str) -> str:
 def tokenize(text: str) -> set[str]:
     return set(normalize(text).split())
 
+GENERIC_QUERY_WORDS = {
+    "the", "a", "an", "and", "or", "to", "of", "in", "on", "at", "for", "from", "with",
+    "is", "are", "was", "were", "be", "can", "do", "does", "did", "how", "what", "when",
+    "where", "which", "who", "whom", "why", "as", "i", "me", "my", "we", "our", "you",
+    "your", "it", "its", "they", "them", "their", "kean", "university", "campus",
+}
+
+def meaningful_tokens(text: str) -> set[str]:
+    return {t for t in tokenize(text) if len(t) >= 3 and t not in GENERIC_QUERY_WORDS}
+
+def program_subject_tokens_from_query(text: str) -> set[str]:
+    q_norm = normalize(text)
+    drop_tokens = {
+        "degree", "degrees", "program", "programs", "master", "masters", "graduate",
+        "undergraduate", "undergrad", "available", "kean", "major", "bachelor",
+        "there", "have", "has", "is", "are", "does", "do",
+    }
+    base = {
+        t
+        for t in tokenize(text)
+        if t not in drop_tokens and (len(t) >= 3 or t in {"it", "cs"})
+    }
+
+    # Keep short but meaningful program acronyms.
+    if re.search(r"\bit\b|information technology", q_norm):
+        base.add("it")
+        base.add("information")
+        base.add("technology")
+    if re.search(r"\bcs\b|computer science", q_norm):
+        base.add("cs")
+        base.add("computer")
+        base.add("science")
+    return base
+
+def extract_degree_subject_phrase(text: str) -> Optional[str]:
+    q_norm = normalize(text)
+    patterns = [
+        r"(?:is there|there is|does .* have|do you have)\s+(?:an?\s+)?(.+?)\s+(?:major|bachelor|undergrad|undergraduate|master|masters|graduate|degree|program)\b",
+        r"(?:is there|there is|does .* have|do you have)\s+(?:an?\s+)?(.+?)\b",
+    ]
+    for pattern in patterns:
+        match = re.search(pattern, q_norm)
+        if match:
+            phrase = match.group(1).strip()
+            if phrase:
+                return phrase
+    return None
+
 def keyword_in_text(normalized_text: str, text_tokens: set[str], keyword: str) -> bool:
     normalized_keyword = normalize(keyword)
     if not normalized_keyword:
@@ -582,6 +630,10 @@ FAQ_INTENT_KEYWORDS = {}
 campus_locations = []
 campus_location_by_id = {}
 fallback_rag_docs = []
+conversation_state = {
+    "last_degree_subject": None,
+    "last_degree_level": None,
+}
 
 SUPPORTED_LANGS = {"en", "tr", "es", "zh", "ur", "ko"}
 LANGUAGE_NAMES = {
@@ -641,6 +693,38 @@ TRANSLATIONS = {
         "ur": "کیمپس میں کھانے کے یہ آپشنز ہیں:",
         "ko": "캠퍼스 내 식사 옵션입니다:",
     },
+    "parking_guidance_student": {
+        "en": "Student parking is shown in blue on the map. Opening map.",
+        "tr": "Öğrenci otoparkı haritada mavi renkte gösterilir. Harita açılıyor.",
+        "es": "El estacionamiento para estudiantes aparece en azul en el mapa. Abriendo mapa.",
+        "zh": "学生停车区在地图上以蓝色显示。正在打开地图。",
+        "ur": "طلبہ کی پارکنگ نقشے پر نیلے رنگ میں دکھائی جاتی ہے۔ نقشہ کھولا جا رہا ہے۔",
+        "ko": "학생 주차 구역은 지도에서 파란색으로 표시됩니다. 지도를 여는 중입니다.",
+    },
+    "parking_guidance_faculty": {
+        "en": "Faculty/Staff parking is shown in orange on the map. Opening map.",
+        "tr": "Akademik/Personel otoparkı haritada turuncu renkte gösterilir. Harita açılıyor.",
+        "es": "El estacionamiento para personal/docentes aparece en naranja en el mapa. Abriendo mapa.",
+        "zh": "教职工停车区在地图上以橙色显示。正在打开地图。",
+        "ur": "فیکلٹی/اسٹاف پارکنگ نقشے پر نارنجی رنگ میں دکھائی جاتی ہے۔ نقشہ کھولا جا رہا ہے۔",
+        "ko": "교직원 주차 구역은 지도에서 주황색으로 표시됩니다. 지도를 여는 중입니다.",
+    },
+    "parking_guidance_overnight": {
+        "en": "Overnight parking is shown in green on the map. Opening map.",
+        "tr": "Gece parkı haritada yeşil renkte gösterilir. Harita açılıyor.",
+        "es": "El estacionamiento nocturno aparece en verde en el mapa. Abriendo mapa.",
+        "zh": "夜间停车区在地图上以绿色显示。正在打开地图。",
+        "ur": "رات بھر کی پارکنگ نقشے پر سبز رنگ میں دکھائی جاتی ہے۔ نقشہ کھولا جا رہا ہے۔",
+        "ko": "야간 주차 구역은 지도에서 초록색으로 표시됩니다. 지도를 여는 중입니다.",
+    },
+    "parking_guidance_general": {
+        "en": "Opening map. Parking lots are color-coded: Student (blue), Faculty/Staff (orange), Overnight (green).",
+        "tr": "Harita açılıyor. Otopark renkleri: Öğrenci (mavi), Akademik/Personel (turuncu), Gece Parkı (yeşil).",
+        "es": "Abriendo mapa. Los estacionamientos están codificados por color: Estudiantes (azul), Personal/Docentes (naranja), Nocturno (verde).",
+        "zh": "正在打开地图。停车场颜色：学生（蓝色）、教职工（橙色）、夜间（绿色）。",
+        "ur": "نقشہ کھولا جا رہا ہے۔ پارکنگ رنگوں کے مطابق ہے: طلبہ (نیلا)، فیکلٹی/اسٹاف (نارنجی)، رات بھر (سبز)۔",
+        "ko": "지도를 여는 중입니다. 주차장은 색상으로 구분됩니다: 학생(파랑), 교직원(주황), 야간(초록).",
+    },
     "fallback_no_context": {
         "en": "I couldn't reach Ollama and I don't have matching campus context yet.",
         "tr": "Ollama'ya ulaşamadım ve eşleşen kampüs bağlamı henüz yok.",
@@ -672,6 +756,78 @@ TRANSLATIONS = {
         "zh": "根据校园记录，以下是最相关的信息：",
         "ur": "کیمپس ریکارڈ کے مطابق، یہ سب سے متعلقہ معلومات ہیں:",
         "ko": "캠퍼스 기록 기준으로 가장 관련 있는 정보입니다:",
+    },
+    "faq_no_exact_match": {
+        "en": "I couldn't find an exact match in current campus records. Please rephrase with a specific program or policy name.",
+        "tr": "Mevcut kampüs kayıtlarında tam bir eşleşme bulamadım. Lütfen belirli bir program veya politika adıyla tekrar sor.",
+        "es": "No encontré una coincidencia exacta en los registros actuales del campus. Reformula con el nombre específico del programa o política.",
+        "zh": "我在当前校园记录中未找到精确匹配。请用具体的项目或政策名称重新提问。",
+        "ur": "موجودہ کیمپس ریکارڈ میں عین مطابق جواب نہیں ملا۔ براہِ کرم مخصوص پروگرام یا پالیسی کے نام کے ساتھ دوبارہ سوال کریں۔",
+        "ko": "현재 캠퍼스 기록에서 정확한 일치를 찾지 못했습니다. 특정 프로그램 또는 정책 이름으로 다시 질문해 주세요.",
+    },
+    "degree_exists_yes": {
+        "en": "Yes, a {subject} {level} degree is listed.",
+        "tr": "Evet, {subject} için {level} bir derece programı listeleniyor.",
+        "es": "Sí, hay un programa de {level} en {subject}.",
+        "zh": "是的，学校列有 {subject} 的{level}学位项目。",
+        "ur": "جی ہاں، {subject} میں {level} ڈگری پروگرام موجود ہے۔",
+        "ko": "네, {subject} {level} 학위 과정이 있습니다.",
+    },
+    "degree_exists_no": {
+        "en": "Sorry, a {subject} {level} degree is not listed in the current records.",
+        "tr": "Üzgünüm, mevcut kayıtlarda {subject} için {level} bir derece programı listelenmiyor.",
+        "es": "Lo siento, no aparece un programa de {level} en {subject} en los registros actuales.",
+        "zh": "抱歉，当前记录中未列出 {subject} 的{level}学位项目。",
+        "ur": "معذرت، موجودہ ریکارڈ میں {subject} کے لیے {level} ڈگری درج نہیں ہے۔",
+        "ko": "죄송하지만 현재 기록에는 {subject} {level} 학위 과정이 없습니다.",
+    },
+    "program_follow_up_prompt": {
+        "en": "I can share more details if you ask about a specific subject and degree level.",
+        "tr": "Belirli bir bölüm ve derece seviyesi sorarsan daha fazla ayrıntı paylaşabilirim.",
+        "es": "Puedo compartir más detalles si preguntas por una carrera y nivel específico.",
+        "zh": "如果你提供具体专业和学位层次，我可以给出更多细节。",
+        "ur": "اگر آپ مخصوص مضمون اور ڈگری لیول بتائیں تو میں مزید تفصیل دے سکتا ہوں۔",
+        "ko": "특정 전공과 학위 수준을 말씀해 주시면 더 자세히 안내할 수 있습니다.",
+    },
+    "library_hours_intro": {
+        "en": "Nancy Thompson Library hours:",
+        "tr": "Nancy Thompson Kütüphanesi saatleri:",
+        "es": "Horario de la Biblioteca Nancy Thompson:",
+        "zh": "Nancy Thompson 图书馆开放时间：",
+        "ur": "Nancy Thompson لائبریری کے اوقات:",
+        "ko": "Nancy Thompson 도서관 운영 시간:",
+    },
+    "library_hours_unavailable": {
+        "en": "I couldn't find the library hours in current records.",
+        "tr": "Mevcut kayıtlarda kütüphane saatlerini bulamadım.",
+        "es": "No pude encontrar el horario de la biblioteca en los registros actuales.",
+        "zh": "我在当前记录中未找到图书馆开放时间。",
+        "ur": "موجودہ ریکارڈ میں لائبریری کے اوقات نہیں ملے۔",
+        "ko": "현재 기록에서 도서관 운영 시간을 찾지 못했습니다.",
+    },
+    "parking_ticket_fees_intro": {
+        "en": "Here are the parking ticket fees listed by Kean:",
+        "tr": "Kean tarafından listelenen park ihlali ücretleri:",
+        "es": "Estas son las tarifas de multas de estacionamiento que publica Kean:",
+        "zh": "以下是 Kean 公布的停车罚单费用：",
+        "ur": "Kean کے مطابق پارکنگ ٹکٹ فیس یہ ہیں:",
+        "ko": "Kean에 게시된 주차 위반 요금은 다음과 같습니다:",
+    },
+    "parking_ticket_fees_note": {
+        "en": "Note: unpaid/late violations can add a $50 late fee.",
+        "tr": "Not: geç/ödenmeyen ihlaller için ek $50 gecikme ücreti uygulanabilir.",
+        "es": "Nota: las infracciones sin pagar o tardías pueden generar un recargo de $50.",
+        "zh": "注意：逾期或未缴可能会增加 50 美元滞纳金。",
+        "ur": "نوٹ: غیر ادا شدہ/تاخیر سے ادا جرمانوں پر اضافی $50 لیٹ فیس لگ سکتی ہے۔",
+        "ko": "참고: 미납/지연 시 $50의 추가 연체료가 부과될 수 있습니다.",
+    },
+    "parking_ticket_fees_unavailable": {
+        "en": "I can confirm Kean publishes a parking violation schedule, but I couldn't parse exact line-item fees from current records.",
+        "tr": "Kean'ın park ihlal ücret çizelgesi yayımladığını doğrulayabiliyorum, ancak mevcut kayıtlardan kalem bazlı ücretleri ayrıştıramadım.",
+        "es": "Puedo confirmar que Kean publica una tabla de infracciones de estacionamiento, pero no pude extraer las tarifas exactas por concepto de los registros actuales.",
+        "zh": "我可以确认 Kean 公布了停车违规费用表，但当前记录中未能解析出逐项金额。",
+        "ur": "میں تصدیق کر سکتا ہوں کہ Kean پارکنگ خلاف ورزی فیس شیڈول شائع کرتا ہے، لیکن موجودہ ریکارڈ سے درست مد وار فیس نہیں نکال سکا۔",
+        "ko": "Kean이 주차 위반 요금표를 게시하는 것은 확인했지만, 현재 기록에서 항목별 정확한 요금을 추출하지 못했습니다.",
     },
 }
 
@@ -916,6 +1072,7 @@ def load_fallback_rag_docs():
                     "chunk_id": f"{file.stem}_{idx}",
                     "text": chunk,
                     "tokens": tokenize(chunk),
+                    "key_tokens": meaningful_tokens(chunk),
                 }
             )
     return docs
@@ -976,6 +1133,99 @@ def is_food_question(text: str) -> bool:
     q = normalize(text)
     q_tokens = tokenize(text)
     return any(keyword_in_text(q, q_tokens, keyword) for keyword in FOOD_INTENT_KEYWORDS)
+
+def is_parking_question(text: str) -> bool:
+    q = normalize(text)
+    q_tokens = tokenize(text)
+    keywords = (
+        "parking",
+        "park",
+        "ticket",
+        "permit",
+        "lot",
+        "parqueo",
+        "estacionamiento",
+        "otopark",
+        "停车",
+        "주차",
+        "پارکنگ",
+    )
+    return any(keyword_in_text(q, q_tokens, keyword) for keyword in keywords)
+
+def is_parking_location_question(text: str) -> bool:
+    q = normalize(text)
+    q_tokens = tokenize(text)
+    has_parking = any(
+        keyword_in_text(q, q_tokens, keyword)
+        for keyword in ("parking", "park", "lot", "parqueo", "estacionamiento", "otopark", "停车", "주차", "پارکنگ")
+    )
+    has_location_style = any(
+        keyword_in_text(q, q_tokens, keyword)
+        for keyword in ("where", "donde", "nerede", "where can i", "can i park", "map", "near")
+    )
+    asks_ticket_or_cost = any(
+        keyword_in_text(q, q_tokens, keyword)
+        for keyword in ("ticket", "fine", "citation", "cost", "price", "how much", "multa", "ceza")
+    )
+    return has_parking and (has_location_style or not asks_ticket_or_cost) and not asks_ticket_or_cost
+
+def is_parking_ticket_fee_question(text: str) -> bool:
+    q = normalize(text)
+    q_tokens = tokenize(text)
+    asks_ticket = any(
+        keyword_in_text(q, q_tokens, keyword)
+        for keyword in ("ticket", "fine", "citation", "multa", "ceza", "罚单", "벌금", "جرمانہ")
+    )
+    asks_cost = any(
+        keyword_in_text(q, q_tokens, keyword)
+        for keyword in ("cost", "price", "how much", "fee", "cuanto", "costo", "ne kadar", "多少", "کم")
+    )
+    has_parking = any(
+        keyword_in_text(q, q_tokens, keyword)
+        for keyword in ("parking", "park", "parqueo", "estacionamiento", "otopark", "停车", "주차", "پارکنگ")
+    )
+    return has_parking and (asks_ticket or asks_cost)
+
+def build_parking_ticket_fee_answer(lang: str) -> str:
+    fee_items = []
+    late_fee_line = None
+
+    for doc in fallback_rag_docs:
+        source = str(doc.get("source", "")).lower()
+        if "parking" not in source:
+            continue
+        for raw in doc.get("text", "").splitlines():
+            line = raw.strip()
+            if not line:
+                continue
+            if "$" in line and (" - $" in line or "fee" in line.lower() or "fine" in line.lower() or "late fee" in line.lower()):
+                if "late fee" in line.lower():
+                    late_fee_line = line
+                elif " - $" in line and len(fee_items) < 6:
+                    fee_items.append(line)
+
+    if not fee_items and not late_fee_line:
+        return trn("parking_ticket_fees_unavailable", lang)
+
+    lines = [trn("parking_ticket_fees_intro", lang)]
+    for item in fee_items[:5]:
+        lines.append(f"- {item}")
+    if late_fee_line:
+        lines.append(f"- {late_fee_line}")
+    else:
+        lines.append(trn("parking_ticket_fees_note", lang))
+    return "\n".join(lines)
+
+def parking_audience(text: str) -> str:
+    q = normalize(text)
+    q_tokens = tokenize(text)
+    if any(keyword_in_text(q, q_tokens, k) for k in ("student", "students", "estudiante", "ogrenci", "öğrenci", "学生", "طلبہ")):
+        return "student"
+    if any(keyword_in_text(q, q_tokens, k) for k in ("faculty", "staff", "docente", "personal", "akademik", "教职工", "fakulte", "فیکلٹی")):
+        return "faculty"
+    if any(keyword_in_text(q, q_tokens, k) for k in ("overnight", "night", "nocturno", "gece", "夜间", "رات")):
+        return "overnight"
+    return "general"
 
 def find_food_destination_id(text: str) -> Optional[str]:
     q = normalize(text)
@@ -1177,6 +1427,166 @@ def detect_faq_intent(text: str) -> Optional[str]:
 
     return best_topic if best_score > 0 else None
 
+def detect_degree_level(text: str) -> str:
+    q = normalize(text)
+    q_tokens = tokenize(text)
+    if any(keyword_in_text(q, q_tokens, k) for k in ("master", "masters", "graduate", "postgraduate", "mba", "ma", "ms")):
+        return "graduate/master"
+    if any(keyword_in_text(q, q_tokens, k) for k in ("undergraduate", "undergrad", "bachelor", "major", "ba", "bs")):
+        return "undergraduate"
+    return "degree"
+
+def localize_degree_level(level: str, lang: str) -> str:
+    mapping = {
+        "graduate/master": {
+            "en": "graduate/master",
+            "tr": "yüksek lisans/lisansüstü",
+            "es": "maestría/posgrado",
+            "zh": "硕士/研究生",
+            "ur": "ماسٹر/گریجویٹ",
+            "ko": "석사/대학원",
+        },
+        "undergraduate": {
+            "en": "undergraduate",
+            "tr": "lisans",
+            "es": "pregrado",
+            "zh": "本科",
+            "ur": "انڈرگریجویٹ",
+            "ko": "학부",
+        },
+        "degree": {
+            "en": "degree",
+            "tr": "derece",
+            "es": "grado",
+            "zh": "学位",
+            "ur": "ڈگری",
+            "ko": "학위",
+        },
+    }
+    return mapping.get(level, mapping["degree"]).get(lang, level)
+
+def is_degree_availability_question(text: str) -> bool:
+    q = normalize(text)
+    q_tokens = tokenize(text)
+    asks_existence = any(
+        keyword_in_text(q, q_tokens, k)
+        for k in ("is there", "does kean have", "do you have", "there is", "hay", "var mi", "有没有", "있나요", "کیا")
+    )
+    asks_degree = any(
+        keyword_in_text(q, q_tokens, k)
+        for k in ("major", "bachelor", "undergrad", "undergraduate", "master", "graduate", "degree", "program")
+    )
+    return asks_existence and asks_degree
+
+def is_program_follow_up_question(text: str) -> bool:
+    q = normalize(text)
+    q_tokens = tokenize(text)
+    return any(
+        keyword_in_text(q, q_tokens, k)
+        for k in (
+            "tell me more",
+            "more info",
+            "more information",
+            "which ones",
+            "what are they",
+            "give details",
+            "details",
+            "list them",
+            "dime mas",
+            "mas info",
+            "cuales",
+            "hangileri",
+            "daha fazla",
+            "再多一点",
+            "更多信息",
+            "مزید",
+        )
+    )
+
+def is_hours_question(text: str) -> bool:
+    q = normalize(text)
+    q_tokens = tokenize(text)
+    return any(
+        keyword_in_text(q, q_tokens, k)
+        for k in ("hours", "open hours", "opening hours", "what time", "schedule", "horario", "saat", "开放时间", "시간", "اوقات")
+    )
+
+def is_library_target(text: str) -> bool:
+    q = normalize(text)
+    q_tokens = tokenize(text)
+    return any(
+        keyword_in_text(q, q_tokens, k)
+        for k in ("library", "thompson", "nancy thompson library")
+    )
+
+def build_library_hours_answer(lang: str) -> str:
+    hours_file = RAG_DATA_FOLDER / "Hours of Operation.txt"
+    if not hours_file.exists():
+        return trn("library_hours_unavailable", lang)
+
+    try:
+        raw = hours_file.read_text(encoding="utf-8")
+    except Exception:
+        return trn("library_hours_unavailable", lang)
+
+    lines = [line.strip() for line in raw.splitlines()]
+    target_idx = -1
+    for idx, line in enumerate(lines):
+        if normalize(line) == "nancy thompson library":
+            target_idx = idx
+            break
+    if target_idx < 0:
+        return trn("library_hours_unavailable", lang)
+
+    schedule_lines = []
+    for line in lines[target_idx + 1 : target_idx + 12]:
+        if not line:
+            if schedule_lines:
+                break
+            continue
+        line_norm = normalize(line)
+        if any(day in line_norm for day in ("monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday")):
+            schedule_lines.append(line)
+
+    if not schedule_lines:
+        return trn("library_hours_unavailable", lang)
+
+    answer_lines = [trn("library_hours_intro", lang)]
+    for item in schedule_lines:
+        answer_lines.append(f"- {localize_date_text(item, lang)}")
+    return "\n".join(answer_lines)
+
+def degree_exists_in_records(subject_tokens: set[str], level: str) -> bool:
+    if not subject_tokens:
+        return False
+
+    for doc in fallback_rag_docs:
+        source = str(doc.get("source", "")).lower()
+        doc_type = str(doc.get("type", "")).lower()
+        if doc_type != "program" and "program" not in source and "degree" not in source and "computer science" not in source:
+            continue
+
+        text_norm = normalize(doc.get("text", ""))
+        tokens = tokenize(doc.get("text", ""))
+
+        if len(subject_tokens & tokens) == 0:
+            continue
+
+        if level == "graduate/master":
+            if any(term in text_norm for term in ("master of", "masters", "graduate", "mba", "m s", "m a")):
+                return True
+            continue
+
+        if level == "undergraduate":
+            if any(term in text_norm for term in ("bachelor", "undergraduate", "major", "b s", "b a")):
+                return True
+            continue
+
+        if any(term in text_norm for term in ("degree", "program", "major", "master", "bachelor", "graduate", "undergraduate")):
+            return True
+
+    return False
+
 def get_time_response(prompt: str):
     if "time" not in prompt.lower():
         return None
@@ -1275,20 +1685,41 @@ def retrieve_rag_context(question: str, max_results: int = RAG_MAX_RESULTS) -> l
         )
     return context_blocks
 
-def retrieve_fallback_context(question: str, max_results: int = RAG_FALLBACK_MAX_RESULTS) -> list[str]:
+def retrieve_fallback_context(
+    question: str,
+    max_results: int = RAG_FALLBACK_MAX_RESULTS,
+    faq_topic: Optional[str] = None,
+) -> list[str]:
     if not fallback_rag_docs:
         return []
 
-    query_tokens = tokenize(question)
+    query_tokens = meaningful_tokens(question)
+    if not query_tokens:
+        query_tokens = tokenize(question)
     if not query_tokens:
         return []
 
     scored = []
     for doc in fallback_rag_docs:
-        overlap = len(query_tokens & doc["tokens"])
+        doc_tokens = doc.get("key_tokens") or doc["tokens"]
+        overlap = len(query_tokens & doc_tokens)
         if overlap == 0:
             continue
         score = overlap / max(1, len(query_tokens))
+
+        if faq_topic == "programs":
+            source = str(doc.get("source", "")).lower()
+            doc_type = str(doc.get("type", "")).lower()
+            if doc_type == "program" or "program" in source:
+                score *= 2.0
+            else:
+                score *= 0.2
+
+        if faq_topic == "parking_transport":
+            source = str(doc.get("source", "")).lower()
+            if "parking" in source:
+                score *= 2.0
+
         scored.append((score, doc))
 
     scored.sort(key=lambda item: item[0], reverse=True)
@@ -1337,7 +1768,9 @@ def build_fallback_answer(question: str, context_blocks: list[str], lang: str) -
     if not context_blocks:
         return trn("fallback_no_context", lang)
 
-    question_tokens = tokenize(question)
+    question_tokens = meaningful_tokens(question)
+    if not question_tokens:
+        question_tokens = tokenize(question)
     best_line = None
     best_score = 0
 
@@ -1383,18 +1816,37 @@ def _truncate_snippet(text: str, max_chars: int = 180) -> str:
             return cut[: idx + 1].strip()
     return cut.rsplit(" ", 1)[0].strip() + " ..."
 
-def build_fast_path_answer(question: str, context_blocks: list[str], lang: str, max_lines: int = FAQ_FAST_PATH_MAX_LINES) -> Optional[str]:
+def build_fast_path_answer(
+    question: str,
+    context_blocks: list[str],
+    lang: str,
+    max_lines: int = FAQ_FAST_PATH_MAX_LINES,
+    faq_topic: Optional[str] = None,
+) -> Optional[str]:
     if not context_blocks:
         return None
 
-    query_tokens = tokenize(question)
+    query_tokens = meaningful_tokens(question)
+    if not query_tokens:
+        query_tokens = tokenize(question)
+    strict_tokens = {t for t in query_tokens if len(t) >= 6 and t not in {"degree", "program", "policy", "campus"}}
+    q_norm = normalize(question)
+    asks_master_programs = faq_topic == "programs" and any(
+        keyword_in_text(q_norm, tokenize(question), k)
+        for k in ("master", "graduate", "postgraduate", "ma", "ms", "mba")
+    )
+    asks_undergrad_programs = faq_topic == "programs" and any(
+        keyword_in_text(q_norm, tokenize(question), k)
+        for k in ("undergraduate", "bachelor", "bs", "ba")
+    )
+    program_subject_tokens = program_subject_tokens_from_query(question)
     candidates = []
 
     for block in context_blocks:
         lines = block.splitlines()
         source = "unknown"
         if lines:
-            match = re.search(r"source=([^\s]+)", lines[0])
+            match = re.search(r"source=(.+?)\s+type=", lines[0])
             if match:
                 source = match.group(1)
         for raw_line in lines[1:]:
@@ -1407,8 +1859,25 @@ def build_fast_path_answer(question: str, context_blocks: list[str], lang: str, 
                 continue
             line_tokens = tokenize(line)
             overlap = len(query_tokens & line_tokens)
+            strict_overlap = len(strict_tokens & line_tokens) if strict_tokens else 0
             if overlap == 0:
                 continue
+            if overlap < 2 and strict_overlap == 0 and not (faq_topic == "programs" and asks_master_programs and not program_subject_tokens):
+                continue
+            if faq_topic == "programs":
+                line_norm = normalize(line)
+                if asks_master_programs and not any(
+                    token in line_norm
+                    for token in ("master of", "masters", "mba", "m s", "m a", "graduate")
+                ):
+                    continue
+                if asks_undergrad_programs and not any(
+                    token in line_norm
+                    for token in ("bachelor", "undergraduate", "b s", "b a")
+                ):
+                    continue
+                if program_subject_tokens and len(program_subject_tokens & line_tokens) == 0:
+                    continue
             candidates.append((overlap, len(line), line, source))
 
     if not candidates:
@@ -1418,7 +1887,7 @@ def build_fast_path_answer(question: str, context_blocks: list[str], lang: str, 
             lines = block.splitlines()
             source = "unknown"
             if lines:
-                match = re.search(r"source=([^\s]+)", lines[0])
+                match = re.search(r"source=(.+?)\s+type=", lines[0])
                 if match:
                     source = match.group(1)
             for raw_line in lines[1:]:
@@ -1427,6 +1896,24 @@ def build_fast_path_answer(question: str, context_blocks: list[str], lang: str, 
                     continue
                 if line.lower().startswith("source="):
                     continue
+                line_tokens = tokenize(line)
+                strict_overlap = len(strict_tokens & line_tokens) if strict_tokens else 0
+                if strict_tokens and strict_overlap == 0 and not (faq_topic == "programs" and asks_master_programs and not program_subject_tokens):
+                    continue
+                if faq_topic == "programs":
+                    line_norm = normalize(line)
+                    if asks_master_programs and not any(
+                        token in line_norm
+                        for token in ("master of", "masters", "mba", "m s", "m a", "graduate")
+                    ):
+                        continue
+                    if asks_undergrad_programs and not any(
+                        token in line_norm
+                        for token in ("bachelor", "undergraduate", "b s", "b a")
+                    ):
+                        continue
+                    if program_subject_tokens and len(program_subject_tokens & line_tokens) == 0:
+                        continue
                 candidates.append((0, len(line), line, source))
 
     if not candidates:
@@ -1482,6 +1969,42 @@ async def chat(req: ChatRequest):
     destination_id = find_location_destination_id(user_text)
     has_location_intent = is_location_question(user_text)
 
+    if is_hours_question(user_text) and is_library_target(user_text):
+        return {
+            "answer": build_library_hours_answer(lang),
+            "intent": "faq",
+            "faq_topic": "hours",
+            "response_mode": "hours_library",
+        }
+
+    if is_program_follow_up_question(user_text):
+        last_subject = conversation_state.get("last_degree_subject")
+        last_level = conversation_state.get("last_degree_level")
+        if last_subject:
+            follow_up_query = f"{last_subject} {last_level or ''} degree program details".strip()
+            context_blocks = retrieve_fallback_context(follow_up_query, faq_topic="programs")
+            follow_up_answer = build_fast_path_answer(
+                follow_up_query,
+                context_blocks,
+                lang,
+                max_lines=3,
+                faq_topic="programs",
+            )
+            if follow_up_answer:
+                return {
+                    "answer": follow_up_answer,
+                    "intent": "faq",
+                    "faq_topic": "programs",
+                    "sources_used": len(context_blocks),
+                    "response_mode": "program_follow_up",
+                }
+        return {
+            "answer": trn("program_follow_up_prompt", lang),
+            "intent": "faq",
+            "faq_topic": "programs",
+            "response_mode": "program_follow_up_prompt",
+        }
+
     if is_food_question(user_text):
         food_suggestions = find_food_suggestions(user_text, max_results=3)
         if food_suggestions:
@@ -1529,6 +2052,29 @@ async def chat(req: ChatRequest):
             "location_mode": "highlight",
         }
 
+    if is_parking_ticket_fee_question(user_text):
+        return {
+            "answer": build_parking_ticket_fee_answer(lang),
+            "intent": "faq",
+            "faq_topic": "parking_transport",
+            "response_mode": "policy_fee_summary",
+        }
+
+    if is_parking_location_question(user_text):
+        audience = parking_audience(user_text)
+        key = {
+            "student": "parking_guidance_student",
+            "faculty": "parking_guidance_faculty",
+            "overnight": "parking_guidance_overnight",
+        }.get(audience, "parking_guidance_general")
+        return {
+            "answer": trn(key, lang),
+            "intent": "location",
+            "destination_id": None,
+            "use_current_location": False,
+            "location_mode": "highlight",
+        }
+
     if has_location_intent or (destination_id and should_route_destination_without_location_keyword(user_text)):
         use_current_location = should_use_current_location(user_text)
         location_mode = "directions" if use_current_location else "highlight"
@@ -1569,13 +2115,29 @@ async def chat(req: ChatRequest):
                         "intent": "calendar",
                     }
 
+    if is_degree_availability_question(user_text):
+        subject_phrase = extract_degree_subject_phrase(user_text)
+        subject_tokens = program_subject_tokens_from_query(subject_phrase or user_text)
+        level = detect_degree_level(user_text)
+        localized_level = localize_degree_level(level, lang)
+        subject_label = (subject_phrase or "that subject").strip()
+        exists = degree_exists_in_records(subject_tokens, level)
+        conversation_state["last_degree_subject"] = subject_label
+        conversation_state["last_degree_level"] = level
+        return {
+            "answer": trn("degree_exists_yes" if exists else "degree_exists_no", lang, subject=subject_label, level=localized_level),
+            "intent": "faq",
+            "faq_topic": "programs",
+            "response_mode": "degree_availability",
+        }
+
     context_blocks = retrieve_rag_context(user_text)
     if not context_blocks:
         fallback_query = f"{user_text} {faq_topic.replace('_', ' ') if faq_topic else ''}".strip()
-        context_blocks = retrieve_fallback_context(fallback_query)
+        context_blocks = retrieve_fallback_context(fallback_query, faq_topic=faq_topic)
 
     if FAQ_FAST_PATH_ENABLED and faq_topic and context_blocks:
-        fast_answer = build_fast_path_answer(user_text, context_blocks, lang)
+        fast_answer = build_fast_path_answer(user_text, context_blocks, lang, faq_topic=faq_topic)
         if fast_answer:
             return {
                 "answer": fast_answer,
@@ -1584,13 +2146,20 @@ async def chat(req: ChatRequest):
                 "sources_used": len(context_blocks),
                 "response_mode": "fast_path",
             }
+        return {
+            "answer": trn("faq_no_exact_match", lang),
+            "intent": "faq",
+            "faq_topic": faq_topic,
+            "sources_used": len(context_blocks),
+            "response_mode": "fast_path_no_match",
+        }
 
     prompt = build_rag_prompt(user_text, context_blocks, faq_topic)
 
     try:
         reply = await query_ollama(prompt, lang)
     except (httpx.HTTPError, asyncio.TimeoutError):
-        fast_answer = build_fast_path_answer(user_text, context_blocks, lang, max_lines=2)
+        fast_answer = build_fast_path_answer(user_text, context_blocks, lang, max_lines=2, faq_topic=faq_topic)
         if fast_answer:
             return {
                 "answer": fast_answer,
@@ -1602,7 +2171,7 @@ async def chat(req: ChatRequest):
         fallback_answer = build_fallback_answer(user_text, context_blocks, lang)
         return {"answer": fallback_answer, "intent": "faq" if faq_topic else "general", "faq_topic": faq_topic, "sources_used": len(context_blocks)}
     except Exception:
-        fast_answer = build_fast_path_answer(user_text, context_blocks, lang, max_lines=2)
+        fast_answer = build_fast_path_answer(user_text, context_blocks, lang, max_lines=2, faq_topic=faq_topic)
         if fast_answer:
             return {
                 "answer": fast_answer,

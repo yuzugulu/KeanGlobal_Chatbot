@@ -1,0 +1,756 @@
+KEAN UNIVERSITY PARKING KNOWLEDGE BASE FOR CHATBOT
+Generated from:
+1. Uploaded PDF: kean-university-parking-procedures.pdf
+2. Official Kean University page: Parking Frequently Asked Questions
+3. Official Kean University page: Violations and Appeals
+
+======================================================================
+SECTION 1 - SOURCE METADATA
+======================================================================
+
+SOURCE 1
+Type: PDF
+Title: KEAN UNIVERSITY PARKING RULES & REGULATIONS
+Local filename: kean-university-parking-procedures.pdf
+
+SOURCE 2
+Type: Web page
+Title: Parking Frequently Asked Questions
+URL: https://www.kean.edu/offices/university-police/parking-frequently-asked-questions
+
+SOURCE 3
+Type: Web page
+Title: Violations and Appeals
+URL: https://www.kean.edu/offices/university-police/violations-and-appeals
+
+======================================================================
+SECTION 2 - CLEAN WEB CONTENT: PARKING FREQUENTLY ASKED QUESTIONS
+======================================================================
+
+Parking Frequently Asked Questions
+
+How can I purchase an ePermit?
+Parking is free on Kean University campuses. All vehicles must register for an ePermit at www.kean.edu/parking. Create and log in to your parking portal.
+
+Will I receive a physical permit pass?
+Kean University uses license plate recognition (LPR). You will not receive a hang tag or sticker.
+
+Where can I park?
+Students may only park in lots with spaces designated for students (white lined spaces). Faculty/staff may only park in lots with spaces designated for faculty/staff (yellow lined spaces).
+
+Can I add multiple vehicles to my parking permit?
+Yes, you can add multiple vehicles to your permit. However, only one vehicle can be on campus at a time. If more than one vehicle is parking on campus this will result in multiple citations.
+
+I just purchased a new vehicle with temporary tag. Do I need to register it?
+Yes, all vehicles need to be registered, even with temporary tags, that will be parking on campus. Use the temporary tag numbers to register your car - not your Vehicle Identification Number (VIN).
+- Once the permanent plates are received, revisit the portal and add new plates. Make sure your license plate is entered correctly.
+
+I have a state handicap accessibility. What if there are no handicap accessible parking spaces available?
+If all handicap spaces are filled, you must park in a regular space (white for students, yellow for faculty/staff).
+
+I received a virtual ticket and I do not believe I deserved it. How can I dispute it?
+You may log on to your parking portal and appeal the virtual ticket. Follow instructions under "appeal". Please allow time for a response. You will be notified of the decision via email.
+
+How can I pay my parking virtual ticket?
+You may pay your virtual ticket online through the parking website www.kean.edu/parking by credit or debit. You can also log on to your parking portal and pay the virtual ticket.
+
+I have a rented vehicle, what do I do about parking?
+You must go to the portal and register the license plate of the rental vehicle.
+Click the "+Add" button in the vehicles section.
+Once in the "+Add Vehicle" screen, click Rental Vehicle and enter a rental end date.
+Click Save when you are done. The rental vehicle will automatically be dropped from your permit on the rental end date.
+Alternatively, you can leave the rental end date blank, but, in that case you must remember to manually remove the rental vehicle from your permit.
+
+I am a vendor and will be working on campus for a day. Do I need to register my vehicle?
+Yes. All vehicles brought to campus must be registered. You must register for a day pass at www.kean.edu/parking. Failure to register may result in ticketing or towing at the owner's expense.
+
+Do I need to register for an ePermit if I only plan to park on campus at night and on the weekends?
+Yes. All vehicles parking on university property must register for an ePermit.
+
+I am a student bringing my vehicle on campus for a day or a few days. Can I register for a daily parking permit?
+Students or visitors can register for a daily pass at www.kean.edu/parking. Click Visitor Day Pass.
+
+Where can I park? (additional summary on page)
+Students may only park in white lined spaces.
+Faculty/Staff may only park in yellow lined spaces.
+Overnight parking is permitted only in the area between North Avenue and the ORANGE curb/barrier in the Vaugh-Eames parking lot which is marked for 24-hour parking. Overnight parking hours are between 3:00 am - 6:00 am.
+
+======================================================================
+SECTION 3 - CLEAN WEB CONTENT: VIOLATIONS AND APPEALS
+======================================================================
+
+Violations and Appeals
+
+PARKING VIOLATION NOTICES AND SUMMONSES
+Violation notices of the University parking regulations will be issued by the Kean University Police. University and/or municipal police officers may additionally issue municipal summonses for violations of the state Motor Vehicle Code both on campus and on the surrounding local streets.
+
+All violations of the University parking regulations are subject to a fine/fee (see the Violation Schedule below) and must be paid or appealed within fifteen (15) days of the issue date in order to avoid late fees. Late fees are an additional $50 per violation notice.
+
+Violation notices are uploaded into our database within 24 hours after being issued, and a notification will be made to the University email address on file for the vehicle if it is properly registered or in the database when the upload is completed. A follow-up notification will be sent by email after fifteen (15) days pass without the violation notice being appealed or paid.
+
+PAYMENT OF VIOLATIONS
+Kean University Parking violation notices can be paid and/or appealed online at the links below and/or to the right. Payments may also be made in person at the Office of Student Accounting, located on the third floor of the Administration Building (please bring your violation notice and/or the email notice with you to ensure proper handling). Payments in person will not be accepted at Police Headquarters.
+
+Violation notices that are not appealed or paid in full within fifteen (15) days are subject to an additional $50 late fee and will also result in a hold being placed on your University accounts.
+
+Municipal summonses must be addressed in the responsible court, or paid online at NJMCdirect. A municipal summons cannot be appealed to the University Police or paid for at Student Accounting. Failure to address a municipal summons properly could result in a license suspension and/or issuance of a bench warrant by the responsible municipal court.
+
+Pay violations online: citations.kean.edu
+Issues with payments, account holds and/or requests for payment plans must be addressed with the Office of Student Accounting in person or by email at stuactg@kean.edu.
+
+NOTE: Persistent violators are subject to having their parking permit/privileges revoked by the Kean University Department of Public Safety/Police. Persistent violators are also subject to municipal summonses and/or their vehicle being towed/impounded.
+
+APPEALS
+If a violation was issued in error, or in cases of first-time offenders, appeals may be made to the Department of Public Safety/Police within fifteen (15) days of the issue date. All appeals must be applied for through the online system and a reason for the appeal must be stated. Appeals are not handled in person, and all appeal decisions are final. All correspondence will be by email after the initial appeal is filed through the online system.
+
+Appeals will not be processed after fifteen (15) days from the issue date of the violation notice.
+
+NOTE: Appeals are addressed on the merits and are independently judged only on whether or not the offense listed on the violation notice was committed. Other circumstances are not taken into consideration when appeals are considered.
+
+Appeal a violation online: citations.kean.edu
+For all other questions regarding violations and appeals, please email: parkingappeals@kean.edu.
+
+VIOLATION SCHEDULE - PARKING TICKET FEE/COST
+Tampering with parking equipment - $500.00
+Failure to register vehicle for decal - $50.00
+Parking in a faculty/staff space - $50.00
+Parking in a reserved space - $50.00
+Parking in an unauthorized area - $50.00
+Overnight parking violation - $50.00
+Parking outside marked stall lines - $50.00
+Parking in visitor parking - $50.00
+Parking on grass/sidewalk - $50.00
+Expired permit displayed - $50.00
+Failure to remove vehicle for special event, snow removal or other request by the University - $50.00
+Booting fee (in addition to any fees or fine already owed) - $100.00
+
+======================================================================
+SECTION 4 - EXTRACTED PDF CONTENT: KEAN UNIVERSITY PARKING RULES & REGULATIONS
+======================================================================
+
+KEAN
+UNIVERSITY
+
+PARKING
+RULES & REGULATIONS
+
+TABLE OF CONTENTS
+General Rules and Regulations
+Registration
+Vehicle Registration
+Guidelines
+Responsibility for University Parking Violations
+Uncovering Vehicles
+State Registration Laws
+Designated Parking Locations
+Electric Vehicle Parking
+Visitors
+Vehicles with Unpaid Tickets
+Restricted Parking
+Signs & Markings
+Disabled Vehicles
+Storage of Vehicles or Trailers
+Park & Ride
+Temporary Closure of Parking Areas & Roadways
+Snow Removal Operations
+Handicap Parking
+Rented or Loaner Vehicles
+Fire Zones
+Loading Zones
+Speed Limits
+Proper Parking
+Note of Explanation
+Resident Student Parking
+Overnight Parking
+Parking Alert
+Contractor/Vendor
+
+Enforcement
+Enforcement for Vehicles with ePermits
+Enforcement for Unregistered Vehicles
+Citations
+Late Fees
+Appeals
+Towing of Vehicle
+Reporting of Accidents/Thefts
+
+Additional Services
+Multi-vehicle
+Kean Trolley Service
+NJ Transit
+
+Lots
+
+Main Campus
+Vaughn-Eames
+Morris Avenue
+Admissions
+Visitor’s
+Kean Hall
+Harwood
+D’Angola
+GLAB
+Cougar Hall
+Downs Hall/Public Safety
+Liberty Hall Campus
+STEM
+LHAC (Academic Center)
+Visitor’s
+Faculty Parking
+Overflow
+Hynes Hall
+East Campus
+East Campus
+Upper Lot
+Lower Lot
+Definitions of Lot Descriptions
+
+GENERAL RULES AND REGULATIONS
+All Kean University students, faculty, staff, contractors, vendors and visitors are required to
+obtain a FREE parking ePermit.
+ALL employees, faculty, and students MUST register their vehicles in ePermit. With ePermits,
+you register your vehicle(s), and your license plate is your permit. There are no parking decals
+or hang tags. Parking enforcement is done through License Plate Recognition (LPR) technology.
+You MUST register all vehicles you bring to campus, including rentals, however only ONE
+vehicle under your ePermit may be on campus at any given time. NOTE: If you share a vehicle
+with another member of the Kean community, please be sure that you both register the same
+vehicle under your respective account.
+All University employees, faculty, and students shall participate in efforts to reduce traffic
+congestion on the Main Campus by following the University’s parking guidelines. Parking rules
+and regulations are in effect 24 hours a day, seven days a week, 365 days a year. Violators are
+subject to ticketing and/or towing at the vehicle’s owner’s expense. The operation of a motor
+vehicle on Kean University campus is a privilege. All faculty, staff, students, and visitors who
+have vehicles in their possession or control, for use, operation, or parking on the university
+campus must register their vehicles in ePermit.
+Registration
+A valid Kean parking permit is required at all times for all vehicles parked Kean University
+campuses. Faculty, staff, and students must register every vehicle they intent to bring on
+campus.
+Students, faculty, and staff shall NOT create visitor accounts. Visitor parking accounts are
+intended solely for individuals not affiliated with Kean University.
+Vehicle Registration
+The license plate of the vehicle followed by make, model, and year, is required for registration
+and must be kept up-to-date by operator of the vehicle.
+Faculty and staff, whose dependents are students, may allow those dependents to register a
+commonly operated motor vehicle for a student parking permit in addition to the employee’s
+parking permission. If the faculty or staff member has two motor vehicles registered, and if
+both motor vehicles are on campus at the same time, the motor vehicle with the student
+permission must be parked in the designated student parking area and not in either the faculty
+or staff members reserved space or Faculty/Staff lots. Registering a vehicle for another person’s
+use through false information constitutes fraud. One student cannot register another student’s
+vehicle. In addition, one faculty/staff cannot register another student’s or faculty/staff vehicle.
+The owner of the parking permit is responsible for updating their vehicle information if they get
+a different vehicle, different license plate number or temporarily drive a different vehicle to
+
+campus. YOUR LICENSE PLATE MUST BE CORRECT. JUST ONE INCORRECT NUMBER OR LETTER
+WILL RESULT IN CITATIONS AND/OR TOWING.
+Guidelines
+•
+•
+•
+
+All vehicles MUST have a registered ePermit
+Yellow lines spaces are reserved for Faculty/Staff parking ONLY
+Students may ONLY park in white lined spaces
+
+Responsibility for University Parking Violations
+The person who has registered the vehicle with Kean University (ePermits) regardless of the
+driver or owner of the vehicle, assumes responsibility for all outstanding university parking
+violations issued to a vehicle.
+When the vehicle is not registered with Kean University (ePermits), the registered owner of the
+vehicle as reported from the state motor vehicle agency will become responsible for the
+vehicle.
+Uncovering Vehicles
+Security officers have the right to uncover vehicles (i.e., motorcycle covers) to determine
+whether they are registered with DMV and have a valid parking permit.
+State Registration Laws
+While parked on university property, all persons must abide by state registration and insurance
+laws. Permissions are issued for registered vehicles only. Kean University Police Department
+(KUPD) will tow vehicles without valid registration or insurance.
+Designated Parking Locations
+Parking on university property is permitted only in parking lots, and in designated areas.
+Vehicles must be parked correctly within a marked space. Marked spaces are provided in all
+lots. A vehicle parked on or over a painted marker line or curb is considered in violation.
+Absence of a marked space indicates NO PARKING.
+Electric Vehicle Parking
+Only electric vehicles actively charging are permitted to occupy these spaces. Any other
+vehicles are subject to ticketing and towing at the owner’s expense
+Visitors
+Visitors to campus must register for a visitor’s day pass or, if staying on campus overnight, a
+visitor’s 3-day pass. Visitors shall park in designated spaces in the Visitor’s Lot (Conant St) or in
+any white-lined space on campus.
+
+Vehicles With Unpaid Tickets
+All vehicles with unpaid tickets may be towed without notice at the owner’s expense. Once
+towed the right to appeal is forfeited. Campus parking privileges may also be suspended.
+Unpaid tickets will result in denial of the privilege to register a vehicle to park on campus.
+Additionally, for students, outstanding citations will be assessed through their university
+account; pursuant to university policy, outstanding balances may hold academic registration,
+transcripts, and/or diplomas. For faculty and employees outstanding citations will be assessed
+through payroll deduction.
+Restricted Parking
+Overnight parking (3:00 am – 6:00 am) is ONLY allowed in the Vaughn-Eames Lot beyond the
+orange curb.
+Signs and Markings
+Signs and markings are provided in the interest of parking control and life safety and must be
+obeyed. Removal or damage of such signs or markings is illegal. Perpetrators are subject to
+arrest and prosecution. In absence of a sign at the entrance to a lot, refer to the Parking Map
+located on the Kean website to determine parking regulations for that lot. Any area not
+specifically designated for parking is considered a no parking zone and vehicles will be cited
+appropriately.
+Disabled Vehicles
+Disabled vehicles must be immediately reported to Kean University Police Department (KUPD).
+Disabled vehicles should not obstruct traffic flow or endanger safety. The vehicle must be
+removed as soon as possible. Authorization may be obtained from KUPD to leave the vehicle
+for longer periods, but no longer than 24 hours. Disabled vehicles not reported will be towed.
+Storage of Vehicles or Trailers
+Trailers (storage containers) and vehicles or vehicles involved in motor vehicle accidents
+causing the vehicle to be inoperable shall not be stored on university property. All will be
+removed at the vehicle owner’s expense.
+Park and Ride
+University property shall not be used for commuting by public transportation for non-university
+business (Park and Ride). Violators will be ticketed and / or towed from university property.
+Temporary Closure of Parking Areas and Roadways
+The temporary closure of a parking area is a right the university reserves for any reason.
+Persons found parked in areas that have been closed by barricades, signs, or notifications are
+subject to towing at the owner’s expense.
+
+Snow Removal Operations
+Snow removal operations are announced via campus media, emails, website, and social media
+during snow accumulation conditions. Instructions regarding time and alternate locations to
+which vehicles are to be moved should be followed. Vehicle operators refusing to move their
+vehicles may be ticketed and towed at the owner’s expense. Digging out of vehicles is the
+responsibility of the vehicle’s owner.
+Handicap Parking
+Individuals may apply for disability parking placards through the New Jersey Motor Vehicle
+Commission. Individuals will need to supply sufficient documentation of a disability as part of
+the application process. The required forms can be obtained through New Jersey Motor
+Vehicle Commission website. If you already have a disability parking placard, you will be
+required to upload a copy of it when registering your ePermit.
+Parking in Handicap spaces requires registration with state motor vehicle agency and the
+display of proper identification at all times.
+Vehicles illegally parked in handicapped spaces will be subject to ticketing and towing at the
+owner’s expense.
+Rented/Loner Vehicles
+Parking permit holders that need to bring rented or borrowed vehicles on campus for one day,
+MUST add the vehicle online to their account. Unreported vehicles are subject to ticketing. If
+you have a current parking permit you can add your temporary rental or loaner vehicle to your
+account; when you are done with the temporary vehicle you can deactivate it from your
+account.
+Fire Zones
+Parking in fire zones is strictly prohibited. Vehicles left unattended, regardless of the amount of
+time, will be ticketed and/or towed at the owner’s expense and may be subject to municipal
+police or fire department summons.
+Loading Zones
+Parking in loading zones is prohibited.
+Speed Limits
+The posted speed limit on all campus roadways is 10 miles per hour unless otherwise posted.
+
+Proper Parking
+Your license plate must be visible at all times. Your license plate is your permit to park on
+campus. Vehicles without a front plate are prohibited from backing in or pulling through
+spaces. Your license plate must face the road or lane.
+Notes of Explanation
+Notes of explanation left on vehicles to excuse illegal parking are not honored.
+Resident Student Parking
+Freshman students may not park vehicles on campus overnight. Letters of consideration may
+be forwarded to the Office of Residential Student Services located in Upper Classman Hall (first
+floor) with supporting documentation from medical personnel or employers.
+All vehicles must be registered with the Department of Public Safety - Parking Enforcement.
+Registration must be processed through KeanWise and financial obligations met before parking
+permits (for automobiles or motorcycles) can be issued. The information must be first
+completed online at www.kean.edu/parking.
+Students may park in the white-lined spaces only. Students are encouraged to utilize the
+Shuttle service. Unauthorized vehicles will receive tickets accordingly
+Overnight Parking
+Overnight parking is permitted ONLY in the area between North Avenue and the ORANGE
+curb/barrier in the Vaugh-Eames parking lot which is marked for 24- hour parking. Overnight
+parking hours are between 3:00 am – 6:00 am.
+Parking Alert
+From time-to-time Parking Alerts, which are electronic notifications transmitting important
+parking updates, lot and road closures, etc. to the community are issued. It is the responsibility
+of the university community to read and comply with alerts.
+Contractor/Vendors
+Contractors performing work for the university must register each vehicle that will be visiting
+campus. Failure to register may result in ticketing or towing at owner’s expense.
+
+ENFORCEMENT
+Parking regulations are enforced 24 hours, seven days a week.
+VIOLATION
+Tampering with parking equipment
+Failure to register vehicle with ePermit
+Parking in a faculty/staff space
+Parking in a reserved space
+Parking in an unauthorized area
+Overnight parking violation
+Parking outside marked stall lines
+Parking in visitor parking
+Parking on grass/sidewalk
+Expired ePermit
+Failure to remove vehicle for special event, snow removal, or
+other request by the University
+Booting fee (in addition to any fee or fine already owed)
+
+FINE/FEE
+$500
+$50
+$50
+$50
+$50
+$50
+$50
+$50
+$50
+$50
+$50
+$100
+
+Enforcement for Vehicles with ePermits
+One eWarning may be issued before an eCitation
+All eWarnings and eCitations are emailed to the email address on file within 1 hour of issuance.
+(every hour on the hour)
+Escalation to Compliance, (student/faculty):
+1. 1 Warning – Campus Police Warning Ticket
+2. 1 Citation – Kean Parking Citation
+3. Municipal Ticket
+Enforcement for Unregistered Vehicles – No Kean Parking Permission
+A paper warning notice titled “Campus Police Warning Ticket” will be placed under the
+windshield wipers of unidentified vehicles whose information does not exist in the ePermit
+system. Only one warning will be afforded before a Kean Parking Citation or municipal
+summons will be issued.
+Escalation to Compliance, (no Kean affiliation)
+1. 1 Warning – Campus Police Warning Ticket
+2. Municipal Ticket
+
+Citations
+Citations are issued by Kean University Police to any vehicle not adhering to the University’s
+Parking Rules and Regulations. All citations must be paid within fifteen (15) days of the issue
+date in order to avoid late fees. Kean University Police and/or local municipal police officers
+may additionally issue municipal summonses for violations of the state Motor Vehicle Code
+both on campus and on surrounding streets.
+Kean Parking Citations can be paid online by visiting your Campus Parking Account (NuPark).
+https://kean.nupark.com/v2/portal/citations#/citation/citationSearch.
+Municipal summonses must be addressed in the responsible court, or paid online at
+NJMCDIRECT. A municipal summons cannot be appealed to the University Police or paid
+through Kean University. Failure to address a municipal summons properly could result in a
+license suspension, revocation of parking privileges and/or issuance of a bench warrant by the
+responsible municipal court.
+NOTE: Persistent violators are subject to having their parking privileges revoked by the Kean
+University Department of Public Safety/Police. Persistent violators are also subject to municipal
+summonses and/or having their vehicle being towed/impounded.
+Late Fees
+Citations which are not appealed or paid in full with in fifteen (15) days are subject to an
+additional $50 late fee and will result in restriction being placed on your University accounts.
+Appeals
+If you wish to appeal your Kean Parking citation you must do so within fifteen (15) days of issue
+date. Only Kean Parking Citations are able to be appealed. All appeals must be filed through
+you Campus Parking account (NuPark), and the reason for the appeal must be stated. Appeals
+are not handled in person and all appeal decisions are final. All decisions will be sent by email
+after the initial appeal is filed through the online system. Appeals will not be processed after
+fifteen (15) days from the issue date of the violation notice. After fifteen (15) days, the right to
+appeal is lost and the violator is responsible for all fines associated with the ticket. Towing
+costs may not be appealed. The appeal process allows the individual to demonstrate the
+citation is invalid.
+NOTE: Appeals are addressed on the merits and are independently judged only on whether or
+not the offense listed on the violation notice was committed. Other circumstances are not
+taken into consideration when appeals are considered.
+All appeals must be submitted online through Campus Parking Account (NuPark) at
+https://kean.nupark.com/v2/portal/citations#/appeal/profile. A separate appeal is required for
+each ticket. A factual statement supporting why the citation should be voided is required. The
+individual appealing the citation is responsible for providing supporting documentation. An
+
+appeal may be resubmitted, but will only be considered if new evidence is provided which may
+serve to alter or reverse the original decision.
+Suggested practices:
+•
+•
+•
+
+Be polite
+Be honest
+Be concise
+
+Appeals will not be considered for the following reasons:
+•
+•
+•
+•
+•
+•
+
+Parking illegally for a short period of time
+Ignorance to the regulations
+Inconvenience of assigned parking area
+Unread or misunderstood signs
+Inability to find another space
+Financial hardship
+
+Towing of Vehicles
+Vehicles are subject to towing at the vehicle’s owners’ expense for any violation of university
+parking or registration rules. Towable offenses include, but are not limited to:
+•
+•
+•
+•
+•
+•
+
+Parking in marked fire zones
+Parking in handicap spaces
+Outstanding balance of $500 or more due for unpaid tickets
+Refusal to remove vehicle during snow removal operations
+Refusal to remove vehicle from a closed lot during a scheduled event
+Repeat offenders
+
+Private companies contracting with the university provide towing. Cost of towing and storage is
+paid directly to the tow company. By law, after the tow mechanism is attached, the tow
+company is responsible for the vehicle even if it has not yet been removed from university
+property. Tow companies are expected to treat everyone professionally and courteously. Any
+damages during tow must be handled directly to the tow company.
+Reporting of Accident/Thefts
+If you are involved in a motor vehicle accident, break in, or theft on Kean University campus,
+you should report the incident to the Department of Public Safety/Police as soon as possible.
+
+ADDITIONAL SERVICES
+Multi-vehicle
+A student who drives more than one (1) vehicle during the semester MUST register all vehicles
+brought to campus, including rentals, however only ONE vehicle under your ePermit may be on
+campus at any given time. NOTE: If you share a vehicle with another member of the Kean
+community, please be sure that you both register the same vehicle under your respective
+account.
+Kean Trolley Service
+Shuttle buses and trolleys are handicap accessible and operate during the following time
+periods at designated stops: (note two routes available, Main Campus and East Campus)
+Monday through Friday from 7 am to 11 pm.
+Saturdays from 7:45 am – 3:45 pm
+Main Campus Route
+•
+•
+•
+•
+
+Kean Lot
+Hennings Hall
+Wilkins Theatre
+NAAB
+
+East Campus Route
+•
+•
+•
+•
+•
+•
+
+Hennings Hall
+Wilkins Theatre
+STEM/Liberty Hall
+East Campus (Upper and lower stops)
+Hynes Hall
+Faculty Housing
+
+NJ Transit
+Employees and faculty are encouraged to make us of NJ Transits Raritan Valley Line. Full-time
+students get a 25% discount on NJ Transit monthly bus, train, or light rail passes. For further
+information regarding NJ Transit, go to www.kean.edu/njtransit.
+
+LOTS
+Main Campus
+Vaughn-Eames
+•
+•
+•
+
+Hours: 06:00 am- 03:00 am
+o Overnight parking (03:00 am -06:00 am) Between orange curb and North Ave.
+Parking Available: Student, Handicapped
+Permit Types: Student
+
+Morris Avenue
+•
+•
+•
+
+Hours: 06:00 am- 03:00 am
+Parking Available: Student, Faculty, Handicapped, Charging
+Permit Types: Student, Faculty
+
+Admissions
+•
+•
+•
+
+Hours: 06:00 am- 03:00 am
+Parking Available: Student, Faculty, Handicapped
+Permit Types: Visitors, Student, Faculty
+
+Visitor’s
+•
+•
+•
+
+Hours: 06:00 am- 03:00 am
+Parking Available: General, Handicapped
+Permit Types: Visitors
+
+Kean Hall
+•
+•
+•
+
+Hours: 06:00 am- 03:00 am
+Parking Available: Student Handicapped
+Permit Types: Student
+
+Harwood
+•
+•
+•
+
+Hours: 06:00 am- 03:00 am
+Parking Available: Student Handicapped
+Permit Types: Student
+
+D’Angola
+•
+•
+•
+
+Hours: 06:00 am- 03:00 am
+Parking Available: Faculty, Handicapped
+Permit Types: Faculty
+
+GLAB
+•
+•
+•
+
+Hours: 06:00 am- 03:00 am
+Parking Available: Student, Handicapped
+Permit Types: Student
+
+Cougar Hall
+•
+•
+•
+
+Hours: 06:00 am- 03:00 am
+Parking Available: Faculty. Student, Handicapped
+Permit Types: Faculty, Student
+
+Downs Hall / Public Safety
+•
+•
+•
+
+Hours: 24 hours
+Parking Available: Police
+Permit Types: Police
+
+Service Road
+•
+•
+•
+
+Hours: 24 hours
+Parking Available: University Employees
+Permit Types: University Employees ONLY
+
+Liberty Hall Campus
+STEM
+•
+•
+•
+
+Hours: 06:00 am- 03:00 am
+Parking Available: Student, Handicapped
+Permit Types: Student
+
+LHAC (Academic Center)
+•
+•
+•
+
+Hours: 06:00 am- 03:00 am
+Parking Available: Student, Handicapped
+Permit Types: Student
+
+Liberty Hall Visitor’s
+•
+•
+•
+
+Hours: 06:00 am- 03:00 am
+Parking Available: General
+Permit Types: Visitors
+
+Faculty
+•
+•
+
+Hours: 24 hours
+Parking Available: Faculty, Handicapped
+
+•
+
+Permit Types: Faculty
+
+Overflow
+•
+•
+•
+
+Hours: 06:00 am- 03:00 am
+Parking Available: General
+Permit Types: Visitors
+
+Hynes Hall
+•
+•
+•
+
+Hours: 06:00 am- 03:00 am
+Parking Available: Student, Handicapped
+Permit Types: Student
+
+East Campus
+East Campus
+•
+•
+•
+
+Hours: 06:00 am- 03:00 am
+Parking Available: Student, Handicapped
+Permit Types: Student
+
+Upper Lot
+•
+•
+•
+
+Hours: 06:00 am- 03:00 am
+Parking Available: Faculty, Handicapped
+Permit Types: Faculty
+
+Lower Lot
+•
+•
+•
+
+Hours: 06:00 am- 03:00 am
+Parking Available: Student
+Permit Types: Student
+
+Definitions of Lot Descriptions
+General – Legal parking allowed with an appropriate ePermit
+Handicapped – State issued permanent or temporary permit MUST be displayed in addition to
+appropriate parking permit. If the permit holder is not authorized to park in specific lot they
+cannot use the ADA space in that lot.
+•
+•
+
+If there are not ADA spaces available the permit holder is NOT authorized to park in a
+reserved space (i.e. faculty, etc.).
+Permit holder cannot park in areas prohibited by NJ 2C:39-4-138 (i.e. within an
+intersection, on a crosswalk, in any area appropriately marked “no parking”, within 50
+ft. of a stop sign, within 10 ft. of a fire hydrant, bus stop, ext.)

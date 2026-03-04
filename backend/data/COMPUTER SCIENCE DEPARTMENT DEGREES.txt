@@ -1,0 +1,639 @@
+COMPUTER SCIENCE DEPARTMENT DEGREES
+  
+   B.S. in Computer Science 
+Learn More
+Students enrolled in Kean’s Computer Science program gain a strong foundation in algorithms, programming, system design, and user-centered computing to prepare for careers in software engineering, research, and emerging technologies.
+
+ 
+  
+
+   B.S. in Computer Science | Information Systems
+Learn More
+This option bridges computing and business, equipping students to design, implement, and manage information systems that support data-driven decision-making and innovation.
+
+ 
+  
+
+   B.S. in Information Technology
+Learn More
+Develop the analytical and creative skills to design, manage, and optimize computing systems. The program prepares students for careers as IT consultants, network architects, and systems administrators in today’s technology-driven world.
+
+ 
+  
+
+    B.S. in Information Technology Cybersecurity Option
+Learn More
+Gain hands-on experience protecting data, networks, and systems from cyber threats. This option trains students to become skilled cybersecurity analysts and professionals ready to secure the digital future.
+
+ 
+  
+
+    B.S. in Computer Science | Cybersecurity
+Learn More
+The Cybersecurity option provides hands-on experience in identifying, analyzing, and defending against cyber threats to protect data, networks, and critical systems in a wide range of environments.
+
+ 
+  
+
+    B.S. in Computer Science | Data Science
+Learn More
+In this data-centric option, students learn to analyze, model, and visualize complex datasets, applying statistical methods and analytical tools to solve real-world problems.
+
+ 
+  
+
+    B.S. in Artificial Intelligence
+Learn More
+The first undergraduate Artificial Intelligence degree in New Jersey, preparing students to design intelligent systems, build autonomous technologies, and innovate in autonomous systems, trustworthy AI, and data-driven decision-making. 
+
+ 
+  
+
+    Minor in Computer Science
+Learn More
+Students from any major can strengthen their technical and analytical skills by learning the fundamentals of programming, algorithms, and computational thinking to apply technology-driven solutions in their fields.
+
+ 
+  
+
+   Minor in Artificial Intelligence
+Learn More
+Open to all majors, this minor introduces the foundations of artificial intelligence, including machine learning, neural networks, and intelligent systems, preparing students to develop and apply AI tools and methods in a wide range of areas.
+
+ 
+  
+
+   Minor in Data Science
+Learn More
+Open to all majors, this minor provides essential skills in data analytics, modeling, and visualization, enabling students to turn data into insight and support better decision making in their chosen discipline.
+
+ 
+ 
+
+Graduate
+Associate Professor Jing-Chiou Liou teaching a computer science class at Kean University.
+The graduate programs in Computer Science at Kean University provide advanced study and research opportunities in today’s most dynamic areas of computing. Students may pursue a Master of Science (M.S.) or a Doctor of Philosophy (Ph.D.) in Computer Science, specializing in machine learning, artificial intelligence, cybersecurity, data science, software engineering, mobile sensing, computer vision, natural language processing (NLP), and large language models (LLMs).
+
+ 
+
+Graduate students work closely with expert faculty mentors and engage in cutting-edge research projects that connect computational theory with real-world innovation. The curriculum combines foundational knowledge with specialized electives, preparing graduates for leadership roles in academia, industry, and government, and for advancing the frontiers of AI-powered advanced computing, intelligent communication, and secure, data-driven systems.
+
+ 
+
+Graduate | Master of Science
+   B.S./M.S. in Computer Science (5-Year Program)
+Learn More
+This accelerated five-year program allows motivated students to earn both a bachelor’s and master’s degree in Computer Science, gaining advanced skills in AI, cybersecurity, software and system design.
+
+ 
+   M.S. in Computer Science 
+Learn More
+Kean’s Master of Science in Computer Science program deepens students’ technical expertise in areas such as artificial intelligence, cybersecurity, data science, and software engineering, preparing graduates to lead innovation in academia, industry, and government.
+
+ 
+  
+
+ Graduate | Ph.D. 
+   Ph.D. in Computer Science
+Learn More
+The Doctor of Philosophy in Computer Science program at Kean is designed for scholars and researchers who seek to advance the frontiers of computing through original research in AI, machine learning, cybersecurity, data science, and human-centered computing.
+
+=========================================================
+Computer Science BS
+
+The Dorothy and George Hennings College of Science, Mathematics and TechnologyDepartment of Computer Science and Technology
+Computer Science has made a huge impact in many areas of modern life and is key to our collective future. 
+
+A computer science degree can open doors for you to design networks and software systems, expand the frontiers of virtual reality, use artificial intelligence to devise medical breakthroughs and create machine-learning algorithms to analyze data and make predictions.
+
+Kean graduates are pushing the boundaries of what’s possible and securing lucrative careers in many fields from technology to health care and finance. 
+ ==================================
+
+What Will You Learn as a Computer Science Major?
+Expand your knowledge of programming languages, techniques and emerging technologies
+Study artificial intelligence, data mining, database systems, digital forensics, software engineering and web programming 
+Mitigate and address cybersecurity breaches and threats
+Conduct original research with faculty mentors and present at national conferences
+Create and improve computer software and hardware to solve business and communication challenges
+Build a professional network and secure internship opportunities in several industries
+You can also pursue a combined five-year bachelor's and master's program to quickly earn your advanced degree.  Or earn your degree while gaining industry experience in our co-op program. Students participating in this 5-year program, gain 9-18 months of work experience while completing their degree.
+
+===============================
+CURRICULLUM SHEET AND 4-YEAR PLAN
+Rev. 07/2021 NSO Only
+Note: The course sequence and layout provided is an estimate, based on available information and may change, due to program requirements, student performance,
+and may be subject to human error. All students should check their study plans and take personal responsibility for accuracy and correctness.
+(78305) B.S. in Computer Science: 4-year Study Plan
+This first-year study plan is for new students only. All new students should see their CS/IT faculty advisor in October to review and
+update their 4-year study plans before the early registration period (in November). Students should pay attention to each course’s
+prerequisites and the available courses in each semester. Please check the academic guide sheets at http://yoda.kean.edu/studyplans/
+Name: Faculty Advisor:
+Kean Id# Catalog Year:
+Notes:
+1st Year Fall (15) 1st Year Spring (17)
+MATH 1054 Precalculus (3) MATH 2110 Discrete Structures (3)
+CPS 1231 Fundamentals of CS (4) CPS 2231 Computer Programming (4)
+ENG 1030 College Composition (3) COMM 1402 Speech Comm. (3)
+GE 1000/3000 Transition to Kean (1) HIST 1062 Worlds of History (3)
+Lab Science 1 (4) Lab Science 2 (4)
+Internship, summer course, or summer research
+2nd Year Fall (17) 2nd Year Spring (16/17)
+MATH 2415 Calculus I (4) MATH 2416 Calculus II (4) or MATH 2995 Linear Algebra (3)
+CPS 2232 Data Structures (4) TECH 2920 Computer Systems (3)
+CPS 2390 Computer Org. and Arch. (3) CPS 3250 Computer Operating Systems (3)
+ENG 2403 World Literature (3) ENG 3091 Technical Writing (3)
+GE 2024 Research and Technology (3) Social Sciences (3)
+CPS 2010 Career Education - Free Elective #1 (1)
+Internship, summer course, or summer research
+3rd Year Fall (15/16) 3rd Year Spring (15/16)
+MATH 2526 Applied Statistics I (3) CPS 3962 Object Oriented Analysis & Design (3) – SP only
+CPS 3440 Analysis of Algorithms (3)- FA only CPS 4200 Systems Prog. (SP)(3) or Elective (3) #1
+CPS 4150 Computer Arch. (FA)(3) or CPS Elective (3) #1 CPS Elective (3) #2
+MATH or Science (3/4) #1 MATH or Science (3/4) #2
+Humanities (3) Free Elective (3) #2
+Internship, summer course, or summer research
+4th Year Fall (15) 4th Year Spring (12+3)
+MATH Elective 3xxx (3) CPS 4951 Senior Project (3) – SP only
+CPS Elective (3) #3 CPS 4222 Principles of Networking (3) – SP only
+CPS Elective (3) #4 CPS Elective (3) #5
+Free Elective (3) #3 Free Elective 3000/4000 (3) #5
+Free Elective 3000/4000 (3) #4 CPS Graduate Course (3)
+Internship, summer course, or summer research
+Rev. 07/2021 NSO Only
+Note: The course sequence and layout provided is an estimate, based on available information and may change, due to program requirements, student performance,
+and may be subject to human error. All students should check their study plans and take personal responsibility for accuracy and correctness.
+Fall offered CPS Major Electives Spring offered CPS Major Electives
+CPS 3310 Programming Languages (FA)(3) CPS 3320 Python Programming (SP)(3)
+CPS 3351 Information Systems Programming (FA)(3) CPS 3498 Computer Security (SP)(3)
+CPS 3498 Computer Security (FA)(3) CPS 3500 Programming WWW (SP)(3)
+CPS 3740 Database Management Systems (FA)(3) CPS 3525 Programming in the UNIX Environment (SP)(3)
+CPS 4301 Software Engineering (FA)(3) CPS 3601 Human Computer Interaction (SP)(3)
+CPS 4498 Digital Forensics (FA)(3) CPS 3740 Database Management Systems (SP)(3)
+CPS 4745 Visualization Design & Development (FA)(3) CPS 4721 Data Mining Principles (SP)(3)
+CPS 4802 AI Machine Learning Algorithms (FA)(3) CPS 4801 Artificial Intelligence Applications (SP)(3)
+CPS 4931 Distributed Systems Applications (FA)(3)
+CPS 4601 User Experience Design (TBA)(3)
+
+====================================================
+COMPUTER SCIENCE MS
+
+Computer Science (M.S.)
+The Dorothy and George Hennings College of Science, Mathematics and TechnologyDepartment of Computer Science and Technology
+A master's degree in computer science prepares you for careers in the tech world, giving you the analytic and technical skills needed to solve problems and master current and emerging technologies. 
+
+At Kean, you take a deep dive into the computer technology field and learn to design, build and maintain complex systems. Acquire the practical experience needed to develop your expertise and become an information technology leader. Our program also offers you the opportunity to collaborate with faculty on publications, research and real-world applications. 
+
+Kean computer science graduates are working in many fields, including IT, artificial intelligence, gaming, finance, cybersecurity, government, health care and more.
+
+Request Info     Apply Now
+
+gradResearchDays
+Computer science students showcasing research at Kean University Research Days with program coordinator Jing Chiou-Liou.
+
+What You Learn
+Master software engineering and IT system development
+Work in software quality and security assurance
+Practice analytic data science
+Study the latest in cybersecurity and digital forensics
+Delve into artificial intelligence and machine learning
+You can earn your degree at Kean's main campus in Union.
+
+Application Deadline
+
+Fall: Apr. 1 (International and priority)
+
+Fall: Jun. 30 (Domestic)
+
+Spring: Oct. 1 (International and priority)
+
+Spring: Dec. 1 (Domestic)
+
+Applicants who submit all materials by the deadline will receive priority consideration for funding.
+
+Admission Requirements
+
+If you have admissions questions, contact Graduate Admissions at gradadmissions@kean.edu or (908)737-4723.  
+
+==================================
+COMPUTER SCIENCE MASTER REQUIREMENTS
+
+Dr. Daehan Kwak, Program Coordinator
+
+Room: GLAB 244
+
+Phone: 908-737-4715
+
+E-mail: dkwak@kean.edu
+
+Program Description
+The Master of Science in Computer Science provides a strong foundation in advanced computing principles, algorithms, and system design, preparing students with the analytical and technical skills to solve complex computing challenges. Students gain expertise in key areas such as software engineering, artificial intelligence, data science, cybersecurity, and computer systems. The program provides hands-on experience in designing, developing, and optimizing computing technologies while strengthening analytical thinking skills. Graduates are prepared for leadership roles in academia, industry, government, and the technology sector, with opportunities to engage in research and independent projects across various areas of computer science.
+
+Prerequisites
+In addition to the University’s admission requirements, applicants should have a bachelor's degree in Computer Science, Information Technology, Artificial Intelligence, Computer Engineering, or a related computing discipline. Additionally, applicants should have prior coursework or demonstrated proficiency in Data Structures, Computer Systems, Algorithm Analysis, Discrete Mathematics, and Calculus. Proficiency in programming languages such as Java, Python, C++, or an equivalent is also required.
+
+Students who do not meet admission requirements or prerequisites may receive conditional admission and must complete bridge courses that do not apply to the 30-credit degree requirement, as determined by the Graduate Program Coordinator.
+
+Degree Requirements
+Students must complete 30 credits, which can be fulfilled by taking 10 courses.
+
+Registration and Requirements
+Master’s Project (CPS 5995): Involves applying knowledge to a practical computing problem under the guidance of the course instructor. Students must complete at least 9 credits and maintain good academic standing. Approval from the Graduate Program Coordinator is required.
+Master’s Thesis (CPS 5961): Involves independent research under the guidance of a faculty research advisor. Students must complete either (a) a sequence of Independent Study and Master’s Thesis courses, or (b) two Master’s Thesis courses. Approval from a faculty research advisor and the Graduate Program Coordinator is required.
+Thesis Requirements
+A Master’s Thesis Committee must consist of three members, including the thesis advisor as chair, and at least one other department faculty member.
+A written thesis must be submitted, adhering to the style, formatting, and template guidelines set by the department.
+A public presentation of the thesis is required and must be completed before the end of the semester.
+Committee approval requires thesis submission, a public presentation, and final approval from the Graduate Program Coordinator.
+Bridge Courses
+Students who do not meet the University’s admission requirements or prerequisite coursework may be granted conditional admission, as determined by the Graduate Program Coordinator. In such cases, they must complete assigned bridge courses, which do not count toward the 30-credit degree requirement.
+
+ 
+
+BRIDGE COURSES
+
+CPS 5010
+
+Fundamentals of Computer Science for Graduate Program
+
+3 credits
+
+CPS 5011
+
+Computer Organization and Programing for Graduate Program
+
+3 credits
+
+CPS 5012
+
+Data Structure for Graduate Program
+
+3 credits
+
+CPS 5013
+
+Computer Systems for Graduate Program
+
+3 credits
+
+CPS 5014
+
+Algorithm Analysis for Graduate Program
+
+3 credits
+
+CPS 5015
+
+Computer Security for Graduate Program
+
+3 credits
+
+ 
+
+Degree Requirements
+30 Credits
+Core Courses 9
+CPS 5520	COMPUTER SYSTEMS AND CONCEPTS	
+3
+
+CPS 5301	ADVANCED SOFTWARE ENGINEERING	
+3
+
+CPS 5440	ADVANCED ANALYSIS OF ALGORITHMS	
+3
+
+Elective Courses 18
+Select up to 18 credits from various specialized areas base on your interest. Students interested in research may take one Independent Study (CPS 5881, CPS 5882 or CPS*5883) which may count towards the degree requirements.
+CPS 5250	COMPUTING, ETHICS, AND SOCIETY FOUNDATIONS	
+3
+
+CPS 5498	DIGITAL FORENSICS AND INVESTIGATION	
+3
+
+CPS 5500	WEB DESIGN AND DEVELOPMENT	
+3
+
+CPS 5601	HUMAN-COMPUTER INTERACTION	
+3
+
+CPS 5721	KNOWLEDGE DISCOVERY AND DATA MINING	
+3
+
+CPS 5740	DATABASE SYSTEMS	
+3
+
+CPS 5745	INTERACTIVE INFORMATION VISUALIZATION	
+3
+
+CPS 5801	ADVANCED ARTIFICIAL INTELLIGENCE	
+3
+
+CPS 5802	MACHINE LEARNING INNOVATIONS	
+3
+
+CPS 5881	INDEPENDENT GRADUATE STUDY	
+3
+
+CPS 5882	INDEPENDENT GRADUATE STUDY	
+3
+
+CPS 5883	INDEPENDENT GRADUATE STUDY	
+3
+
+CPS 5930	OPERATING SYSTEM CONCEPTS	
+3
+
+CPS 5931	NETWORK SYSTEMS	
+3
+
+CPS 5965	HIGH PERFORMANCE COMPUTING	
+3
+
+CPS 5980	COMPUTER AND NETWORK SECURITY	
+3
+
+CPS 5981	SOFTWARE ASSURANCE	
+3
+
+CPS 5990	SPECIAL TOPICS IN COMPUTER SCIENCE	
+3
+
+Master's Project or Thesis 3
+CPS 5961	MASTER'S THESIS RESEARCH	
+3
+
+OR	
+CPS 5995	MASTER'S PROJECT	
+3
+
+Total Credit Hours: 30
+===================================================
+
+COMPUTER SCIENCE PH.D
+
+Computer Science (Ph.D.)
+The Dorothy and George Hennings College of Science, Mathematics and TechnologyDepartment of Computer Science and Technology
+Advance Knowledge. Lead Innovation. Shape the Future. 
+
+If you’re ready to deepen your expertise and drive innovation in computer science, Kean University’s Ph.D. in Computer Science is for you. Launching in Fall 2026, this doctorate prepares you to make breakthroughs in artificial intelligence, cybersecurity and data science. 
+
+At Kean, your work in computing goes beyond theory. You’ll investigate and expand emerging technologies to solve difficult, real-world problems. This doctoral program is designed to cultivate the next generation of scholars and technology leaders—supported by distinguished faculty, cutting-edge facilities and interdisciplinary research opportunities. Whether you’re pursuing a future in academia, research or industry, you’ll be prepared to manage complex projects, shape emerging technologies and thrive in high-impact roles across the tech sector. 
+
+Request Info     Apply Now
+
+Kean Computer Science students
+Kean Computer Science students study emerging trends and cutting edge tools and strategies in artificial intelligence, cybersecurity and data science. 
+
+What You Learn
+Apply research methodologies and theoretical frameworks to complex computing problems 
+
+Explore cutting-edge topics in machine learning, artificial intelligence and big data analytics 
+
+Develop technical fluency in cybersecurity, high-performance computing and software engineering 
+
+Engage with ethical and societal issues in advanced computing environments 
+
+Collaborate with faculty on interdisciplinary research projects 
+
+Refine academic writing, publication and conference presentation skills 
+
+Design and defend your original research and doctoral dissertation in a specialized area that contributes to the field  
+
+Application Deadline
+
+Fall: January 15
+
+Spring: October 15
+
+Admission Requirements 
+
+If you have admissions questions, contact Graduate Admissions at gradadmissions@kean.edu or (908)737-4723.  
+
+Program Information
+Computer Science Ph.D.  
+Course Requirements
+Applications open in Fall 2025 for enrollment in Fall 2026. 
+
+
+More details about admissions, eligibility, and assistantship opportunities will be available soon. 
+Contact program coordinator or graduate admissions at gradadmissions@kean.edu for more information 
+
+Program Coordinator:
+
+Daehan Kwak, Ph.D. 
+dkwak@kean.edu 
+(908) 737-4715 
+
+Other programs you might be interested in
+Information TechnologyComputer Science (M.S.)Computational Science & Engineering - STEM 5-year B.S./M.S.
+Why a Ph.D. at Kean?
+Specialized Focus Areas: Train in high-impact domains like AI, cybersecurity and data science—areas where Ph.D.-level expertise is increasingly critical. 
+
+Research-Centered Curriculum: With 36 credits of doctoral research, you’ll develop a deep, original dissertation project that aligns with your interests and career goals. 
+
+Faculty Mentorship: Work alongside expert faculty who are active researchers and mentors, committed to guiding doctoral students in scholarly exploration and publication. 
+
+Modern Facilities: Conduct your research in state-of-the-art labs and centers within the Dorothy and George Hennings College of Science, Mathematics and Technology. 
+
+Strategic Location: Located in Union, New Jersey, Kean offers proximity to major research hubs, tech employers, and government partners in the NYC metro area. 
+
+Institutional Commitment: As New Jersey’s urban research university and a national R2 institution, Kean is expanding its graduate research enterprise and investing in next-generation academic leaders like you. 
+
+Kean University Academics
+===================================
+COMPUTER SCIENCE PH.D 
+Degree Requirements
+Required Courses 6
+CPS 5250	COMPUTING, ETHICS, AND SOCIETY FOUNDATIONS	
+3
+
+CPS 5440	ADVANCED ANALYSIS OF ALGORITHMS	
+3
+
+Bridge Courses
+Credits are not counted toward degree requirements.
+CPS 5010	FUNDAMENTALS OF COMPUTER SCIENCE FOR GRADUATE PROGRAM	
+3
+
+CPS 5011	COMPUTER ORGANIZATION & PROGRAMMING FOR GRADUATE PROGRAM	
+3
+
+CPS 5012	DATA STRUCTURES & ALGORITHMS FOR GRADUATE PROGRAM	
+3
+
+CPS 5013	COMPUTER SYSTEMS FOR GRADUATE PROGRAM	
+3
+
+CPS 5014	ANALYSIS OF ALGORITHMS FOR GRADUATE PROGRAM	
+3
+
+CPS 5015	COMPUTER SECURITY FOR GRADUATE PROGRAM	
+3
+
+Major Electives 30
+Select 10 Focus Area Major Elective courses with advisement.
+
+CPS 5100	COMPUTER INFORMATION SYSTEM	
+3
+
+CPS 5301	ADVANCED SOFTWARE ENGINEERING	
+3
+
+CPS 5498	DIGITAL FORENSICS AND INVESTIGATION	
+3
+
+CPS 5500	WEB DESIGN AND DEVELOPMENT	
+3
+
+CPS 5601	HUMAN-COMPUTER INTERACTION	
+3
+
+CPS 5721	KNOWLEDGE DISCOVERY AND DATA MINING	
+3
+
+CPS 5740	DATABASE SYSTEMS	
+3
+
+CPS 5745	INTERACTIVE INFORMATION VISUALIZATION	
+3
+
+CPS 5801	ADVANCED ARTIFICIAL INTELLIGENCE	
+3
+
+CPS 5802	MACHINE LEARNING INNOVATIONS	
+3
+
+CPS 5881	INDEPENDENT GRADUATE STUDY	
+3
+
+CPS 5882	INDEPENDENT GRADUATE STUDY	
+3
+
+CPS 5900	NUMERICAL ANALYSIS	
+3
+
+CPS 5910	COMPUTER SIMULATION OF MODELS	
+3
+
+CPS 5930	OPERATING SYSTEM CONCEPTS	
+3
+
+CPS 5931	NETWORK SYSTEMS	
+3
+
+CPS 5960	OPERATIONS RESEARCH	
+3
+
+CPS 5965	HIGH PERFORMANCE COMPUTING	
+3
+
+CPS 5981	SOFTWARE ASSURANCE	
+3
+
+CPS 5990	SPECIAL TOPICS IN COMPUTER SCIENCE	
+3
+
+Research 36
+36 Credits
+CPS 6991	DOCTORAL RESEARCH	
+1 to 12
+
+ 	
+Teaching and Research Mentorship	
+Qualifying Exam	
+Dissertation Proposal Defense	
+Dissertation Defense	
+Total Credit Hours: 72
+==========================================
+
+INFORMATION TECHNOLOGY (IT) UNDERGRADUATE
+
+Information Technology
+Department of Computer Science and TechnologyThe Dorothy and George Hennings College of Science, Mathematics and Technology
+Majoring in information technology will sharpen your critical thinking and logic skills to prepare you for a future of developing software innovations, managing systems that help run computers more efficiently and working collaboratively with others to solve problems. You get the chance to use your analytical skills and creativity when you study information technology at Kean. 
+
+Our information technology graduates are working as IT consultants, network architects, computer forensic investigators, health IT specialists, web developers and computer systems administrators, optimizing the modern computing experience.
+ 
+
+
+What You Learn
+Use your analytical and creative skills as an information technology major.
+
+Research, analyze and test new and existing technologies
+Use new tools, robotics and systems to solve problems
+Explore computing, cybersecurity, network design, health IT and other fields
+Build knowledge of computer security, cyber defense, game design, health informatics and web client programming
+Establish a professional network for future employment opportunities
+You can pursue a cybersecurity option that specifically prepares you for that field or take a general track that opens up a host of possibilities in the industry.
+
+=======================================
+
+INFORMATION TECHNOLOGY CURRICULLUM AND 4 YEAR-PLAN
+
+
+
+KEAN UNIVERSITY – COLLEGE OF SCIENCE, MATHEMATICS AND TECHONOLGY
+(28703) B.S. in Information Technology: 120 S.H.
+Minimum GPA Required for Declaration: 2.50
+Minimum GPA Required for Major: 2.50
+Overall Minimum GPA Required for Graduation: 2.50
+EFFECTIVE DATE: Fall 2022
+GENERAL EDUCATION 33 S.H. ACADEMIC MAJOR 43 S.H.
+Foundation Requirements 1 13 S.H. Major Core ** 13 S.H.
+GE 1000 Transition to Kean 2 or GE 3000 Transfer Transitions 2 1 TECH 1010 IT Foundations 3
+ENG 1030 College Composition 3 3 TECH 1505 Digital Circuits and Systems 4
+MATH 1000 Algebra for College Students 4 3 TECH 2520 Network Technology 3
+COMM 1402 Speech Communication as Critical Citizenship 3 TECH 2920 Computer Systems 3
+GE 2024 Research & Technology 3
+Major Concentration ** 15 S.H.
+Disciplinary & Interdisciplinary Distribution Requirements 1 TECH 3498 IT Computer Security 3
+Humanities 6 S.H. TECH 3500 Web Client-Side Programming 3
+ENG 2403 World Literature * 3 TECH 3525 Introduction to Unix/Linux 3
+take one “GE Approved” course from one area below TECH 3740 IT Database Management Systems 3
+Fine Arts/Art History 3 TECH 3910 IT Project Management WE 3
+Philosophy or Religion 3
+Foreign Languages (must take I and II for credit) 3 Major Electives **
+, 6 12 S.H.
+Music or Theatre 3 TECH 3xxx or 4xxx 3
+Interdisciplinary 3 TECH 3xxx or 4xxx 3
+TECH 3xxx or 4xxx 3
+Social Sciences 6 S.H. TECH or CPS 3xxx or 4xxx 3
+HIST 1062 Worlds of History * 3
+take one “GE Approved” course from one area below Major Capstone ** 3 S.H.
+Psychology 3 TECH 4513 Senior Project or TECH 4961 Senior Research 9 3
+Economics or ES 1010 World Geography 3
+Political Science 3
+Sociology or Anthropology 3 FREE ELECTIVES 16 S.H.
+Interdisciplinary 3 at least 50% must be 3000/4000 level
+(recommended: ID 1400 Computing in Modern Society) 3
+Science and Mathematics 8 S.H. (recommended: TECH 1996 Research Initiative for Freshmen) 7 1
+CPS 1231 Fundamentals of Computer Science **, 5 4 (recommended: CPS 2010 Career Education) 7 1
+Lab Science (BIO 1000, BIO 1300, CHEM 1083, ENV 1100,
+ES 1100, ES 1200, ES 1300, or PHYS 2091) 4
+(recommended: TECH 3291/92/93 Career Internship in IT) 8 1-6
+ADDITIONAL REQUIRED COURSES ** 28 S.H.
+COMM 3590 Business and Professional Communication 3 Special Notes:
+ENG 3091 Technical Writing 3
+1 See pre-requisites and equivalencies (on page 2)
+MGS 2030 Principles of Management 3 2 University requirement for graduation for all undergraduate
+students that must be satisfied in one of two ways: Complete GE
+1000 (all freshmen and transfers entering with 0-29 credits) OR
+complete GE 3000 (transfers entering with 30 credits or more)
+CPS 2231 Computer Programming 5 4
+CPS 2240 IT Data Structures 3
+CPS 3601 Human-Computer Interaction 3
+MATH 1054 Precalculus 4 3
+3 ENG 1030 requires grade of C or higher
+MATH 2110 Discrete Structures 3
+4, 5, 6, 7, 8 See notes (on page 2)
+MATH 2526 Applied Statistics I 3 *GE Distribution course required of all students
+**All Major courses, All Additional and supporting courses,
+including Capstone requires grade of C or higher
+WE Writing Emphasis course
+9 Prior research experience and petition required for TECH 4961
+
+Information Technology
+Department of Computer Science and TechnologyThe Dorothy and George Hennings College of Science, Mathematics and Technology
+Majoring in information technology will sharpen your critical thinking and logic skills to prepare you for a future of developing software innovations, managing systems that help run computers more efficiently and working collaboratively with others to solve problems. You get the chance to use your analytical skills and creativity when you study information technology at Kean. 
+
+Our information technology graduates are working as IT consultants, network architects, computer forensic investigators, health IT specialists, web developers and computer systems administrators, optimizing the modern computing experience.
+ 
