@@ -1,3 +1,4 @@
+import { Mic, Square } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
 const ENV_API_BASE_URL = import.meta.env.VITE_API_URL?.trim();
@@ -10,6 +11,51 @@ const DEFAULT_GREETING = {
   text: "Hello! How can I help you today? I can answer questions about Kean University and help with campus locations and directions.",
   sender: "bot"
 };
+const SPEECH_LANGUAGE_MAP = {
+  en: { code: "en-US", label: "English" },
+  es: { code: "es-ES", label: "Spanish" },
+  zh: { code: "zh-CN", label: "Mandarin" },
+  ko: { code: "ko-KR", label: "Korean" },
+  tr: { code: "tr-TR", label: "Turkish" },
+  ur: { code: "ur-PK", label: "Urdu" }
+};
+const VOICE_LANGUAGE_OPTIONS = [
+  { value: "auto", label: "Auto" },
+  { value: "en", label: "English" },
+  { value: "es", label: "Spanish" },
+  { value: "zh", label: "Mandarin" },
+  { value: "ko", label: "Korean" },
+  { value: "tr", label: "Turkish" },
+  { value: "ur", label: "Urdu" }
+];
+
+function detectSpeechLanguage(text, fallbackLanguage = "") {
+  const sample = String(text || "").trim();
+  const normalized = sample.toLowerCase();
+  const fallback = String(fallbackLanguage || "").toLowerCase();
+
+  if (/[\uac00-\ud7af]/.test(sample)) return SPEECH_LANGUAGE_MAP.ko;
+  if (/[\u4e00-\u9fff]/.test(sample)) return SPEECH_LANGUAGE_MAP.zh;
+  if (/[\u0600-\u06ff]/.test(sample)) return SPEECH_LANGUAGE_MAP.ur;
+
+  if (
+    /\b(cuando|cuándo|donde|dónde|quien|quién|eres|hola|admisiones|matricula|matrícula|programa|universidad|biblioteca|horario)\b/.test(normalized)
+  ) {
+    return SPEECH_LANGUAGE_MAP.es;
+  }
+  if (
+    /\b(merhaba|universite|üniversite|kayit|kayıt|bolum|bölüm|programi|programı|saat)\b/.test(normalized)
+  ) {
+    return SPEECH_LANGUAGE_MAP.tr;
+  }
+
+  if (fallback.startsWith("es")) return SPEECH_LANGUAGE_MAP.es;
+  if (fallback.startsWith("zh")) return SPEECH_LANGUAGE_MAP.zh;
+  if (fallback.startsWith("ko")) return SPEECH_LANGUAGE_MAP.ko;
+  if (fallback.startsWith("tr")) return SPEECH_LANGUAGE_MAP.tr;
+  if (fallback.startsWith("ur")) return SPEECH_LANGUAGE_MAP.ur;
+  return SPEECH_LANGUAGE_MAP.en;
+}
 
 function shouldOpenMapFromResponse(data, answerText) {
   if (data?.intent === "location") return true;
@@ -149,17 +195,125 @@ function ChatPanel({ setShowMap, setRouteRequest }) {
   });
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
+  const [voiceSupported, setVoiceSupported] = useState(false);
+  const [listening, setListening] = useState(false);
+  const [voiceStatus, setVoiceStatus] = useState("");
+  const [voiceLanguage, setVoiceLanguage] = useState("auto");
   const abortControllerRef = useRef(null);
   const pendingUserMessageRef = useRef("");
+  const recognitionRef = useRef(null);
+  const currentInputRef = useRef("");
+  const loadingRef = useRef(false);
+  const lastUserLanguageRef = useRef(navigator.language || "en-US");
+  const sendMessageRef = useRef(() => {});
+  const voiceTranscriptRef = useRef("");
+  const shouldAutoSendVoiceRef = useRef(false);
+
+  function getActiveSpeechLanguage(sampleText = "") {
+    if (voiceLanguage !== "auto") {
+      return SPEECH_LANGUAGE_MAP[voiceLanguage] || SPEECH_LANGUAGE_MAP.en;
+    }
+    return detectSpeechLanguage(sampleText, lastUserLanguageRef.current);
+  }
+
+  useEffect(() => {
+    currentInputRef.current = input;
+    loadingRef.current = loading;
+  }, [input, loading]);
+
+  useEffect(() => {
+    const SpeechRecognition =
+      window.SpeechRecognition || window.webkitSpeechRecognition;
+    if (!SpeechRecognition) {
+      setVoiceSupported(false);
+      return undefined;
+    }
+
+    const recognition = new SpeechRecognition();
+    recognition.continuous = false;
+    recognition.interimResults = true;
+    recognition.maxAlternatives = 1;
+    recognition.lang = getActiveSpeechLanguage("").code;
+
+    recognition.onstart = () => {
+      setListening(true);
+      const language = getActiveSpeechLanguage(currentInputRef.current);
+      setVoiceStatus(`Listening in ${language.label}...`);
+    };
+
+    recognition.onresult = event => {
+      let transcript = "";
+      let finalTranscript = "";
+      for (let index = event.resultIndex; index < event.results.length; index += 1) {
+        const chunk = event.results[index][0]?.transcript || "";
+        transcript += chunk;
+        if (event.results[index].isFinal) {
+          finalTranscript += chunk;
+        }
+      }
+      const nextTranscript = transcript.trim();
+      if (nextTranscript) {
+        setInput(nextTranscript);
+      }
+      if (finalTranscript.trim()) {
+        voiceTranscriptRef.current = finalTranscript.trim();
+      }
+    };
+
+    recognition.onerror = event => {
+      shouldAutoSendVoiceRef.current = false;
+      const nextMessage =
+        event.error === "not-allowed"
+          ? "Microphone access was blocked. Please allow microphone access in your browser."
+          : event.error === "no-speech"
+          ? "I didn't hear anything. Try again and speak clearly."
+          : "Voice input is temporarily unavailable.";
+      setListening(false);
+      setVoiceStatus(nextMessage);
+    };
+
+    recognition.onend = () => {
+      setListening(false);
+      const transcript = voiceTranscriptRef.current.trim();
+      if (shouldAutoSendVoiceRef.current && transcript) {
+        shouldAutoSendVoiceRef.current = false;
+        voiceTranscriptRef.current = "";
+        setVoiceStatus("Sending voice message...");
+        sendMessageRef.current(transcript);
+        return;
+      }
+      shouldAutoSendVoiceRef.current = false;
+      voiceTranscriptRef.current = "";
+      setVoiceStatus(current => (current.includes("Listening") ? "Voice input ready." : current));
+    };
+
+    recognitionRef.current = recognition;
+    setVoiceSupported(true);
+    setVoiceStatus("Voice input ready.");
+
+    return () => {
+      recognition.onstart = null;
+      recognition.onresult = null;
+      recognition.onerror = null;
+      recognition.onend = null;
+      try {
+        recognition.stop();
+      } catch {
+        // Ignore stop errors during teardown.
+      }
+      recognitionRef.current = null;
+    };
+  }, []);
 
   useEffect(() => {
     localStorage.setItem(CHAT_STORAGE_KEY, JSON.stringify(messages));
   }, [messages]);
 
-  async function sendMessage() {
-    const userMessage = input.trim();
-    if (!userMessage || loading) return;
+  async function sendMessage(messageOverride) {
+    const userMessage = String(messageOverride ?? input).trim();
+    if (!userMessage || loadingRef.current) return;
 
+    lastUserLanguageRef.current = detectSpeechLanguage(userMessage, lastUserLanguageRef.current).code;
     setMessages(prev => [...prev, { text: userMessage, sender: "user" }]);
     setInput("");
     setLoading(true);
@@ -239,6 +393,10 @@ function ChatPanel({ setShowMap, setRouteRequest }) {
     }
   }
 
+  useEffect(() => {
+    sendMessageRef.current = sendMessage;
+  }, [sendMessage]);
+
   function cancelSend() {
     if (!loading) return;
 
@@ -262,6 +420,13 @@ function ChatPanel({ setShowMap, setRouteRequest }) {
   }
 
   function clearHistory() {
+    if (recognitionRef.current && listening) {
+      try {
+        recognitionRef.current.stop();
+      } catch {
+        // Ignore stop errors when clearing state.
+      }
+    }
     if (abortControllerRef.current) {
       abortControllerRef.current.abort();
     }
@@ -273,6 +438,35 @@ function ChatPanel({ setShowMap, setRouteRequest }) {
     localStorage.removeItem(CHAT_STORAGE_KEY);
     abortControllerRef.current = null;
     pendingUserMessageRef.current = "";
+  }
+
+  function toggleVoiceInput() {
+    if (!voiceSupported) {
+      setVoiceStatus("Voice input is not supported in this browser.");
+      return;
+    }
+
+    const recognition = recognitionRef.current;
+    if (!recognition) {
+      setVoiceStatus("Voice input is not ready yet.");
+      return;
+    }
+
+    if (listening) {
+      recognition.stop();
+      return;
+    }
+
+    try {
+      const language = getActiveSpeechLanguage(currentInputRef.current);
+      recognition.lang = language.code;
+      voiceTranscriptRef.current = "";
+      shouldAutoSendVoiceRef.current = true;
+      setVoiceStatus(`Listening in ${language.label}...`);
+      recognition.start();
+    } catch {
+      setVoiceStatus("Voice input could not start. Please try again.");
+    }
   }
 
   function handleKeyDown(event) {
@@ -318,7 +512,30 @@ function ChatPanel({ setShowMap, setRouteRequest }) {
           placeholder="Ask about Kean University..."
         />
 
-        <button className="btn-primary" onClick={sendMessage} disabled={loading}>
+        <select
+          className="voice-lang-select"
+          value={voiceLanguage}
+          onChange={event => setVoiceLanguage(event.target.value)}
+          disabled={listening || loading}
+          aria-label="Voice input language"
+        >
+          {VOICE_LANGUAGE_OPTIONS.map(option => (
+            <option key={option.value} value={option.value}>
+              {option.label}
+            </option>
+          ))}
+        </select>
+        <button
+          className={`btn-secondary voice-btn${listening ? " voice-btn-active" : ""}`}
+          type="button"
+          onClick={toggleVoiceInput}
+          disabled={loading}
+          aria-pressed={listening}
+          title={voiceSupported ? "Use voice input" : "Voice input is unavailable in this browser"}
+        >
+          {listening ? <Square size={16} aria-hidden="true" /> : <Mic size={16} aria-hidden="true" />}
+        </button>
+        <button className="btn-primary" onClick={() => sendMessage()} disabled={loading}>
           Send
         </button>
         {loading && (
@@ -326,6 +543,9 @@ function ChatPanel({ setShowMap, setRouteRequest }) {
             Cancel
           </button>
         )}
+      </div>
+      <div className="voice-status" aria-live="polite">
+        {voiceSupported ? voiceStatus : "Voice input is available in supported browsers like Chrome."}
       </div>
     </div>
   );

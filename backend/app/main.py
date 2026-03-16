@@ -710,20 +710,64 @@ LANGUAGE_NAMES = {
     "ur": "Urdu",
     "ko": "Korean",
 }
+SHORT_LANGUAGE_HINTS = {
+    "en": {
+        "hello", "hi", "hey", "good morning", "good afternoon", "good evening",
+    },
+    "tr": {
+        "merhaba", "selam", "gunaydin", "günaydın", "iyi aksamlar", "iyi akşamlar",
+    },
+    "es": {
+        "hola", "buenas", "buenos dias", "buenos días", "buenas tardes", "buenas noches",
+    },
+    "zh": {
+        "你好", "您好", "早上好", "下午好", "晚上好",
+    },
+    "ur": {
+        "سلام", "السلام علیکم", "السلام عليكم",
+    },
+    "ko": {
+        "안녕", "안녕하세요", "좋은 아침", "좋은 저녁",
+    },
+}
 LANGUAGE_HINT_KEYWORDS = {
     "tr": {
         "nerede", "nasil", "nasıl", "ne", "zaman", "guz", "güz", "bahar", "donem", "dönem",
         "basliyor", "başlıyor", "kampus", "kampüs", "kayit", "kayıt", "otopark", "yemek",
         "saat", "kutuphane", "kütüphane", "mali", "yardim", "yardım", "mezuniyet",
+        "merhaba", "selam", "gunaydin", "günaydın", "iyi aksamlar", "iyi akşamlar",
     },
     "es": {
         "donde", "dónde", "cuando", "cuándo", "que", "qué", "semestre", "otono", "otoño",
         "primavera", "parqueo", "estacionamiento", "comida", "horario", "biblioteca",
         "admisiones", "solicitud", "matricula", "matrícula", "ayuda", "financiera",
-        "graduacion", "graduación",
+        "graduacion", "graduación", "quien", "quién", "eres", "hola", "necesito",
+        "buenas", "buenos dias", "buenos días", "buenas tardes", "buenas noches",
+        "como", "cómo", "llamas", "nombre", "puedes", "gracias",
     },
-    "zh": {"哪里", "在哪", "怎么", "如何", "时间", "开放", "停车", "餐厅", "图书馆", "专业", "招生", "毕业"},
-    "ko": {"어디", "어떻게", "시간", "주차", "식당", "도서관", "전공", "입학", "졸업", "등록금"},
+    "zh": {"哪里", "在哪", "怎么", "如何", "时间", "开放", "停车", "餐厅", "图书馆", "专业", "招生", "毕业", "你好", "您好"},
+    "ur": {"سلام", "کیا", "کہاں", "کب", "داخلہ", "پارکنگ", "لائبریری", "کھانا", "وقت", "مدد", "یونیورسٹی"},
+    "ko": {"어디", "어떻게", "시간", "주차", "식당", "도서관", "전공", "입학", "졸업", "등록금", "안녕", "안녕하세요"},
+}
+FAQ_TOPIC_RETRIEVAL_HINTS = {
+    "admissions": "admissions apply application portal undergraduate graduate international",
+    "financial_aid": "financial aid fafsa grants scholarships loans",
+    "student_accounts": "tuition fees bursar payment refund hold late fee",
+    "registration": "registration registrar transcript one stop add drop enrollment",
+    "calendar_deadline": "academic calendar deadline semester term due date",
+    "housing": "housing dorm residence life move in roommate residential",
+    "health_services": "student health wellness counseling immunization vaccine",
+    "accessibility": "accessibility accommodations disability office accessibility services",
+    "parking_transport": "parking permit shuttle transportation train trolley bus",
+    "library": "library books study room citation hours",
+    "bookstore": "bookstore barnes noble textbooks apparel",
+    "theaters_events": "kean stage theatre theater tickets box office event",
+    "it_support": "wifi email password tech support portal",
+    "programs": "program degree major minor curriculum catalog academics",
+    "policies": "policy policies rule procedure conduct repeat retake",
+    "smoking_policy": "smoking policy tobacco vape vaping no smoking",
+    "dining": "dining food court marketplace starbucks cafe hours",
+    "hours": "hours open opening closing schedule",
 }
 TRANSLATIONS = {
     "location_opening_specific": {
@@ -934,6 +978,70 @@ TRANSLATIONS = {
         "ur": "میں Kean University ویب سائٹ کے لیے Kean Global کنسیئر اسسٹنٹ ہوں۔ میں سوالوں کے جواب آسان اور سادہ زبان میں دیتا ہوں، اور کیمپس مقامات، نقشے اور راستوں میں بھی مدد کر سکتا ہوں۔",
         "ko": "저는 Kean University 웹사이트용 Kean Global 안내 도우미입니다. 쉽고 간단한 언어로 질문에 답하고, 캠퍼스 위치, 지도, 길찾기도 도와드릴 수 있습니다.",
     },
+    "greeting_intro": {
+        "en": "Hello! I can help with Kean University questions, campus locations, maps, and directions.",
+        "tr": "Merhaba! Kean University soruları, kampüs konumları, haritalar ve yön tarifleri konusunda yardımcı olabilirim.",
+        "es": "Hola. Puedo ayudar con preguntas sobre Kean University, ubicaciones del campus, mapas y direcciones.",
+        "zh": "你好！我可以帮助解答 Kean University 的问题，也可以协助查询校园地点、地图和路线。",
+        "ur": "ہیلو! میں Kean University سے متعلق سوالات، کیمپس مقامات، نقشوں اور راستوں میں مدد کر سکتا ہوں۔",
+        "ko": "안녕하세요! Kean University 관련 질문, 캠퍼스 위치, 지도, 길찾기를 도와드릴 수 있습니다.",
+    },
+    "thanks_reply": {
+        "en": "You're welcome. If you want, ask me about admissions, programs, campus locations, parking, dining, hours, or directions.",
+        "tr": "Rica ederim. İstersen kabul, programlar, kampüs konumları, otopark, yemek, saatler veya yol tarifi hakkında sorabilirsin.",
+        "es": "De nada. Si quieres, puedes preguntarme sobre admisiones, programas, ubicaciones del campus, estacionamiento, comida, horarios o direcciones.",
+        "zh": "不客气。如果需要，你可以继续问我招生、专业、校园地点、停车、餐饮、开放时间或路线问题。",
+        "ur": "خوش آمدید۔ اگر چاہیں تو آپ مجھ سے داخلہ، پروگرامز، کیمپس مقامات، پارکنگ، کھانے، اوقات یا راستوں کے بارے میں پوچھ سکتے ہیں۔",
+        "ko": "천만에요. 원하시면 입학, 전공, 캠퍼스 위치, 주차, 식사, 운영 시간, 길찾기에 대해 계속 물어보세요.",
+    },
+    "farewell_reply": {
+        "en": "Goodbye. If you need anything else about Kean University, I’ll be here.",
+        "tr": "Hoşça kal. Kean University hakkında başka bir şeye ihtiyacın olursa buradayım.",
+        "es": "Adiós. Si necesitas algo más sobre Kean University, aquí estaré.",
+        "zh": "再见。如果你还需要了解 Kean University 的其他信息，我会在这里。",
+        "ur": "خدا حافظ۔ اگر Kean University کے بارے میں مزید کسی چیز کی ضرورت ہو تو میں حاضر ہوں۔",
+        "ko": "안녕히 가세요. Kean University에 대해 더 필요한 것이 있으면 언제든지 물어보세요.",
+    },
+    "capabilities_reply": {
+        "en": "I can help with Kean University admissions, programs, tuition, registration, housing, health services, dining, bookstore, campus locations, parking, maps, directions, hours, and academic dates.",
+        "tr": "Kean University için kabul, programlar, ücretler, kayıt, konaklama, sağlık hizmetleri, yemek, kitapçı, kampüs konumları, otopark, harita, yol tarifi, saatler ve akademik tarihler konusunda yardımcı olabilirim.",
+        "es": "Puedo ayudar con admisiones, programas, matrícula y costos, inscripción, vivienda, servicios de salud, comida, librería, ubicaciones del campus, estacionamiento, mapas, direcciones, horarios y fechas académicas de Kean University.",
+        "zh": "我可以帮助解答 Kean University 的招生、专业、学费、注册、住宿、健康服务、餐饮、书店、校园地点、停车、地图、路线、开放时间和学术日期等问题。",
+        "ur": "میں Kean University کے داخلہ، پروگرامز، فیس، رجسٹریشن، رہائش، ہیلتھ سروسز، کھانے، بک اسٹور، کیمپس مقامات، پارکنگ، نقشوں، راستوں، اوقات اور تعلیمی تاریخوں کے بارے میں مدد کر سکتا ہوں۔",
+        "ko": "저는 Kean University의 입학, 전공, 등록금, 수강신청, 주거, 건강 서비스, 식사, 서점, 캠퍼스 위치, 주차, 지도, 길찾기, 운영 시간, 학사 일정 안내를 도와드릴 수 있습니다.",
+    },
+    "clarify_reply": {
+        "en": "Please ask again with a little more detail. You can include a topic like admissions, a building name, a program name, hours, parking, or directions.",
+        "tr": "Lütfen biraz daha ayrıntıyla tekrar sor. Kabul, bina adı, program adı, saatler, otopark veya yol tarifi gibi bir konu ekleyebilirsin.",
+        "es": "Vuelve a preguntar con un poco más de detalle. Puedes incluir un tema como admisiones, el nombre de un edificio, un programa, horarios, estacionamiento o direcciones.",
+        "zh": "请再具体一点提问。你可以说明招生、建筑名称、专业名称、开放时间、停车或路线等主题。",
+        "ur": "براہِ کرم تھوڑی مزید تفصیل کے ساتھ دوبارہ پوچھیں۔ آپ داخلہ، عمارت کا نام، پروگرام کا نام، اوقات، پارکنگ یا راستوں میں سے کوئی موضوع شامل کر سکتے ہیں۔",
+        "ko": "조금 더 구체적으로 다시 질문해 주세요. 입학, 건물 이름, 전공명, 운영 시간, 주차, 길찾기 같은 주제를 포함하면 더 정확히 도와드릴 수 있습니다.",
+    },
+    "acknowledgment_reply": {
+        "en": "Understood.",
+        "tr": "Anlaşıldı.",
+        "es": "Entendido.",
+        "zh": "明白了。",
+        "ur": "سمجھ گیا۔",
+        "ko": "알겠습니다.",
+    },
+    "frustration_reply": {
+        "en": "I understand. Try asking with a specific topic, office, building, or program name, and I’ll answer more directly.",
+        "tr": "Anlıyorum. Belirli bir konu, ofis, bina veya program adıyla sorarsan daha doğrudan yanıt verebilirim.",
+        "es": "Entiendo. Si preguntas con un tema, oficina, edificio o programa específico, podré responder de forma más directa.",
+        "zh": "我明白了。如果你用更具体的主题、办公室、建筑或专业名称提问，我可以更直接地回答。",
+        "ur": "میں سمجھ گیا۔ اگر آپ کسی مخصوص موضوع، دفتر، عمارت یا پروگرام کے نام کے ساتھ پوچھیں تو میں زیادہ براہِ راست جواب دے سکتا ہوں۔",
+        "ko": "이해했습니다. 더 구체적인 주제, 부서, 건물, 전공 이름으로 질문하면 더 정확하게 답할 수 있습니다.",
+    },
+    "faq_clarify_reply": {
+        "en": "I need a little more detail to answer accurately. Please include a specific office, building, service, program, or topic.",
+        "tr": "Doğru yanıt verebilmem için biraz daha ayrıntıya ihtiyacım var. Lütfen belirli bir ofis, bina, hizmet, program veya konu yaz.",
+        "es": "Necesito un poco más de detalle para responder con precisión. Incluye una oficina, edificio, servicio, programa o tema específico.",
+        "zh": "为了更准确地回答，我需要更多一点细节。请说明具体的办公室、建筑、服务、专业或主题。",
+        "ur": "درست جواب دینے کے لیے مجھے تھوڑی مزید تفصیل چاہیے۔ براہِ کرم کسی مخصوص دفتر، عمارت، سروس، پروگرام یا موضوع کا ذکر کریں۔",
+        "ko": "정확히 답하려면 조금 더 구체적인 정보가 필요합니다. 특정 부서, 건물, 서비스, 전공 또는 주제를 포함해 주세요.",
+    },
     "parking_ticket_fees_intro": {
         "en": "Here are the parking ticket fees listed by Kean:",
         "tr": "Kean tarafından listelenen park ihlali ücretleri:",
@@ -1075,11 +1183,89 @@ CALENDAR_EVENT_TRANSLATIONS = {
         "ko": "여름학기 II 시작",
     },
 }
+CALENDAR_EVENT_WORD_TRANSLATIONS = {
+    "tr": {
+        "Spring": "Bahar",
+        "Fall": "Güz",
+        "Summer": "Yaz",
+        "Winter": "Kış",
+        "Semester": "Dönemi",
+        "Term": "Dönemi",
+        "Begins": "Başlangıcı",
+        "Ends": "Bitişi",
+        "Registration": "Kayıt",
+        "Exam": "Sınav",
+        "Week": "Haftası",
+        "Classes": "Dersler",
+    },
+    "es": {
+        "Spring": "Primavera",
+        "Fall": "Otoño",
+        "Summer": "Verano",
+        "Winter": "Invierno",
+        "Semester": "Semestre",
+        "Term": "Periodo",
+        "Begins": "Inicio",
+        "Ends": "Fin",
+        "Registration": "Inscripción",
+        "Exam": "Exámenes",
+        "Week": "Semana",
+        "Classes": "Clases",
+    },
+    "zh": {
+        "Spring": "春季",
+        "Fall": "秋季",
+        "Summer": "夏季",
+        "Winter": "冬季",
+        "Semester": "学期",
+        "Term": "学期",
+        "Begins": "开始",
+        "Ends": "结束",
+        "Registration": "注册",
+        "Exam": "考试",
+        "Week": "周",
+        "Classes": "课程",
+    },
+    "ur": {
+        "Spring": "بہار",
+        "Fall": "خزاں",
+        "Summer": "گرما",
+        "Winter": "سردی",
+        "Semester": "سمسٹر",
+        "Term": "مدت",
+        "Begins": "آغاز",
+        "Ends": "اختتام",
+        "Registration": "رجسٹریشن",
+        "Exam": "امتحان",
+        "Week": "ہفتہ",
+        "Classes": "کلاسیں",
+    },
+    "ko": {
+        "Spring": "봄",
+        "Fall": "가을",
+        "Summer": "여름",
+        "Winter": "겨울",
+        "Semester": "학기",
+        "Term": "학기",
+        "Begins": "시작",
+        "Ends": "종료",
+        "Registration": "등록",
+        "Exam": "시험",
+        "Week": "주간",
+        "Classes": "수업",
+    },
+}
 
 def detect_language(text: str) -> str:
     t = text.strip().lower()
     t_norm = normalize(text)
     t_tokens = set(t_norm.split())
+    short_input = re.sub(r"\s+", " ", t.strip())
+
+    for lang_code, phrases in SHORT_LANGUAGE_HINTS.items():
+        if short_input in phrases or t_norm in phrases:
+            return lang_code
+
     if re.search(r"[\u4e00-\u9fff]", t):
         return "zh"
     if re.search(r"[\uac00-\ud7af]", t):
@@ -1093,7 +1279,7 @@ def detect_language(text: str) -> str:
     if any(ch in t for ch in ("¿", "¡", "ñ")):
         return "es"
 
-    lang_scores = {"tr": 0, "es": 0, "zh": 0, "ko": 0}
+    lang_scores = {"tr": 0, "es": 0, "zh": 0, "ur": 0, "ko": 0}
     for lang_code, keywords in LANGUAGE_HINT_KEYWORDS.items():
         for keyword in keywords:
             if keyword_in_text(t_norm, t_tokens, keyword):
@@ -1186,7 +1372,12 @@ def localize_calendar_event_text(event_text: str, lang: str) -> str:
     for key, mapping in CALENDAR_EVENT_TRANSLATIONS.items():
         if key in normalized_event:
             return mapping.get(lang, event_text.title())
-    return event_text.title()
+
+    text = event_text.title()
+    word_mapping = CALENDAR_EVENT_WORD_TRANSLATIONS.get(lang, {})
+    for en_word, local_word in word_mapping.items():
+        text = re.sub(rf"\b{re.escape(en_word)}\b", local_word, text)
+    return text
 
 def parse_position(value: str) -> Optional[tuple[float, float]]:
     raw = str(value or "").strip()
@@ -2457,20 +2648,146 @@ def is_identity_question(text: str) -> bool:
         for k in (
             "who are you",
             "what are you",
+            "what is your name",
+            "whats your name",
+            "what's your name",
+            "your name",
             "are you a bot",
-            "what can you do",
             "quien eres",
             "qué eres",
             "que eres",
             "quien sos",
+            "como te llamas",
+            "cómo te llamas",
+            "cual es tu nombre",
+            "cuál es tu nombre",
             "sen kimsin",
+            "adin ne",
+            "adın ne",
             "nesin",
             "你是谁",
             "你是什麼",
+            "你叫什么",
+            "你叫什麼",
             "کون ہو",
             "آپ کون ہیں",
+            "آپ کا نام کیا ہے",
             "너는 누구야",
+            "이름이 뭐야",
+            "이름이 뭐예요",
             "뭐 할 수 있어",
+        )
+    )
+
+def is_greeting(text: str) -> bool:
+    q = normalize(text)
+    q_tokens = tokenize(text)
+    greeting_keywords = (
+        "hello",
+        "hi",
+        "hey",
+        "good morning",
+        "good afternoon",
+        "good evening",
+        "merhaba",
+        "selam",
+        "hola",
+        "buenas",
+        "你好",
+        "您好",
+        "سلام",
+        "안녕",
+        "안녕하세요",
+    )
+    return len(q_tokens) <= 4 and any(keyword_in_text(q, q_tokens, k) for k in greeting_keywords)
+
+def is_thanks(text: str) -> bool:
+    q = normalize(text)
+    q_tokens = tokenize(text)
+    return any(
+        keyword_in_text(q, q_tokens, k)
+        for k in (
+            "thanks", "thank you", "thank u",
+            "gracias", "muchas gracias",
+            "tesekkurler", "teşekkürler", "tesekkur ederim", "teşekkür ederim",
+            "谢谢", "多谢", "感谢",
+            "감사", "감사합니다", "고마워", "고맙습니다",
+            "شکریہ", "بہت شکریہ",
+        )
+    )
+
+def is_farewell(text: str) -> bool:
+    q = normalize(text)
+    q_tokens = tokenize(text)
+    return any(
+        keyword_in_text(q, q_tokens, k)
+        for k in (
+            "bye", "goodbye", "see you", "see ya",
+            "adios", "adiós", "hasta luego", "nos vemos",
+            "gorusuruz", "görüşürüz", "hosca kal", "hoşça kal",
+            "再见", "拜拜",
+            "안녕히 가세요", "잘 가", "안녕",
+            "خدا حافظ", "الوداع",
+        )
+    )
+
+def is_help_capabilities_question(text: str) -> bool:
+    q = normalize(text)
+    q_tokens = tokenize(text)
+    return any(
+        keyword_in_text(q, q_tokens, k)
+        for k in (
+            "help", "what can you do", "how can you help", "what do you do",
+            "ayuda", "puedes ayudar", "qué puedes hacer", "que puedes hacer", "en que ayudas", "en qué ayudas",
+            "yardim", "yardım", "neler yapabilirsin", "ne yapabilirsin", "yardim edebilir misin", "yardım edebilir misin",
+            "帮助", "你能做什么", "你可以做什么",
+            "도움", "무엇을 도와줄 수 있어", "뭘 할 수 있어", "무엇을 할 수 있어",
+            "مدد", "آپ کیا کر سکتے ہیں", "کیا مدد کر سکتے ہیں",
+        )
+    )
+
+def is_acknowledgment(text: str) -> bool:
+    q = normalize(text)
+    q_tokens = tokenize(text)
+    return len(q_tokens) <= 4 and any(
+        keyword_in_text(q, q_tokens, k)
+        for k in (
+            "ok", "okay", "got it", "understood",
+            "okey", "vale", "entiendo", "entendido", "esta bien", "está bien",
+            "tamam", "anladim", "anladım",
+            "好", "好的", "明白了",
+            "네", "알겠어", "알겠어요", "알겠습니다",
+            "ٹھیک ہے", "سمجھ گیا", "سمجھ گئی",
+        )
+    )
+
+def is_clarification_request(text: str) -> bool:
+    q = normalize(text)
+    q_tokens = tokenize(text)
+    return any(
+        keyword_in_text(q, q_tokens, k)
+        for k in (
+            "repeat", "say that again", "explain again", "simpler", "more simply", "i dont understand", "i don't understand",
+            "repite", "otra vez", "explica otra vez", "mas simple", "más simple", "no entiendo",
+            "tekrar", "yeniden acikla", "yeniden açıkla", "daha basit", "anlamadim", "anlamadım",
+            "再说一遍", "再解释", "简单一点", "我不明白",
+            "다시 말해", "다시 설명", "더 쉽게", "이해가 안 돼",
+            "دوبارہ", "پھر سے بتائیں", "آسان الفاظ میں", "میں نہیں سمجھا",
+        )
+    )
+
+def is_frustration(text: str) -> bool:
+    q = normalize(text)
+    q_tokens = tokenize(text)
+    return any(
+        keyword_in_text(q, q_tokens, k)
+        for k in (
+            "that didnt help", "that didn't help", "wrong", "not helpful", "you are wrong",
+            "no ayudo", "no ayudó", "incorrecto", "eso esta mal", "eso está mal",
+            "olmadi", "olmadı", "yanlis", "yanlış", "yardimci olmadi", "yardımcı olmadı",
+            "没帮助", "不对", "错了",
+            "도움이 안 돼", "틀렸어", "잘못됐어",
+            "مدد نہیں ملی", "غلط", "یہ ٹھیک نہیں",
         )
     )
 
@@ -2505,14 +2822,14 @@ def is_library_target(text: str) -> bool:
     q_tokens = tokenize(text)
     return any(
         keyword_in_text(q, q_tokens, k)
-        for k in ("library", "thompson", "nancy thompson library", "biblioteca", "kutuphane", "kütüphane", "图书馆", "도서관")
+        for k in ("library", "thompson", "nancy thompson library", "biblioteca", "kutuphane", "kütüphane", "图书馆", "도서관", "لائبریری")
     )
 
 def detect_hours_target(text: str) -> Optional[str]:
     q = normalize(text)
     q_tokens = tokenize(text)
 
-    if any(keyword_in_text(q, q_tokens, k) for k in ("library", "thompson", "nancy thompson library", "biblioteca", "kutuphane", "kütüphane", "图书馆", "도서관")):
+    if any(keyword_in_text(q, q_tokens, k) for k in ("library", "thompson", "nancy thompson library", "biblioteca", "kutuphane", "kütüphane", "图书馆", "도서관", "لائبریری")):
         return "library"
     if any(keyword_in_text(q, q_tokens, k) for k in ("gym", "fitness center", "recreation center", "harwood", "arena", "gimnasio", "spor salonu", "체육관", "健身房")):
         return "gym"
@@ -2859,6 +3176,49 @@ def retrieve_fallback_context(
         )
     return context_blocks
 
+def build_retrieval_query(user_text: str, lang: str, faq_topic: Optional[str] = None) -> str:
+    parts = [user_text.strip()]
+    topic_hint = FAQ_TOPIC_RETRIEVAL_HINTS.get(faq_topic or "")
+    if topic_hint:
+        parts.append(topic_hint)
+
+    # Most campus source text is English, so augment multilingual queries with English topic hints.
+    if lang != "en" and topic_hint:
+        parts.append(topic_hint)
+
+    return " ".join(part for part in parts if part).strip()
+
+def best_context_overlap(question: str, context_blocks: list[str]) -> int:
+    question_tokens = meaningful_tokens(question)
+    if not question_tokens:
+        question_tokens = tokenize(question)
+
+    best_score = 0
+    for block in context_blocks:
+        for raw_line in block.splitlines():
+            line = raw_line.strip()
+            if not line or line.startswith("[") or line.startswith("source="):
+                continue
+            line_tokens = tokenize(line)
+            best_score = max(best_score, len(question_tokens & line_tokens))
+    return best_score
+
+def should_ask_for_clarification(question: str, context_blocks: list[str], faq_topic: Optional[str]) -> bool:
+    if not context_blocks:
+        return True
+
+    query_tokens = meaningful_tokens(question)
+    if not query_tokens:
+        query_tokens = tokenize(question)
+
+    if not faq_topic and len(query_tokens) <= 2:
+        return True
+
+    overlap = best_context_overlap(question, context_blocks)
+    if faq_topic:
+        return overlap == 0
+    return overlap < 2
+
 def _trim_context_block(block: str, max_chars: int) -> str:
     lines = block.splitlines()
     if not lines:
@@ -3102,11 +3462,60 @@ async def chat(req: ChatRequest):
     async def localized(answer: str) -> str:
         return await localize_answer_text(answer, lang)
 
+    if is_help_capabilities_question(user_text):
+        return {
+            "answer": trn("capabilities_reply", lang),
+            "intent": "general",
+            "response_mode": "capabilities",
+        }
+
     if is_identity_question(user_text):
         return {
             "answer": trn("bot_identity_intro", lang),
             "intent": "general",
             "response_mode": "identity",
+        }
+
+    if is_greeting(user_text):
+        return {
+            "answer": trn("greeting_intro", lang),
+            "intent": "general",
+            "response_mode": "greeting",
+        }
+
+    if is_thanks(user_text):
+        return {
+            "answer": trn("thanks_reply", lang),
+            "intent": "general",
+            "response_mode": "thanks",
+        }
+
+    if is_farewell(user_text):
+        return {
+            "answer": trn("farewell_reply", lang),
+            "intent": "general",
+            "response_mode": "farewell",
+        }
+
+    if is_clarification_request(user_text):
+        return {
+            "answer": trn("clarify_reply", lang),
+            "intent": "general",
+            "response_mode": "clarify",
+        }
+
+    if is_acknowledgment(user_text):
+        return {
+            "answer": trn("acknowledgment_reply", lang),
+            "intent": "general",
+            "response_mode": "acknowledgment",
+        }
+
+    if is_frustration(user_text):
+        return {
+            "answer": trn("frustration_reply", lang),
+            "intent": "general",
+            "response_mode": "frustration",
         }
 
     if is_shuttle_question(user_text):
@@ -3420,10 +3829,24 @@ async def chat(req: ChatRequest):
             "response_mode": "program_catalog_direct",
         }
 
-    context_blocks = retrieve_rag_context(user_text)
+    retrieval_query = build_retrieval_query(user_text, lang, faq_topic)
+    context_blocks = retrieve_rag_context(retrieval_query)
     if not context_blocks:
-        fallback_query = f"{user_text} {faq_topic.replace('_', ' ') if faq_topic else ''}".strip()
+        fallback_query = build_retrieval_query(
+            f"{user_text} {faq_topic.replace('_', ' ') if faq_topic else ''}".strip(),
+            lang,
+            faq_topic=faq_topic,
+        )
         context_blocks = retrieve_fallback_context(fallback_query, faq_topic=faq_topic)
+
+    if should_ask_for_clarification(user_text, context_blocks, faq_topic):
+        return {
+            "answer": trn("faq_clarify_reply", lang),
+            "intent": "faq" if faq_topic else "general",
+            "faq_topic": faq_topic,
+            "sources_used": len(context_blocks),
+            "response_mode": "clarify_no_match",
+        }
 
     if FAQ_FAST_PATH_ENABLED and faq_topic and context_blocks:
         fast_answer = build_fast_path_answer(user_text, context_blocks, lang, faq_topic=faq_topic)

@@ -246,6 +246,7 @@ body.dark .chat-link:hover {
 .input-row {
   display: flex;
   gap: 8px;
+  align-items: center;
 }
 
 input {
@@ -258,6 +259,33 @@ input {
 input:focus {
   outline: none;
   border-color: var(--kean-blue);
+}
+
+.voice-btn {
+  min-width: 42px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.voice-lang-select {
+  min-width: 96px;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid var(--border-light);
+  background: var(--bg-panel);
+  color: var(--text-primary);
+}
+
+.voice-btn-active {
+  background: #dc2626;
+  color: #fff;
+}
+
+.voice-status {
+  margin-top: 8px;
+  font-size: 12px;
+  color: var(--text-secondary);
 }
 
 /* ---------- MAP ---------- */
