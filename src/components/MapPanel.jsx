@@ -76,7 +76,9 @@ const IMAGE_TOKEN_STOP_WORDS = new Set([
 
 const BUILDING_IMAGE_ALIASES = {
   administration: ["administration building"],
+  barnes_nobles_glab: ["kean barnes and noble", "barnes and noble at glab", "barnes noble glab", "bookstore at glab"],
   bartlett_hall: ["bartlett hall"],
+  basketball_courts: ["kean basketball courts", "basketball courts", "basketball court"],
   burch_hall: ["burch hall"],
   cas: ["cas building", "center for academic success"],
   cougar_hall: ["cougar hall"],
@@ -95,12 +97,14 @@ const BUILDING_IMAGE_ALIASES = {
   kean_hall: ["kean hall"],
   library: ["nancy thompson library", "library"],
   miron_center: ["miron student center", "miron center"],
+  msc_turf_field: ["miron turf field", "msc turf field", "miron student center turf field", "turf field"],
   naab: ["naab", "north avenue academic building"],
   nathan_weiss_building: ["nathan weiss east campus", "nathan weiss building"],
   rogers_hall: ["rogers hall"],
   sozio_hall: ["sozio hall"],
   stem: ["stem building", "stem"],
   townsend_hall: ["townsend hall"],
+  union_train_station: ["union train station", "union township train station", "train station"],
   upperclassman_residence_hall: ["upperclassmen hall", "upperclassman residence hall"],
   vaughn_eames: ["vaughn eames hall", "vaughn-eames hall"],
   whiteman_hall: ["whiteman hall"],
@@ -110,6 +114,7 @@ const BUILDING_IMAGE_ALIASES = {
 const parkingLotsGeoJson = JSON.parse(parkingLotsGeoJsonRaw);
 const pathsGeoJson = JSON.parse(pathsGeoJsonRaw);
 const buildingImageRecords = buildBuildingImageRecords(buildingImageModules);
+const HIDDEN_BUILDING_MARKER_IDS = new Set(["george_hennings_research"]);
 
 const campusMarkerIcon = L.icon({
   iconRetinaUrl: markerIcon2x,
@@ -719,7 +724,7 @@ function HighlightViewport({ destination, enabled }) {
         window.setTimeout(() => map.invalidateSize({ pan: false }), 60);
       };
       map.once("moveend", handleMoveEnd);
-      map.setView(destination, 19, { animate: false });
+      map.setView(destination, 20, { animate: false });
     }, 180);
     return () => window.clearTimeout(timer);
   }, [destination, enabled, map]);
@@ -896,7 +901,12 @@ function MapPanel({ setShowMap, routeRequest }) {
   );
 
   const buildingMarkers = useMemo(
-    () => locations.filter(location => location.type === "building"),
+    () =>
+      locations.filter(
+        location =>
+          location.type === "building" &&
+          !HIDDEN_BUILDING_MARKER_IDS.has(location.id)
+      ),
     [locations]
   );
 

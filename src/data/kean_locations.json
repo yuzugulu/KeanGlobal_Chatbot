@@ -98,17 +98,17 @@
   {
     "id": "barnes_nobles_glab",
     "name": "Barnes & Noble at GLAB",
-    "latlng": "40.682958, -74.236143",
+    "latlng": "40.68279938793707, -74.23643410660495",
     "campus": "Main",
     "routable": "Yes",
     "parent": null,
     "accessibility": "yes",
     "type": "building",
-    "latitude": 40.682958,
-    "longitude": -74.236143,
+    "latitude": 40.68279938793707,
+    "longitude": -74.23643410660495,
     "coordinates": [
-      -74.236143,
-      40.682958
+      -74.23643410660495,
+      40.68279938793707
     ]
   },
   {
