@@ -257,7 +257,8 @@ KeanGlobal_Chatbot/
 
 ---
 
-My Contribution
+My Contribution:
+
 I contributed to the backend intelligence layer and multilingual chatbot behavior of KeanGlobal. My work focused on improving how the assistant understands and responds to users across multiple languages, while keeping responses reliable and context-aware.
 
 Key contributions:
