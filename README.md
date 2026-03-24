@@ -257,6 +257,20 @@ KeanGlobal_Chatbot/
 
 ---
 
+My Contribution
+I contributed to the backend intelligence layer and multilingual chatbot behavior of KeanGlobal. My work focused on improving how the assistant understands and responds to users across multiple languages, while keeping responses reliable and context-aware.
+
+Key contributions:
+
+Implemented automatic language detection for English, Turkish, Spanish, Mandarin Chinese, Urdu, and Korean
+Enforced same-language response behavior so the chatbot replies in the language used by the user
+Improved backend prompt flow for more consistent multilingual responses
+Added language-aware fallback behavior when model output or retrieval context was unavailable
+Integrated retrieval-first chat flow so the assistant checks available university knowledge before generating a final answer
+Helped stabilize backend startup and local development setup for running the system with FastAPI, Ollama, and local RAG components
+
+---
+
 ## 📅 Weekly Reporting
 
 Each team member documents:
